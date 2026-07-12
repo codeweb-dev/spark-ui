@@ -1,0 +1,52 @@
+---
+title: Input
+description: A standard form input styled to match shadcn/ui.
+category: Form
+---
+
+The Input component displays a form input field.
+
+## Preview
+
+<ComponentPreview name="input" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="input" />
+
+### Basic Example
+
+```tsx
+import { Input } from "@/components/input";
+
+export default function App() {
+  return <Input type="text" placeholder="Name" />;
+}
+```
+
+## Properties
+
+The Input accepts all standard HTML input attributes.
+
+<PropsTable>
+  <Prop
+    name="type"
+    type="string"
+    default='"text"'
+    description="The HTML input type."
+  />
+  <Prop
+    name="placeholder"
+    type="string"
+    default="—"
+    description="Placeholder text displayed when the input is empty."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional CSS classes for the input element."
+  />
+</PropsTable>

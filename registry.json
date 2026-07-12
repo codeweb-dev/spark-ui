@@ -129,20 +129,17 @@
       "category": "typography"
     },
     {
-      "name": "label-input",
+      "name": "input",
       "type": "registry:component",
-      "title": "Label Input",
-      "description": "A beautiful input field with floating labels, password visibility toggle, and extensive color variants.",
+      "title": "Input",
+      "description": "A standard form input styled to match shadcn/ui.",
       "files": [
         {
-          "path": "registry/spark-ui/label-input.tsx",
+          "path": "registry/spark-ui/input.tsx",
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
+      "dependencies": [],
       "registryDependencies": [],
       "category": "form"
     },

@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from "@/registry/spark-ui/accordion";
 import NumberTicker from "@/registry/spark-ui/basic-number-ticker";
-import { LabelInput } from "@/registry/spark-ui/label-input";
+import { Input } from "@/registry/spark-ui/input";
 import { Pagination, usePaginationState } from "@/registry/spark-ui/pagination";
 import { ShimmerText } from "@/registry/spark-ui/shimmer-text";
 import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
@@ -78,15 +78,13 @@ export function Showcase() {
       </ShowcaseCard>
 
       <ShowcaseCard
-        href="/docs/components/label-input"
-        title="Label Input"
+        href="/docs/components/input"
+        title="Input"
         span="md:col-span-7"
       >
-        <LabelInput
-          label="Email"
+        <Input
           type="email"
           placeholder="you@example.com"
-          ringColor="primary"
           className="w-full max-w-sm"
         />
       </ShowcaseCard>
