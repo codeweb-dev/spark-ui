@@ -1,33 +1,70 @@
 import { Button } from "@/components/ui/button";
 import { SITE_CONFIG } from "@/lib/constants";
-import { ArrowRight } from "lucide-react";
+import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
+import { ArrowRight, Github } from "lucide-react";
 import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="flex flex-col items-center text-center gap-6 pt-16 pb-12 md:pt-24 md:pb-16">
+    <section className="relative flex min-h-[70vh] flex-col items-center justify-center gap-7 py-20 text-center md:min-h-[76vh] md:py-30">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:56px_56px] opacity-25 [mask-image:radial-gradient(ellipse_55%_55%_at_50%_42%,black,transparent)]" />
       <Link
         href="/docs/introduction"
-        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground hover:bg-accent transition-colors"
+        className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/70 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur hover:border-foreground/20 hover:text-foreground transition-colors"
       >
         Introducing {SITE_CONFIG.name}
-        <ArrowRight size={12} aria-hidden />
+        <ArrowRight
+          size={12}
+          className="transition-transform group-hover:translate-x-0.5"
+          aria-hidden
+        />
       </Link>
 
-      <h1 className="max-w-4xl text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tighter text-foreground text-balance">
-        Components that make interfaces feel alive
+      <h1 className="max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.055em] text-foreground text-balance sm:text-6xl md:text-7xl lg:text-8xl">
+        <span className="mr-3">Components that make your interface </span>
+        <TactileHighlight direction="left">feel alive.</TactileHighlight>
       </h1>
 
-      <p className="max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed text-balance">
-        A set of polished React components you can customize, extend, and build
-        on. Start here then make it your own. Open Source. Open Code.
+      <p className="max-w-2xl text-base leading-relaxed text-muted-foreground text-balance md:text-lg">
+        Beautiful, accessible React components designed to be copied,
+        customized, and made entirely yours.
       </p>
 
-      <Button asChild className="mt-2">
-        <Link href="/docs/components/accordion">
-          Browse Components <ArrowRight size={16} />
-        </Link>
-      </Button>
+      <div className="mt-1 flex flex-col items-center gap-3 sm:flex-row">
+        <Button
+          asChild
+          size="lg"
+          className="h-11 rounded-full px-6 shadow-lg shadow-foreground/10"
+        >
+          <Link href="/docs/components/accordion">
+            Browse components <ArrowRight size={16} />
+          </Link>
+        </Button>
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="h-11 rounded-full bg-background/60 px-6 backdrop-blur"
+        >
+          <Link href={SITE_CONFIG.github} target="_blank" rel="noreferrer">
+            <Github size={16} /> View on GitHub
+          </Link>
+        </Button>
+      </div>
+
+      <div className="mt-6 flex items-center gap-6 text-xs text-muted-foreground sm:gap-10">
+        <span>
+          <strong className="text-foreground">30+</strong> components
+        </span>
+        <span className="h-4 w-px bg-border" />
+        <span>
+          <strong className="text-foreground">100%</strong> open source
+        </span>
+        <span className="h-4 w-px bg-border" />
+        <span>
+          <strong className="text-foreground">TypeScript</strong> ready
+        </span>
+      </div>
     </section>
   );
 }
