@@ -32,16 +32,16 @@ export function PropsTable({ children }: PropsTableProps) {
         <table className="w-full border-collapse text-left text-[13px] leading-relaxed">
           <thead className="bg-zinc-50/50 dark:bg-zinc-900/50">
             <tr className="border-b border-zinc-200 dark:border-zinc-800">
-              <th className="px-4 py-3.5 font-semibold uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400">
+              <th className="px-4 py-3.5 text-zinc-500 dark:text-zinc-400 text-sm">
                 Prop
               </th>
-              <th className="px-4 py-3.5 font-semibold uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400">
+              <th className="px-4 py-3.5 text-zinc-500 dark:text-zinc-400 text-sm">
                 Type
               </th>
-              <th className="px-4 py-3.5 font-semibold uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400">
+              <th className="px-4 py-3.5 text-zinc-500 dark:text-zinc-400 text-sm">
                 Default
               </th>
-              <th className="px-4 py-3.5 font-semibold uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400 w-[40%]">
+              <th className="px-4 py-3.5 text-zinc-500 dark:text-zinc-400 text-sm">
                 Description
               </th>
             </tr>
