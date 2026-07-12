@@ -1,0 +1,59 @@
+---
+title: Introduction
+description: Spark UI is an open-source collection of polished React components you install as source code.
+category: Getting Started
+---
+
+Spark UI is a collection of polished React components, thoughtful interactions, and open-source building blocks for modern products. Every component is designed to feel alive — motion that gives feedback, focus states you can actually see, and defaults that hold up in real products.
+
+## What Spark UI is (and isn't)
+
+Spark UI is a **shadcn-compatible source registry**, not a traditional npm package. You don't add `spark-ui` to your dependencies and import from it at runtime. Instead, the shadcn CLI copies a component's source files directly into your codebase. From that point the code is yours: read it, restyle it, rip out the parts you don't need.
+
+That trade has real benefits:
+
+- **No version lock-in.** There is nothing to upgrade or pin; the code lives in your repo.
+- **Full control.** Change a spring curve or a color without forking a library.
+- **Only what you use.** Each component declares its own dependencies, and the CLI installs just those.
+
+## Core principles
+
+- **Open code:** Components are delivered as readable TypeScript source, not compiled bundles.
+- **Theme ready:** Styling flows through semantic CSS variables, so light mode, dark mode, and your own brand come free.
+- **Accessible by default:** Keyboard support, visible focus, and sensible ARIA are built in.
+- **Motion with purpose:** Animation reinforces feedback and respects `prefers-reduced-motion`.
+- **Built for composition:** Small primitives you combine, rather than monolithic widgets.
+
+## Requirements
+
+Spark UI components target React with Tailwind CSS. Most components rely on a few shared utilities:
+
+```bash
+npm install framer-motion lucide-react clsx tailwind-merge
+```
+
+Individual components declare any additional dependencies in the registry, and the shadcn CLI installs them for you during `add`.
+
+## Installing a component
+
+Point the shadcn CLI at the component's registry URL. For example, to add the Accordion:
+
+<InstallBlock command="accordion" />
+
+## Importing after installation
+
+Installed components land in your configured components directory (see your `components.json`). Import them from your local path — never from the registry:
+
+```tsx
+// Correct import pattern after installation
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/accordion";
+```
+
+## Contributing
+
+Spark UI is open source. If you want to add a component or improve an existing one, the maintainer guide in `ADDING_COMPONENTS.md` walks through the full workflow, from source file to published registry item.

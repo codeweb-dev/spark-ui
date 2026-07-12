@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "title": "Accordion",
+  "description": "A premium accordion component with smooth transitions.",
+  "dependencies": [
+    "@radix-ui/react-accordion",
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/spark-ui/accordion.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport * as AccordionPrimitive from \"@radix-ui/react-accordion\";\nimport { motion } from \"framer-motion\";\nimport { ChevronDown } from \"lucide-react\";\nimport * as React from \"react\";\n\nconst Accordion = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <AccordionPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"w-full border-t border-zinc-200 dark:border-zinc-800\",\n      className,\n    )}\n    {...props}\n  />\n));\nAccordion.displayName = \"Accordion\";\n\nconst AccordionItem = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>\n>(({ className, ...props }, ref) => (\n  <AccordionPrimitive.Item\n    ref={ref}\n    className={cn(\n      \"group relative border-b border-zinc-200 transition-colors duration-300 dark:border-zinc-800\",\n      \"data-[state=open]:bg-zinc-50/50 dark:data-[state=open]:bg-zinc-900/30\",\n      className,\n    )}\n    {...props}\n  />\n));\nAccordionItem.displayName = \"AccordionItem\";\n\nconst AccordionTrigger = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Header className=\"flex\">\n    <AccordionPrimitive.Trigger\n      ref={ref}\n      className={cn(\n        \"relative flex flex-1 items-center justify-between px-4 py-5 text-left font-semibold text-zinc-700 transition-all focus-visible:outline-none dark:text-zinc-300\",\n        \"group-hover:text-zinc-950 dark:group-hover:text-white [&[data-state=open]>svg]:rotate-180\",\n        className,\n      )}\n      {...props}\n    >\n      {/* Magnetic Text Effect */}\n      <motion.span\n        className=\"relative z-10 block\"\n        whileHover={{ x: 4 }}\n        transition={{ type: \"spring\", stiffness: 400, damping: 25 }}\n      >\n        {children}\n      </motion.span>\n\n      <ChevronDown className=\"h-4 w-4 shrink-0 text-zinc-400 transition-transform duration-500 group-hover:text-zinc-900 dark:text-zinc-600 dark:group-hover:text-zinc-100\" />\n\n      {/* Active Indicator Bar */}\n      <div className=\"absolute left-0 top-1/2 h-0 w-1 -translate-y-1/2 bg-zinc-950 transition-all duration-300 group-data-[state=open]:h-3/4 dark:bg-zinc-50\" />\n    </AccordionPrimitive.Trigger>\n  </AccordionPrimitive.Header>\n));\nAccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;\n\nconst AccordionContent = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Content\n    ref={ref}\n    className=\"overflow-hidden text-[14px] text-zinc-500 transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down dark:text-zinc-400\"\n    {...props}\n  >\n    <div className={cn(\"px-4 pb-6 pt-1 leading-relaxed\", className)}>\n      {children}\n    </div>\n  </AccordionPrimitive.Content>\n));\nAccordionContent.displayName = AccordionPrimitive.Content.displayName;\n\nexport { Accordion, AccordionContent, AccordionItem, AccordionTrigger };\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

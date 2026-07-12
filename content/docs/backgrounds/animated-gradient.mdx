@@ -1,0 +1,73 @@
+---
+title: Animated Gradient
+description: Animated gradient background with multiple shader effects built using WebGL.
+category: Backgrounds
+---
+
+The Animated Gradient component creates mesmerizing, high-performance animated backgrounds using WebGL shaders with domain warping for organic, silk-like flowing streams.
+
+## Preview
+
+<ComponentPreview name="animated-gradient" />
+
+## Presets
+
+<ComponentPreview name="animated-gradient-presets" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="animated-gradient" />
+
+### Basic Example
+
+```tsx
+import { AnimatedGradient } from "@/components/animated-gradient";
+
+export default function App() {
+  return (
+    <AnimatedGradient
+      variant="mist"
+      speed={1}
+      opacity={0.8}
+      className="h-screen w-full"
+    />
+  );
+}
+```
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="variant"
+    type='"mist" | "lava"'
+    default="mist"
+    description="Visual effect variant. mist creates a purple/indigo dynamic background, lava creates a rich warm blurry bonfire flow."
+  />
+  <Prop
+    name="speed"
+    type="number"
+    default="1"
+    description="Animation speed multiplier. Higher values = faster animation."
+  />
+  <Prop
+    name="opacity"
+    type="number"
+    default="0.8"
+    description="Canvas opacity (0-1). Use to blend with background layers."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional CSS classes for the container."
+  />
+  <Prop
+    name="children"
+    type="ReactNode"
+    default="—"
+    description="Overlay content to display on top of the gradient background."
+  />
+</PropsTable>

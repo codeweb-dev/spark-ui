@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-carousel-right",
+  "title": "Logo Carousel Right",
+  "description": "Right scrolling Logo Carousel demo.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/demos/logo-carousel-demo-right.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { LogoCarousel } from \"@/registry/spark-ui/logo-carousel\";\n\nconst LOGOS = [\n  { name: \"Cursor\", path: \"/logos/cursor.svg\" },\n  { name: \"Descript\", path: \"/logos/descript.svg\" },\n  { name: \"Discord\", path: \"/logos/discord.svg\" },\n  { name: \"Duolingo\", path: \"/logos/duolingo.svg\" },\n  { name: \"Framer\", path: \"/logos/framer.svg\" },\n  { name: \"Google\", path: \"/logos/google.svg\" },\n  { name: \"Linear\", path: \"/logos/linear.svg\" },\n  { name: \"Netflix\", path: \"/logos/netflix.svg\" },\n  { name: \"Notion\", path: \"/logos/notion.svg\" },\n  { name: \"OpenAI\", path: \"/logos/openai.svg\" },\n  { name: \"OpenSea\", path: \"/logos/opensea.svg\" },\n  { name: \"Phantom\", path: \"/logos/phantom.svg\" },\n  { name: \"Ramp\", path: \"/logos/ramp.svg\" },\n  { name: \"Shopify\", path: \"/logos/shopify.svg\" },\n  { name: \"Tesla\", path: \"/logos/tesla.svg\" },\n  { name: \"Vercel\", path: \"/logos/vercel.svg\" },\n];\n\nexport default function LogoCarouselDemoRight() {\n  return (\n    <div className=\"relative flex w-full flex-col items-center justify-center overflow-hidden py-10\">\n      <LogoCarousel direction=\"right\" gap=\"4.5rem\">\n        {LOGOS.map((logo, idx) => (\n          <img\n            key={idx}\n            src={logo.path}\n            alt={logo.name}\n            className=\"h-9 w-auto opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-pointer logo-carousel-logo\"\n          />\n        ))}\n      </LogoCarousel>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

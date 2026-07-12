@@ -1,0 +1,92 @@
+---
+title: Logo Carousel
+description: A beautiful, high-performance scrolling logo carousel component with pausing, custom directions, speed, and fade effects.
+category: Media
+---
+
+The `LogoCarousel` component creates a seamless looping horizontal or vertical scroller. It is perfect for logo grids, client lists, text tickers, and horizontal image showcases.
+
+## Preview
+
+<ComponentPreview name="logo-carousel" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="logo-carousel" />
+
+### Basic Example
+
+```tsx
+import { LogoCarousel } from "@/components/spark-ui/logo-carousel";
+
+export default function App() {
+  return (
+    <LogoCarousel className="[--duration:20s]">
+      <img src="/logos/google.svg" alt="Google" className="h-9 w-auto" />
+      <img src="/logos/vercel.svg" alt="Vercel" className="h-9 w-auto" />
+      <img src="/logos/openai.svg" alt="OpenAI" className="h-9 w-auto" />
+    </LogoCarousel>
+  );
+}
+```
+
+### Reverse Direction
+
+Here is the same Logo Carousel scrolling in the opposite direction (`direction="right"`):
+
+<ComponentPreview name="logo-carousel-right" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="duration"
+    type="number"
+    default="20"
+    description="The scrolling animation duration in seconds (lower values scroll faster)."
+  />
+  <Prop
+    name="direction"
+    type='"left" | "right" | "up" | "down"'
+    default='"left"'
+    description="The scrolling direction of the carousel items."
+  />
+  <Prop
+    name="reverse"
+    type="boolean"
+    default="false"
+    description="Combines with direction to reverse the scrolling trajectory (e.g. reverse left scrolls right)."
+  />
+  <Prop
+    name="pauseOnHover"
+    type="boolean"
+    default="false"
+    description="If true, pauses the carousel animation when the user hovers over it."
+  />
+  <Prop
+    name="fade"
+    type="boolean"
+    default="true"
+    description="Adds a smooth linear gradient mask fade to the edges of the carousel."
+  />
+  <Prop
+    name="fadeAmount"
+    type="number"
+    default="10"
+    description="The percentage amount of the fade gradient width/height at the edges."
+  />
+  <Prop
+    name="repeat"
+    type="number"
+    default="2"
+    description="Number of duplicate copies of the list rendered internally to ensure a seamless looping effect."
+  />
+  <Prop
+    name="gap"
+    type="string"
+    default='"1.5rem"'
+    description="The spacing distance between elements inside the carousel scroller."
+  />
+</PropsTable>

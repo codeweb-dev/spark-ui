@@ -1,0 +1,60 @@
+---
+title: Tactile Highlight
+description: A fluid text highlight component that reacts to viewport visibility and user interaction.
+category: Typography
+---
+
+The Tactile Highlight component is designed to emphasize important text with a premium, physics-based animation. It supports multiple directions and features a reactive ripple effect on hover.
+
+## Preview
+
+<ComponentPreview name="tactile-highlight" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="tactile-highlight" />
+
+### Basic Example
+
+```tsx
+import { TactileHighlight } from "@/components/tactile-highlight";
+
+export default function App() {
+  return (
+    <p>
+      Our mission is to build <TactileHighlight direction="left">Better Interfaces</TactileHighlight>.
+    </p>
+  );
+}
+```
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="color"
+    type="string"
+    default='"bg-primary/20"'
+    description="The Tailwind background color class for the highlight."
+  />
+  <Prop
+    name="direction"
+    type='"left" | "right" | "top" | "bottom"'
+    default='"left"'
+    description="The entry direction of the highlight animation."
+  />
+  <Prop
+    name="delay"
+    type="number"
+    default="0"
+    description="Animation delay in seconds."
+  />
+  <Prop
+    name="triggerOnce"
+    type="boolean"
+    default="true"
+    description="Whether the animation should only trigger the first time it enters view."
+  />
+</PropsTable>

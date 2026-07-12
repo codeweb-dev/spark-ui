@@ -1,0 +1,369 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "spark-ui",
+  "homepage": "https://spark-ui.example.com",
+  "author": "Spark UI (https://spark-ui.example.com)",
+  "items": [
+    {
+      "name": "pagination",
+      "type": "registry:component",
+      "title": "Pagination",
+      "description": "A beautiful pagination component with multiple variants, colors, and smooth animations.",
+      "files": [
+        {
+          "path": "registry/spark-ui/pagination/index.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/spark-ui/pagination/pagination.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/spark-ui/pagination/types.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/spark-ui/pagination/use-pagination-state.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "category": "navigation"
+    },
+    {
+      "name": "rich-button",
+      "type": "registry:component",
+      "title": "Rich Button",
+      "description": "A button component with rich styling and color variants.",
+      "files": [
+        {
+          "path": "registry/spark-ui/rich-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [],
+      "category": "button"
+    },
+    {
+      "name": "accordion",
+      "type": "registry:component",
+      "title": "Accordion",
+      "description": "A premium accordion component with smooth transitions.",
+      "files": [
+        {
+          "path": "registry/spark-ui/accordion.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "tactile-highlight",
+      "type": "registry:component",
+      "title": "Tactile Highlight",
+      "description": "A fluid text highlight component that reacts to viewport visibility and user interaction.",
+      "files": [
+        {
+          "path": "registry/spark-ui/tactile-highlight.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "category": "typography"
+    },
+    {
+      "name": "spotify-card",
+      "type": "registry:component",
+      "title": "Spotify Card",
+      "description": "A premium Spotify card with real-time metadata and morphing animations.",
+      "files": [
+        {
+          "path": "registry/spark-ui/spotify/spotify-card.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/spark-ui/spotify/metadata-route.ts",
+          "type": "registry:component",
+          "target": "app/api/spotify/metadata/route.ts"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react",
+        "cheerio",
+        "got"
+      ],
+      "registryDependencies": [],
+      "category": "media"
+    },
+    {
+      "name": "shimmer-text",
+      "type": "registry:component",
+      "title": "Shimmer Text",
+      "description": "A premium text component with an elegant shimmer animation effect.",
+      "files": [
+        {
+          "path": "registry/spark-ui/shimmer-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "category": "typography"
+    },
+    {
+      "name": "basic-number-ticker",
+      "type": "registry:component",
+      "title": "Basic Number Ticker",
+      "description": "An animated number ticker component with customizable start, target, transitions, and callbacks.",
+      "files": [
+        {
+          "path": "registry/spark-ui/basic-number-ticker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "category": "typography"
+    },
+    {
+      "name": "label-input",
+      "type": "registry:component",
+      "title": "Label Input",
+      "description": "A beautiful input field with floating labels, password visibility toggle, and extensive color variants.",
+      "files": [
+        {
+          "path": "registry/spark-ui/label-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "category": "form"
+    },
+    {
+      "name": "qr-code",
+      "type": "registry:component",
+      "title": "QR Code",
+      "description": "A beautiful QR code component with dot styling, gradient support, and extensive color customization.",
+      "files": [
+        {
+          "path": "registry/spark-ui/qr-code.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "qrcode"
+      ],
+      "registryDependencies": [],
+      "category": "media"
+    },
+    {
+      "name": "animated-gradient",
+      "type": "registry:component",
+      "title": "Animated Gradient",
+      "description": "WebGL-powered animated mist, lava, and plasma backgrounds with smooth silk-like flowing streams.",
+      "files": [
+        {
+          "path": "registry/spark-ui/animated-gradient.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "media"
+    },
+    {
+      "name": "ghost-ether",
+      "type": "registry:component",
+      "title": "Ghost Ether",
+      "description": "WebGL-powered interactive fluid simulation with dynamic FBM mist and wandering spirit force trails using three.",
+      "files": [
+        {
+          "path": "registry/spark-ui/ghost-ether.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "three",
+        "@types/three"
+      ],
+      "registryDependencies": [],
+      "category": "media"
+    },
+    {
+      "name": "logo-carousel",
+      "type": "registry:component",
+      "title": "Logo Carousel",
+      "description": "A beautiful, high-performance scrolling logo carousel component with pausing, custom directions, speed, and fade effects.",
+      "files": [
+        {
+          "path": "registry/spark-ui/logo-carousel.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "public/logos/cursor.svg",
+          "type": "registry:file",
+          "target": "public/logos/cursor.svg"
+        },
+        {
+          "path": "public/logos/descript.svg",
+          "type": "registry:file",
+          "target": "public/logos/descript.svg"
+        },
+        {
+          "path": "public/logos/discord.svg",
+          "type": "registry:file",
+          "target": "public/logos/discord.svg"
+        },
+        {
+          "path": "public/logos/duolingo.svg",
+          "type": "registry:file",
+          "target": "public/logos/duolingo.svg"
+        },
+        {
+          "path": "public/logos/framer.svg",
+          "type": "registry:file",
+          "target": "public/logos/framer.svg"
+        },
+        {
+          "path": "public/logos/google.svg",
+          "type": "registry:file",
+          "target": "public/logos/google.svg"
+        },
+        {
+          "path": "public/logos/linear.svg",
+          "type": "registry:file",
+          "target": "public/logos/linear.svg"
+        },
+        {
+          "path": "public/logos/netflix.svg",
+          "type": "registry:file",
+          "target": "public/logos/netflix.svg"
+        },
+        {
+          "path": "public/logos/notion.svg",
+          "type": "registry:file",
+          "target": "public/logos/notion.svg"
+        },
+        {
+          "path": "public/logos/openai.svg",
+          "type": "registry:file",
+          "target": "public/logos/openai.svg"
+        },
+        {
+          "path": "public/logos/opensea.svg",
+          "type": "registry:file",
+          "target": "public/logos/opensea.svg"
+        },
+        {
+          "path": "public/logos/phantom.svg",
+          "type": "registry:file",
+          "target": "public/logos/phantom.svg"
+        },
+        {
+          "path": "public/logos/ramp.svg",
+          "type": "registry:file",
+          "target": "public/logos/ramp.svg"
+        },
+        {
+          "path": "public/logos/shopify.svg",
+          "type": "registry:file",
+          "target": "public/logos/shopify.svg"
+        },
+        {
+          "path": "public/logos/tesla.svg",
+          "type": "registry:file",
+          "target": "public/logos/tesla.svg"
+        },
+        {
+          "path": "public/logos/vercel.svg",
+          "type": "registry:file",
+          "target": "public/logos/vercel.svg"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "media"
+    },
+    {
+      "name": "logo-carousel-right",
+      "type": "registry:component",
+      "title": "Logo Carousel Right",
+      "description": "Right scrolling Logo Carousel demo.",
+      "files": [
+        {
+          "path": "registry/demos/logo-carousel-demo-right.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "media"
+    },
+    {
+      "name": "image-trail",
+      "type": "registry:component",
+      "title": "Image Trail",
+      "description": "An interactive mouse-tracking image trail with smooth momentum and stacking options.",
+      "files": [
+        {
+          "path": "registry/spark-ui/image-trail.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "public/images/trail-1.jpg",
+          "type": "registry:file",
+          "target": "public/images/trail-1.jpg"
+        },
+        {
+          "path": "public/images/trail-2.jpg",
+          "type": "registry:file",
+          "target": "public/images/trail-2.jpg"
+        },
+        {
+          "path": "public/images/trail-3.jpg",
+          "type": "registry:file",
+          "target": "public/images/trail-3.jpg"
+        },
+        {
+          "path": "public/images/trail-4.jpg",
+          "type": "registry:file",
+          "target": "public/images/trail-4.jpg"
+        },
+        {
+          "path": "public/images/trail-5.jpg",
+          "type": "registry:file",
+          "target": "public/images/trail-5.jpg"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "category": "media"
+    }
+  ]
+}

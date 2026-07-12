@@ -1,0 +1,70 @@
+---
+title: QR Code
+description: A clean QR code component with rounded dots and beautiful gradient presets.
+category: Media
+---
+
+The QRCode component generates crisp, scannable QR codes with rounded dots and optional gradient presets.
+
+## Preview
+
+<ComponentPreview name="qr-code" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="qr-code" />
+
+## Examples
+
+### Gradient Presets
+
+<ComponentPreview name="qr-code-variants" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="value"
+    type="string"
+    default="—"
+    description="The URL or data to encode. Required."
+  />
+  <Prop
+    name="size"
+    type="number"
+    default="160"
+    description="Overall size of the QR code in pixels."
+  />
+  <Prop
+    name="fgColor"
+    type="string"
+    default='"var(--foreground)"'
+    description="Foreground color when no gradient is applied."
+  />
+  <Prop
+    name="bgColor"
+    type="string"
+    default='"var(--background)"'
+    description="Background color. Automatically adapts to dark/light mode."
+  />
+  <Prop
+    name="errorCorrectionLevel"
+    type='"L" | "M" | "Q" | "H"'
+    default='"M"'
+    description="Error correction level. L (7%), M (15%), Q (25%), H (30%)."
+  />
+  <Prop
+    name="gradient"
+    type="GradientPreset"
+    default='"default"'
+    description="Gradient preset. Options: default, ocean, sunset, forest, berry, twilight, aurora, fire, neon, rose, mint."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional CSS classes for the SVG element."
+  />
+</PropsTable>

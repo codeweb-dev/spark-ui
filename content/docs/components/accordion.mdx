@@ -1,0 +1,62 @@
+---
+title: Accordion
+description: A premium accordion component with smooth transitions and magnetic text effects.
+category: Layout
+---
+
+The Accordion component allows users to toggle the visibility of sections of content. It features a physics-based opening animation and subtle magnetic text effects on hover.
+
+## Preview
+
+<ComponentPreview name="accordion" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="accordion" />
+
+### Basic Example
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/accordion";
+
+export default function App() {
+  return (
+    <Accordion type="single" collapsible>
+      <AccordionItem value="1">
+        <AccordionTrigger>Title</AccordionTrigger>
+        <AccordionContent>Content goes here.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="type"
+    type='"single" | "multiple"'
+    default="—"
+    description="Determines if one or multiple items can be open."
+  />
+  <Prop
+    name="collapsible"
+    type="boolean"
+    default="false"
+    description="Whether an open item can be closed by clicking its trigger."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional CSS classes for the root container."
+  />
+</PropsTable>

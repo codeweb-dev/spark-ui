@@ -1,0 +1,82 @@
+---
+title: Basic Number Ticker
+description: A premium animated number ticker component with custom start, target values, transition configurations, and callbacks.
+category: Typography
+---
+
+The `BasicNumberTicker` component creates a smooth, animated numeric transition from a starting value to a target value. Leveraging Framer Motion's robust layout engines, it provides precise control over speed, easing, and timing, making it perfect for dynamic statistics, growth metrics, and dashboards.
+
+## Preview
+
+<ComponentPreview name="basic-number-ticker" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="basic-number-ticker" />
+
+### Basic Example
+
+```tsx
+import NumberTicker from "@/components/ui/basic-number-ticker";
+
+export default function App() {
+  return (
+    <div className="text-3xl font-normal font-mono">
+      <NumberTicker from={0} target={99} />%
+    </div>
+  );
+}
+```
+
+## Variants Preview
+
+<ComponentPreview name="basic-number-ticker-variants" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="from"
+    type="number"
+    default="0"
+    description="The starting numeric value of the animation."
+  />
+  <Prop
+    name="target"
+    type="number"
+    default="100"
+    description="The target numeric value to count up or down to."
+  />
+  <Prop
+    name="transition"
+    type="ValueAnimationTransition"
+    default='{ duration: 3, type: "tween", ease: "easeInOut" }'
+    description="Animation configuration, matching standard Framer Motion animation properties (tween/spring, duration, ease, etc.)."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional CSS classes for custom styling."
+  />
+  <Prop
+    name="onStart"
+    type="() => void"
+    default="—"
+    description="Callback function invoked when the animation begins."
+  />
+  <Prop
+    name="onComplete"
+    type="() => void"
+    default="—"
+    description="Callback function invoked when the animation finishes."
+  />
+  <Prop
+    name="autoStart"
+    type="boolean"
+    default="true"
+    description="If true, start the count animation automatically when mounted."
+  />
+</PropsTable>

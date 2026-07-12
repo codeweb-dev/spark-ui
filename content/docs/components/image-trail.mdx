@@ -1,0 +1,127 @@
+---
+title: Image Trail
+description: An interactive mouse-tracking image trail with smooth momentum and customizable stack ordering.
+category: Media
+---
+
+The ImageTrail is an interactive component that displays a trail of images following the user's mouse cursor with physics-based momentum. It supports customized keyframe animations, distance thresholds, and custom stacking orders.
+
+## Preview
+
+<ComponentPreview name="image-trail" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="image-trail" />
+
+### Basic Example
+
+```tsx
+import { ImageTrail, ImageTrailItem } from "@/components/image-trail";
+
+const IMAGES = [
+  "/images/trail-1.jpg",
+  "/images/trail-2.jpg",
+  "/images/trail-3.jpg",
+  "/images/trail-4.jpg",
+  "/images/trail-5.jpg",
+];
+
+export default function App() {
+  return (
+    <ImageTrail
+      threshold={90}
+      intensity={0.2}
+      repeatChildren={12}
+      keyframes={{
+        scale: [0.3, 1, 1, 0.3],
+        rotate: [0, -10, 10, 0],
+        opacity: [0, 1, 1, 0],
+      }}
+      keyframesOptions={{
+        duration: 1.2,
+        times: [0, 0.05, 0.85, 1],
+        ease: "easeOut",
+      }}
+      trailElementAnimationKeyframes={{
+        x: { duration: 0.35, type: "tween", ease: "easeOut" },
+        y: { duration: 0.35, type: "tween", ease: "easeOut" },
+      }}
+    >
+      {IMAGES.map((src, index) => (
+        <ImageTrailItem
+          key={index}
+          className="w-32 h-32 sm:w-40 sm:h-40 shadow-2xl overflow-hidden bg-zinc-200 dark:bg-zinc-800"
+        >
+          <img
+            src={src}
+            alt={`Trail photo ${index + 1}`}
+            className="w-full h-full object-cover pointer-events-none select-none"
+          />
+        </ImageTrailItem>
+      ))}
+    </ImageTrail>
+  );
+}
+```
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="as"
+    type="ElementType"
+    default='"div"'
+    description="HTML element to render the container as."
+  />
+  <Prop
+    name="threshold"
+    type="number"
+    default="100"
+    description="Distance in pixels the mouse must travel to spawn the next element."
+  />
+  <Prop
+    name="intensity"
+    type="number"
+    default="0.3"
+    description="Momentum factor (0.0001 to 1.0) for tracking lag. Lower is smoother."
+  />
+  <Prop
+    name="keyframes"
+    type="DOMKeyframesDefinition"
+    default="undefined"
+    description="Framer Motion keyframes defining the animation sequence."
+  />
+  <Prop
+    name="keyframesOptions"
+    type="AnimationOptions"
+    default="undefined"
+    description="Framer Motion options for the keyframes animation."
+  />
+  <Prop
+    name="trailElementAnimationKeyframes"
+    type="object"
+    default="tween/easeOut"
+    description="Framer Motion options for the tracking movement."
+  />
+  <Prop
+    name="repeatChildren"
+    type="number"
+    default="3"
+    description="Number of times children are duplicated to prevent trail gaps."
+  />
+  <Prop
+    name="baseZIndex"
+    type="number"
+    default="0"
+    description="Starting z-index for the trailing items."
+  />
+  <Prop
+    name="zIndexDirection"
+    type='"new-on-top" | "old-on-top"'
+    default='"new-on-top"'
+    description="Stacking behavior ('new-on-top' or 'old-on-top')."
+  />
+</PropsTable>

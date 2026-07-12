@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "basic-number-ticker",
+  "title": "Basic Number Ticker",
+  "description": "An animated number ticker component with customizable start, target, transitions, and callbacks.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/spark-ui/basic-number-ticker.tsx",
+      "content": "\"use client\"\n\nimport {\n  forwardRef,\n  useCallback,\n  useEffect,\n  useImperativeHandle,\n  useState,\n} from \"react\"\nimport {\n  animate,\n  AnimationPlaybackControls,\n  motion,\n  useMotionValue,\n  useTransform,\n  ValueAnimationTransition,\n} from \"framer-motion\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface NumberTickerProps {\n  from: number // Starting value of the animation\n  target: number // End value of the animation\n  transition?: ValueAnimationTransition // Animation configuration, refer to motion docs for more details\n  className?: string // additional CSS classes for styling\n  onStart?: () => void // Callback function when animation starts\n  onComplete?: () => void // Callback function when animation completes\n  autoStart?: boolean // Whether to start the animation automatically\n}\n\n// Ref interface to allow external control of the animation\nexport interface NumberTickerRef {\n  startAnimation: () => void\n}\n\nconst NumberTicker = forwardRef<NumberTickerRef, NumberTickerProps>(\n  (\n    {\n      from = 0,\n      target = 100,\n      transition = {\n        duration: 3,\n        type: \"tween\",\n        ease: \"easeInOut\",\n      },\n      className,\n      onStart,\n      onComplete,\n      autoStart = true,\n      ...props\n    },\n    ref\n  ) => {\n    const count = useMotionValue(from)\n    const rounded = useTransform(count, (latest) => Math.round(latest))\n    const [controls, setControls] = useState<AnimationPlaybackControls | null>(\n      null\n    )\n\n    // Function to start the animation\n    const startAnimation = useCallback(() => {\n      if (controls) controls.stop()\n      onStart?.()\n\n      count.set(from)\n\n      const newControls = animate(count, target, {\n        ...transition,\n        onComplete: () => {\n          onComplete?.()\n        },\n      })\n      setControls(newControls)\n    }, [controls, count, from, target, transition, onStart, onComplete])\n\n    // Expose the startAnimation function via ref\n    useImperativeHandle(ref, () => ({\n      startAnimation,\n    }))\n\n    useEffect(() => {\n      if (autoStart) {\n        startAnimation()\n      }\n      return () => controls?.stop()\n    }, [autoStart])\n\n    return (\n      <motion.span className={cn(className)} {...props}>\n        {rounded}\n      </motion.span>\n    )\n  }\n)\n\nNumberTicker.displayName = \"NumberTicker\"\n\nexport default NumberTicker\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

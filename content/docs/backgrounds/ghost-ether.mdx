@@ -1,0 +1,142 @@
+---
+title: Ghost Ether
+description: WebGL-powered interactive fluid background simulation.
+category: Backgrounds
+---
+
+The Ghost Ether component creates an interactive, high-performance fluid simulation using WebGL and Three.js. It responds dynamically to user mouse pointer movements and touch gestures, injecting forces into the fluid grid.
+
+## Preview
+
+<ComponentPreview name="ghost-ether" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="ghost-ether" />
+
+### Basic Example
+
+```tsx
+import GhostEther from "@/registry/spark-ui/ghost-ether";
+
+export default function App() {
+  return (
+    <div className="relative w-full h-[600px] bg-black">
+      <GhostEther
+        colors={["#7b2cbf", "#3f37c9", "#00f5d4"]}
+        mouseForce={20}
+        cursorSize={100}
+      />
+    </div>
+  );
+}
+```
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="colors"
+    type="string[]"
+    default='["#7B2CBF", "#3F37C9", "#00F5D4"]'
+    description="Array of hex color stops used to build the velocity-to-color mapping palette."
+  />
+  <Prop
+    name="mouseForce"
+    type="number"
+    default="20"
+    description="Strength multiplier applied to user pointer movement when injecting fluid velocity."
+  />
+  <Prop
+    name="cursorSize"
+    type="number"
+    default="100"
+    description="Radius (in pixels at base resolution) of the user pointer force brush."
+  />
+  <Prop
+    name="resolution"
+    type="number"
+    default="0.5"
+    description="Simulation texture scale relative to canvas size. Lower yields higher performance."
+  />
+  <Prop
+    name="isViscous"
+    type="boolean"
+    default="false"
+    description="Enables the iterative Gauss-Seidel viscosity solve for smoother, thicker flow."
+  />
+  <Prop
+    name="viscous"
+    type="number"
+    default="30"
+    description="Viscosity coefficient applied when isViscous is active."
+  />
+  <Prop
+    name="iterationsViscous"
+    type="number"
+    default="32"
+    description="Number of Jacobi iterations for the viscosity solve step."
+  />
+  <Prop
+    name="iterationsPoisson"
+    type="number"
+    default="32"
+    description="Number of pressure Poisson iterations to enforce fluid incompressibility."
+  />
+  <Prop
+    name="dt"
+    type="number"
+    default="0.014"
+    description="Constant time step size used for fluid simulation updates."
+  />
+  <Prop
+    name="BFECC"
+    type="boolean"
+    default="true"
+    description="Enables Back and Forth Error Compensation and Correction for sharper advection textures."
+  />
+  <Prop
+    name="isBounce"
+    type="boolean"
+    default="false"
+    description="If active, clamps velocity boundaries at the edges instead of soft wrapping."
+  />
+  <Prop
+    name="autoDemo"
+    type="boolean"
+    default="true"
+    description="Enables idle driving of the user cursor position when no interaction occurs."
+  />
+  <Prop
+    name="autoSpeed"
+    type="number"
+    default="0.5"
+    description="Wandering speed multiplier used when auto-demo is active."
+  />
+  <Prop
+    name="autoIntensity"
+    type="number"
+    default="2.2"
+    description="Force scaling applied to the auto-demo wandering trail."
+  />
+  <Prop
+    name="takeoverDuration"
+    type="number"
+    default="0.25"
+    description="Transition time (in seconds) when taking control over the auto-driver on interaction."
+  />
+  <Prop
+    name="autoResumeDelay"
+    type="number"
+    default="1000"
+    description="Delay time (in milliseconds) before the auto-demo resumes after user interaction stops."
+  />
+  <Prop
+    name="autoRampDuration"
+    type="number"
+    default="0.6"
+    description="Duration (in seconds) to fade in auto-demo movement once it resumes."
+  />
+</PropsTable>

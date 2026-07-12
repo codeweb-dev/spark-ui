@@ -1,0 +1,84 @@
+---
+title: Shimmer Text
+description: A premium text component with a continuous shimmer effect flowing within the text itself.
+category: Typography
+---
+
+The ShimmerText component creates a smooth, continuous shimmer effect that flows within the text characters. The shimmer loops infinitely, creating an elegant effect perfect for headings and taglines.
+
+## Preview
+
+<ComponentPreview name="shimmer-text" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="shimmer-text" />
+
+### Basic Example
+
+```tsx
+import { ShimmerText } from "@/components/shimmer-text";
+
+export default function App() {
+  return <ShimmerText>Shimmer Effect</ShimmerText>;
+}
+```
+
+## Variants Preview
+
+<ComponentPreview name="shimmer-text-variants" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="children"
+    type="React.ReactNode"
+    default="—"
+    description="The text content to display with shimmer effect."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional CSS classes for styling (text size, weight, etc.)."
+  />
+  <Prop
+    name="shimmerColor"
+    type="string"
+    default="—"
+    description="Primary shimmer color (overrides variant). Hex format."
+  />
+  <Prop
+    name="shimmerColor2"
+    type="string"
+    default="—"
+    description="Secondary shimmer color for gradient effect. Hex format."
+  />
+  <Prop
+    name="direction"
+    type='"ltr" | "rtl"'
+    default='"ltr"'
+    description="Direction of shimmer animation (left-to-right or right-to-left)."
+  />
+  <Prop
+    name="duration"
+    type="number"
+    default="2"
+    description="Duration of one complete shimmer cycle in seconds."
+  />
+  <Prop
+    name="delay"
+    type="number"
+    default="0"
+    description="Delay before the animation starts in seconds."
+  />
+  <Prop
+    name="shimmerWidth"
+    type="number"
+    default="0.5"
+    description="Width of the shimmer band (0.1 - 1). Higher values create wider shimmer."
+  />
+</PropsTable>

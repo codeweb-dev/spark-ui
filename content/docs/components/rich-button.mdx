@@ -1,0 +1,56 @@
+---
+title: Rich Button
+description: A highly customizable button with premium 3D effects and color variants.
+category: Button
+---
+
+The RichButton is a tactile trigger designed for modern interfaces. It features a subtle 3D lift effect, responsive spring physics, and a wide palette of premium color variants.
+
+## Preview
+
+<ComponentPreview name="rich-button" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="rich-button" />
+
+### Basic Example
+
+```tsx
+import { RichButton } from "@/components/rich-button";
+
+export default function App() {
+  return <RichButton color="emerald">Confirm Action</RichButton>;
+}
+```
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="color"
+    type="string"
+    default='"default"'
+    description="Defines the color variant of the button."
+  />
+  <Prop
+    name="size"
+    type='"sm" | "default" | "lg"'
+    default='"default"'
+    description="Controls the size of the button."
+  />
+  <Prop
+    name="asChild"
+    type="boolean"
+    default="false"
+    description="Allows rendering as a child component via Radix Slot."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional CSS classes."
+  />
+</PropsTable>
