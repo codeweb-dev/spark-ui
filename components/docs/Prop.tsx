@@ -11,7 +11,12 @@ interface PropProps {
  * Prop component to be used inside PropsTable.
  * Renders a single row in the properties table.
  */
-export function Prop({ name, type, default: defaultValue = "—", description = "—" }: PropProps) {
+export function Prop({
+  name,
+  type,
+  default: defaultValue = "—",
+  description = "—",
+}: PropProps) {
   return (
     <tr className="group hover:bg-zinc-50/30 dark:hover:bg-zinc-900/10 transition-colors border-b border-zinc-100 dark:border-zinc-800/50 last:border-0">
       <td className="px-4 py-4 whitespace-nowrap">
@@ -25,7 +30,7 @@ export function Prop({ name, type, default: defaultValue = "—", description = 
       <td className="px-4 py-4 font-mono text-[11px] text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
         <code className="bg-transparent p-0">{defaultValue}</code>
       </td>
-      <td className="px-4 py-4 text-zinc-600 dark:text-zinc-400 min-w-[200px] leading-relaxed text-[13px]">
+      <td className="px-4 py-4 text-zinc-600 dark:text-zinc-400 min-w-50 leading-relaxed text-[13px]">
         {description}
       </td>
     </tr>
