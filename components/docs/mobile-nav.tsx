@@ -100,7 +100,7 @@ export function MobileNav({ items }: MobileNavProps) {
               >
                 <div className="flex items-center justify-between p-6 border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50 backdrop-blur-xl">
                   <div className="flex items-center -ml-2">
-                    <LogoIcon className="size-12 text-zinc-900 dark:text-zinc-50" />
+                    <LogoIcon className="size-8 mr-2 text-zinc-900 dark:text-zinc-50" />
                     <span className="text-xl font-bold tracking-tighter leading-none text-zinc-900 dark:text-zinc-50 -ml-2">
                       Spark{" "}
                       <span className="text-zinc-500 font-medium ml-1">UI</span>

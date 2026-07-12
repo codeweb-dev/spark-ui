@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   // Placeholder until a production domain is supplied. Override with NEXT_PUBLIC_APP_URL.
   url: process.env.NEXT_PUBLIC_APP_URL || "https://spark-ui.example.com",
   // GitHub placeholder until a public repository exists.
-  github: "https://github.com/spark-ui/spark-ui",
+  github: "https://github.com/codeweb-dev/spark-ui",
   author: "Spark UI",
   authorUrl: "https://spark-ui.example.com",
   keywords: [
