@@ -38,7 +38,7 @@
       "name": "accordion",
       "type": "registry:component",
       "title": "Accordion",
-      "description": "A premium accordion component with smooth transitions.",
+      "description": "A vertically stacked set of interactive headings that reveal content.",
       "files": [
         {
           "path": "registry/spark-ui/accordion.tsx",
