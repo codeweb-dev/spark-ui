@@ -24,7 +24,7 @@ Spark UI is a collection of polished React components, thoughtful interactions, 
 ## Local setup
 
 ```bash
-cd ~/Downloads/spark-ui
+cd ~/Downloads/spark-ui-master
 npm install
 npm run dev
 ```
@@ -35,13 +35,13 @@ This project uses **npm** exclusively. Please do not introduce other package-man
 
 ## npm commands
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the development server |
-| `npm run lint` | Run ESLint |
-| `npm run registry:build` | Generate registry JSON into `public/r/` |
-| `npm run build` | Production build |
-| `npm run check` | Lint + registry build + production build |
+| Command                  | Purpose                                  |
+| ------------------------ | ---------------------------------------- |
+| `npm run dev`            | Start the development server             |
+| `npm run lint`           | Run ESLint                               |
+| `npm run registry:build` | Generate registry JSON into `public/r/`  |
+| `npm run build`          | Production build                         |
+| `npm run check`          | Lint + registry build + production build |
 
 ## How the registry works
 
