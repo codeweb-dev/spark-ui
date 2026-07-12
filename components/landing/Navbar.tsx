@@ -38,7 +38,7 @@ export function Navbar() {
               Components
             </Link>
             <Link
-              href="/roadmap"
+              href="/docs/roadmap"
               className="hover:text-primary transition-colors"
             >
               Roadmap
