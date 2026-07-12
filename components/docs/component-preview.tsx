@@ -121,8 +121,10 @@ export function ComponentPreview({ name, usageCode }: ComponentPreviewProps) {
               {Component ? (
                 <div
                   className={cn(
-                    "origin-center transition-transform",
-                    isFullBleed ? "w-full h-full" : "scale-90 sm:scale-100",
+                    "origin-center transition-transform w-full",
+                    isFullBleed
+                      ? "h-full"
+                      : "flex justify-center scale-90 sm:scale-100",
                   )}
                 >
                   <Component />

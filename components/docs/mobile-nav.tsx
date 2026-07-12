@@ -1,6 +1,5 @@
 "use client";
 
-import { LogoIcon } from "@/components/landing/logo-icon";
 import { DocMetadata } from "@/lib/docs";
 import { getCategoryMeta } from "@/lib/categories";
 import { NEW_DOC_SLUGS } from "@/lib/constants";
@@ -15,6 +14,15 @@ import { createPortal } from "react-dom";
 interface MobileNavProps {
   items: DocMetadata[];
 }
+
+const MAIN_LINKS = [
+  { title: "Home", href: "/" },
+  { title: "Docs", href: "/docs/introduction" },
+  { title: "Components", href: "/docs/components/button" },
+  { title: "Roadmap", href: "/docs/roadmap" },
+  { title: "Showcase", href: "/showcase" },
+  { title: "Templates", href: "/templates" },
+];
 
 export function MobileNav({ items }: MobileNavProps) {
   const [open, setOpen] = useState(false);
@@ -69,93 +77,85 @@ export function MobileNav({ items }: MobileNavProps) {
   return (
     <div className="md:hidden flex items-center">
       <button
-        onClick={() => setOpen(true)}
+        onClick={() => setOpen(!open)}
         className="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors flex items-center justify-center relative z-101"
-        aria-label="Open navigation"
+        aria-label={open ? "Close navigation" : "Open navigation"}
       >
-        <Menu size={20} />
+        {open ? <X size={20} /> : <Menu size={20} />}
       </button>
 
       {createPortal(
         <AnimatePresence>
           {open && (
-            <div className="fixed inset-0 z-99999 isolation-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="fixed inset-x-0 bottom-0 top-16 z-90 flex flex-col bg-background"
+            >
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setOpen(false)}
-                className="absolute inset-0 bg-zinc-950/60 backdrop-blur-md"
-              />
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={{
-                  type: "spring",
-                  damping: 25,
-                  stiffness: 200,
-                  mass: 1,
-                }}
-                className="absolute inset-y-0 left-0 w-75 bg-white dark:bg-zinc-950 border-r border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden flex flex-col"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, delay: 0.05 }}
+                className="flex-1 overflow-y-auto px-6 pb-16 pt-4"
               >
-                <div className="flex items-center justify-between p-6 border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50 backdrop-blur-xl">
-                  <div className="flex items-center -ml-2">
-                    <LogoIcon className="size-8 mr-2 text-zinc-900 dark:text-zinc-50" />
-                    <span className="text-xl font-bold tracking-tighter leading-none text-zinc-900 dark:text-zinc-50 -ml-2">
-                      Spark{" "}
-                      <span className="text-zinc-500 font-medium ml-1">UI</span>
-                    </span>
+                <div className="space-y-10">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Menu</p>
+                    <div className="mt-3 flex flex-col gap-3">
+                      {MAIN_LINKS.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={cn(
+                            "w-fit text-2xl font-medium tracking-tight transition-colors",
+                            pathname === link.href
+                              ? "text-foreground"
+                              : "text-foreground/70 hover:text-foreground",
+                          )}
+                        >
+                          {link.title}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                  <button
-                    onClick={() => setOpen(false)}
-                    className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-500 transition-colors"
-                    aria-label="Close navigation"
-                  >
-                    <X size={20} />
-                  </button>
-                </div>
 
-                <div className="flex-1 overflow-y-auto p-6 bg-zinc-50/50 dark:bg-zinc-950/50">
-                  <div className="space-y-8 pb-10">
-                    {sortedEntries.map(([category, docs]) => {
-                      const { title } = getCategoryMeta(category);
-                      return (
-                        <div key={category}>
-                          <h4 className="text-sm text-muted-foreground mb-2 px-3">
-                            {title}
-                          </h4>
-                          <div className="flex flex-col gap-0.5">
-                            {docs.map((doc) => (
-                              <Link
-                                key={doc.slug}
-                                href={`/docs/${doc.slug}`}
-                                className={cn(
-                                  "w-fit rounded-lg ml-3 px-3 py-2 text-sm transition-colors",
-                                  pathname === `/docs/${doc.slug}`
-                                    ? "bg-accent text-accent-foreground"
-                                    : "text-foreground/80 hover:bg-accent/50 hover:text-foreground",
-                                )}
-                              >
-                                <span className="flex items-center gap-2">
-                                  {doc.title}
-                                  {NEW_DOC_SLUGS.has(doc.slug) && (
-                                    <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
-                                      <Sparkles className="size-2.5" aria-hidden />
-                                      New
-                                    </span>
-                                  )}
+                  {sortedEntries.map(([category, docs]) => {
+                    const { title } = getCategoryMeta(category);
+                    return (
+                      <div key={category}>
+                        <p className="text-sm text-muted-foreground">
+                          {title}
+                        </p>
+                        <div className="mt-3 flex flex-col gap-3">
+                          {docs.map((doc) => (
+                            <Link
+                              key={doc.slug}
+                              href={`/docs/${doc.slug}`}
+                              className={cn(
+                                "flex w-fit items-center gap-2 text-2xl font-medium tracking-tight transition-colors",
+                                pathname === `/docs/${doc.slug}`
+                                  ? "text-foreground"
+                                  : "text-foreground/70 hover:text-foreground",
+                              )}
+                            >
+                              {doc.title}
+                              {NEW_DOC_SLUGS.has(doc.slug) && (
+                                <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
+                                  <Sparkles className="size-2.5" aria-hidden />
+                                  New
                                 </span>
-                              </Link>
-                            ))}
-                          </div>
+                              )}
+                            </Link>
+                          ))}
                         </div>
-                      );
-                    })}
-                  </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           )}
         </AnimatePresence>,
         document.body,
