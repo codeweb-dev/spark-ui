@@ -20,3 +20,9 @@ export const SITE_CONFIG = {
   ],
   defaultOgImage: "/opengraph-image",
 };
+
+export const NEW_DOC_SLUGS = new Set([
+  "components/input",
+  "components/qr-code",
+  "components/accordion",
+]);
