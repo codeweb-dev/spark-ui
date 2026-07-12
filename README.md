@@ -61,6 +61,22 @@ npx shadcn@latest add https://spark-ui.example.com/r/accordion.json
 
 > `https://spark-ui.example.com` is a placeholder. The real domain is configured in one place: `lib/constants.ts` (`SITE_CONFIG.url`, overridable via `NEXT_PUBLIC_APP_URL`).
 
+## AI Agent Skill
+
+This repository includes an Agent Skill that teaches compatible AI coding agents (Claude Code, Cursor, Codex, Windsurf, and other Agent Skills-compatible tools) how to install, import, compose, and customize Spark UI components — the full component catalog, registry install commands, composition rules, and styling conventions, derived from the actual source.
+
+```bash
+npx skills add codeweb-dev/spark-ui --skill spark-ui
+```
+
+Skill source:
+
+```text
+skills/spark-ui/SKILL.md
+```
+
+Listing: [skills.sh/codeweb-dev/spark-ui](https://www.skills.sh/codeweb-dev/spark-ui/spark-ui)
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide to adding a new component — source file, demo, registry entries, MDX docs, checklists, and templates.
@@ -85,7 +101,3 @@ The GitHub Client Secret and Supabase service-role key must never be committed o
 ## License
 
 Released under the [MIT License](./LICENSE).
-
-## Attribution
-
-The site architecture and registry tooling patterns are adapted from the open-source [Klarden UI](https://github.com/dev-o-los/klarden-ui) project (MIT License). All Spark UI branding, visual design, and copy are original.
