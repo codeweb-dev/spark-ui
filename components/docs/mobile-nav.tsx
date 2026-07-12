@@ -130,7 +130,7 @@ export function MobileNav({ items }: MobileNavProps) {
                                 key={doc.slug}
                                 href={`/docs/${doc.slug}`}
                                 className={cn(
-                                  "w-fit rounded-lg px-3 py-2 text-sm transition-colors",
+                                  "w-fit rounded-lg ml-3 px-3 py-2 text-sm transition-colors",
                                   pathname === `/docs/${doc.slug}`
                                     ? "bg-accent text-accent-foreground"
                                     : "text-foreground/80 hover:bg-accent/50 hover:text-foreground",
