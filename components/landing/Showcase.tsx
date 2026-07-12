@@ -88,7 +88,7 @@ export function Showcase() {
           label="Email"
           type="email"
           placeholder="you@example.com"
-          ringColor="amber"
+          ringColor="primary"
           className="w-full max-w-sm"
         />
       </ShowcaseCard>
@@ -149,7 +149,7 @@ export function Showcase() {
         span="md:col-span-12"
       >
         <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-          <RichButton color="amber" size="sm" className="rounded-xl">
+          <RichButton color="default" size="sm" className="rounded-xl">
             <Zap size={14} className="mr-2" /> Primary
           </RichButton>
           <RichButton color="emerald" size="sm" className="rounded-xl">
@@ -157,9 +157,6 @@ export function Showcase() {
           </RichButton>
           <RichButton color="purple" size="sm" className="rounded-xl">
             Purple
-          </RichButton>
-          <RichButton color="default" size="sm" className="rounded-xl">
-            Neutral
           </RichButton>
         </div>
       </ShowcaseCard>

@@ -28,7 +28,7 @@ export async function CodeBlock({
   return (
     <div
       className={cn(
-        "relative group my-6 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-background",
+        "not-typeset relative group my-6 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-background",
         className,
       )}
     >

@@ -27,7 +27,7 @@ export function PropsTable({ children }: PropsTableProps) {
   }
 
   return (
-    <div className="my-8 w-full overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950 shadow-sm">
+    <div className="not-typeset my-8 w-full overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950 shadow-sm">
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-left text-[13px] leading-relaxed">
           <thead className="bg-zinc-50/50 dark:bg-zinc-900/50">

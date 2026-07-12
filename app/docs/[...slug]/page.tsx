@@ -166,7 +166,7 @@ export default async function DocPage({ params }: PageProps) {
 
       <div className="h-px w-full bg-linear-to-r from-zinc-200 dark:from-zinc-800 to-transparent" />
 
-      <article className="prose prose-zinc dark:prose-invert max-w-none prose-sm sm:prose-base">
+      <article className="typeset typeset-docs max-w-none">
         <MDXRemote source={doc.content} components={mdxComponents} />
       </article>
     </div>

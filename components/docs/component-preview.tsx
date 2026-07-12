@@ -36,7 +36,7 @@ export function ComponentPreview({ name, usageCode }: ComponentPreviewProps) {
   };
 
   return (
-    <div className="relative my-8 group/preview">
+    <div className="not-typeset relative my-8 group/preview">
       {/* Always-mounted hidden copy source; the visible code tab may be unmounted */}
       <div ref={codeRef} className="hidden" aria-hidden>
         {usageCode}

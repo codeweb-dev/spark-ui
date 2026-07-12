@@ -13,50 +13,36 @@ export default function PrivacyPolicyPage() {
       <Navbar />
 
       <main className="max-w-3xl mx-auto px-6 py-20">
-        <article className="prose prose-zinc dark:prose-invert max-w-none space-y-8">
-          <div className="space-y-2 border-b border-border pb-6">
-            <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-              Privacy Policy
-            </h1>
-            <p className="text-sm text-muted-foreground">
-              Last Updated: {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-            </p>
-          </div>
+        <article className="typeset typeset-docs max-w-[37em] mx-auto">
+          <h1>Privacy Policy</h1>
+          <p>
+            Last Updated: {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+          </p>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-semibold text-foreground">1. Information We Collect</h2>
-            <p className="text-muted-foreground leading-relaxed font-light">
-              {SITE_CONFIG.name} is a client-side component library. We do not collect, store, or process any personal data from the code packages or components you integrate into your own apps. If you browse our documentation website, standard anonymous analytical data may be collected via platforms like Vercel Analytics to monitor and improve website performance.
-            </p>
-          </section>
+          <h2>1. Information We Collect</h2>
+          <p>
+            {SITE_CONFIG.name} is a client-side component library. We do not collect, store, or process any personal data from the code packages or components you integrate into your own apps. If you browse our documentation website, standard anonymous analytical data may be collected via platforms like Vercel Analytics to monitor and improve website performance.
+          </p>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-semibold text-foreground">2. Cookies & Local Storage</h2>
-            <p className="text-muted-foreground leading-relaxed font-light">
-              Our documentation website may use cookies and browser local storage solely to preserve user preferences (for example, saving your dark mode/light mode theme selection) and to enable basic analytics. We do not use advertising cookies or target tracking identifiers.
-            </p>
-          </section>
+          <h2>2. Cookies &amp; Local Storage</h2>
+          <p>
+            Our documentation website may use cookies and browser local storage solely to preserve user preferences (for example, saving your dark mode/light mode theme selection) and to enable basic analytics. We do not use advertising cookies or target tracking identifiers.
+          </p>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-semibold text-foreground">3. Third-Party Services</h2>
-            <p className="text-muted-foreground leading-relaxed font-light">
-              We deploy our documentation website on Vercel. Vercel automatically collects server logs and provides web analytics. Vercel processes this data in accordance with their privacy guidelines.
-            </p>
-          </section>
+          <h2>3. Third-Party Services</h2>
+          <p>
+            We deploy our documentation website on Vercel. Vercel automatically collects server logs and provides web analytics. Vercel processes this data in accordance with their privacy guidelines.
+          </p>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-semibold text-foreground">4. Changes to This Policy</h2>
-            <p className="text-muted-foreground leading-relaxed font-light">
-              We may update this Privacy Policy from time to time. Any updates will be published on this page with an updated &ldquo;Last Updated&rdquo; timestamp. We encourage you to review this page periodically.
-            </p>
-          </section>
+          <h2>4. Changes to This Policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time. Any updates will be published on this page with an updated &ldquo;Last Updated&rdquo; timestamp. We encourage you to review this page periodically.
+          </p>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-semibold text-foreground">5. Contact</h2>
-            <p className="text-muted-foreground leading-relaxed font-light">
-              If you have any questions or feedback regarding our privacy practices, feel free to open an issue on our GitHub repository or contact us on Twitter.
-            </p>
-          </section>
+          <h2>5. Contact</h2>
+          <p>
+            If you have any questions or feedback regarding our privacy practices, feel free to open an issue on our GitHub repository or contact us on Twitter.
+          </p>
         </article>
 
         {/* Simple Policy Footer */}

@@ -28,7 +28,7 @@ export function OpenInChatGPTButton({
   return (
     <button
       onClick={handleOpen}
-      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[10px] font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 hover:text-primary transition-all whitespace-nowrap active:scale-95 shadow-xs cursor-pointer"
+      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary transition-all whitespace-nowrap active:scale-95 shadow-xs cursor-pointer"
     >
       <BrandOpenaiIcon
         size={14}
