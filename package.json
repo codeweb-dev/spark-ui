@@ -34,7 +34,6 @@
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "shadcn": "^4.0.2",
     "shiki": "^4.0.2",
     "tailwind-merge": "^3.5.0",
     "three": "^0.184.0",
@@ -48,6 +47,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "shadcn": "^4.13.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
