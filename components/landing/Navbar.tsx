@@ -32,7 +32,7 @@ export function Navbar() {
               Docs
             </Link>
             <Link
-              href="/roadmap"
+              href="/docs/components/button"
               className="hover:text-primary transition-colors"
             >
               Components
