@@ -118,15 +118,12 @@ export function MobileNav({ items }: MobileNavProps) {
                 <div className="flex-1 overflow-y-auto p-6 bg-zinc-50/50 dark:bg-zinc-950/50">
                   <div className="space-y-8 pb-10">
                     {sortedEntries.map(([category, docs]) => {
-                      const { icon: Icon, title } = getCategoryMeta(category);
+                      const { title } = getCategoryMeta(category);
                       return (
                         <div key={category}>
-                          <div className="flex items-center gap-2 mb-4 px-2">
-                            <Icon size={14} className="text-zinc-400" />
-                            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
-                              {title}
-                            </h4>
-                          </div>
+                          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-4 px-2">
+                            {title}
+                          </h4>
                           <div className="flex flex-col gap-1">
                             {docs.map((doc) => (
                               <Link

@@ -31,13 +31,10 @@ export function Sidebar({ items }: SidebarProps) {
     <aside className="sticky top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 md:block">
       <div className="h-full overflow-y-auto py-6 pr-6 lg:py-8">
         {sortedEntries.map(([category, docs]) => {
-          const { icon: Icon, title } = getCategoryMeta(category);
+          const { title } = getCategoryMeta(category);
           return (
             <div key={category} className="pb-8">
-              <div className="flex items-center gap-2 mb-2 px-2">
-                <Icon size={12} className="text-zinc-400" />
-                <h4 className="text-xs text-zinc-400">{title}</h4>
-              </div>
+              <h4 className="text-xs text-zinc-400 mb-2 px-2">{title}</h4>
               <div className="grid grid-flow-row auto-rows-max text-sm gap-1">
                 {docs.map((doc) => (
                   <Link

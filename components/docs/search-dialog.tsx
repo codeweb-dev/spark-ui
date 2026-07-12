@@ -71,17 +71,14 @@ export function SearchDialog({ items, open, onOpenChange }: SearchDialogProps) {
                 getCategoryMeta(a[0]).order - getCategoryMeta(b[0]).order,
             )
             .map(([category, docs]) => {
-              const { icon: Icon, title } = getCategoryMeta(category);
+              const { title } = getCategoryMeta(category);
               return (
                 <CommandGroup
                   key={category}
                   heading={
-                    <div className="flex items-center gap-2 px-0.5">
-                      <Icon size={14} />
-                      <span className="text-xs font-black uppercase tracking-[0.2em]">
-                        {title}
-                      </span>
-                    </div>
+                    <span className="px-0.5 text-xs font-black uppercase tracking-[0.2em]">
+                      {title}
+                    </span>
                   }
                 >
                   {docs.map((doc) => (
