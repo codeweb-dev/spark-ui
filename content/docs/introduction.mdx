@@ -2,25 +2,24 @@
 title: Introduction
 description: Spark UI is an open-source collection of polished React components you install as source code.
 category: Getting Started
+order: 1
 ---
 
-Spark UI is a collection of polished React components, thoughtful interactions, and open-source building blocks for modern products. Every component is designed to feel alive — motion that gives feedback, focus states you can actually see, and defaults that hold up in real products.
+Spark UI is a collection of polished React components, thoughtful interactions, and open-source building blocks for modern products. Every component is designed to feel alive — motion that gives feedback, focus states you can actually see, and defaults that hold up in real products. Built on React, Tailwind CSS v4, and Radix UI.
 
-## What Spark UI is (and isn't)
+Think of it as shadcn/ui with motion and personality built in.
 
-Spark UI is a **shadcn-compatible source registry**, not a traditional npm package. You don't add `spark-ui` to your dependencies and import from it at runtime. Instead, the shadcn CLI copies a component's source files directly into your codebase. From that point the code is yours: read it, restyle it, rip out the parts you don't need.
-
-That trade has real benefits:
-
-- **No version lock-in.** There is nothing to upgrade or pin; the code lives in your repo.
-- **Full control.** Change a spring curve or a color without forking a library.
-- **Only what you use.** Each component declares its own dependencies, and the CLI installs just those.
-
-## Core principles
+## Why Spark UI?
 
 <FeatureGrid>
   <FeatureCard icon="code" title="Open code">
-    Components are delivered as readable TypeScript source, not compiled bundles.
+    Components are delivered as readable TypeScript source, not compiled bundles. You own the code, not a dependency.
+  </FeatureCard>
+  <FeatureCard icon="sparkles" title="Motion with purpose">
+    Animation reinforces feedback and respects `prefers-reduced-motion`.
+  </FeatureCard>
+  <FeatureCard icon="boxes" title="Composable">
+    Small, single-purpose primitives that combine into full experiences, rather than monolithic widgets.
   </FeatureCard>
   <FeatureCard icon="palette" title="Theme ready">
     Styling flows through semantic CSS variables, so light mode, dark mode, and your own brand come free.
@@ -28,43 +27,62 @@ That trade has real benefits:
   <FeatureCard icon="accessibility" title="Accessible by default">
     Keyboard support, visible focus, and sensible ARIA are built in.
   </FeatureCard>
-  <FeatureCard icon="sparkles" title="Motion with purpose">
-    Animation reinforces feedback and respects `prefers-reduced-motion`.
-  </FeatureCard>
-  <FeatureCard icon="boxes" title="Built for composition">
-    Small primitives you combine, rather than monolithic widgets.
-  </FeatureCard>
 </FeatureGrid>
 
-## Requirements
+## How it works
 
-Spark UI components target React with Tailwind CSS. Most components rely on a few shared utilities:
-
-```bash
-npm install framer-motion lucide-react clsx tailwind-merge
-```
-
-Individual components declare any additional dependencies in the registry, and the shadcn CLI installs them for you during `add`.
-
-## Installing a component
-
-Point the shadcn CLI at the component's registry URL. For example, to add the Accordion:
+Spark UI is a **shadcn-compatible source registry**, not a traditional npm package. You don't add `spark-ui` to your dependencies and import from it at runtime. Instead, the shadcn CLI copies a component's source files directly into your codebase:
 
 <InstallBlock command="accordion" />
 
-## Importing after installation
+From that point the code is yours: read it, restyle it, rip out the parts you don't need. That trade has real benefits:
 
-Installed components land in your configured components directory (see your `components.json`). Import them from your local path — never from the registry:
+- **No version lock-in.** There is nothing to upgrade or pin; the code lives in your repo.
+- **Full control.** Change a spring curve or a color without forking a library.
+- **Only what you use.** Each component declares its own dependencies, and the CLI installs just those.
 
-```tsx
-// Correct import pattern after installation
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/accordion";
-```
+See the [Installation guide](/docs/installation) for prerequisites, registry setup, and every install option.
+
+## Components
+
+| Component | Description |
+| --------- | ----------- |
+| [Accordion](/docs/components/accordion) | A vertically stacked set of interactive headings that reveal content |
+| [Alert](/docs/components/alert) | A callout for important information with default and destructive variants |
+| [Alert Dialog](/docs/components/alert-dialog) | A modal dialog that interrupts the user for a confirmation |
+| [Animated Gradient](/docs/backgrounds/animated-gradient) | WebGL-powered animated mist, lava, and plasma backgrounds with smooth silk-like flowing streams |
+| [Badge](/docs/components/badge) | A small status label with default, secondary, destructive, and outline variants |
+| [Basic Number Ticker](/docs/components/basic-number-ticker) | An animated number ticker component with customizable start, target, transitions, and callbacks |
+| [Breadcrumb](/docs/components/breadcrumb) | A navigation trail showing the current page's location in the hierarchy |
+| [Button](/docs/components/button) | A button with default, secondary, outline, ghost, destructive, link, and spark variants |
+| [Card](/docs/components/card) | A container with header, title, description, content, and footer sections |
+| [Checkbox](/docs/components/checkbox) | A control that toggles between checked and unchecked |
+| [Dialog](/docs/components/dialog) | A modal window overlaid on the page with an optional close button |
+| [Dropdown Menu](/docs/components/dropdown-menu) | A menu of actions opened from a trigger element |
+| [Empty](/docs/components/empty) | An empty state with media, title, description, and content slots |
+| [Ghost Ether](/docs/backgrounds/ghost-ether) | WebGL-powered interactive fluid simulation with dynamic FBM mist and wandering spirit force trails |
+| [Hover Card](/docs/components/hover-card) | A card preview shown when hovering a trigger element |
+| [Image Trail](/docs/components/image-trail) | A framed mouse-tracking image trail with momentum, captions, and customizable styling |
+| [Input](/docs/components/input) | A standard form input styled to match shadcn/ui |
+| [Kanban](/docs/components/kanban) | A composable drag-and-drop task board styled to match shadcn/ui |
+| [Logo Carousel](/docs/components/logo-carousel) | A high-performance scrolling logo carousel with pausing, custom directions, speed, and fade effects |
+| [Pagination](/docs/components/pagination) | A pagination component with multiple variants, colors, and smooth animations |
+| [Popover](/docs/components/popover) | A floating panel anchored to a trigger element |
+| [Progress](/docs/components/progress) | A bar indicating the completion progress of a task |
+| [QR Code](/docs/components/qr-code) | A QR code component with dot styling, gradient support, and extensive color customization |
+| [Separator](/docs/components/separator) | A horizontal or vertical line separating content |
+| [Sheet](/docs/components/sheet) | A slide-over panel that extends from any edge of the screen |
+| [Shimmer Text](/docs/components/shimmer-text) | A text component with an elegant shimmer animation effect |
+| [Skeleton](/docs/components/skeleton) | A pulsing placeholder shown while content loads |
+| [Spotify Card](/docs/components/spotify-card) | A premium Spotify card with real-time metadata and morphing animations |
+| [Switch](/docs/components/switch) | A toggle control that switches between on and off |
+| [Table](/docs/components/table) | A responsive table with header, body, footer, and caption sections |
+| [Tactile Highlight](/docs/components/tactile-highlight) | A fluid text highlight that reacts to viewport visibility and user interaction |
+| [Textarea](/docs/components/textarea) | A multi-line text input field |
+| [Toggle](/docs/components/toggle) | A two-state button that can be toggled on or off |
+| [Tooltip](/docs/components/tooltip) | A short label shown when hovering or focusing an element |
+
+More components are being actively developed. See the [roadmap](/docs/roadmap) or follow the [repo](https://github.com/codeweb-dev/spark-ui) for updates.
 
 ## Contributing
 

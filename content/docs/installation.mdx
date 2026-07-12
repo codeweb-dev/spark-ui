@@ -1,0 +1,111 @@
+---
+title: Installation
+description: How to set up your project and install Spark UI components with the shadcn CLI.
+category: Getting Started
+order: 2
+---
+
+Spark UI components are designed for React projects using Tailwind CSS v4 and TypeScript. Follow the steps below to get set up.
+
+## Prerequisites
+
+Make sure your project has the following:
+
+- React 19 or later
+- Tailwind CSS v4
+- TypeScript
+
+Spark UI relies on the shared shadcn utilities (`components.json`, the `cn()` helper at `@/lib/utils`, and semantic design tokens). If you don't have shadcn set up yet, initialize it first:
+
+```bash
+npx shadcn@latest init
+```
+
+Most components also use a few shared utilities, installed automatically with each component or up front:
+
+```bash
+npm install framer-motion lucide-react clsx tailwind-merge
+```
+
+## Add components
+
+### Option 1: Direct URL (recommended)
+
+Pass the component's registry URL straight to the shadcn CLI — no configuration needed. For example, to add the Accordion:
+
+<InstallBlock command="accordion" />
+
+Each component's docs page shows its exact install command.
+
+### Option 2: Registry namespace
+
+Add the Spark UI registry to your `components.json` once:
+
+```json
+{
+  "registries": {
+    "@spark-ui": "https://spark-ui-olive.vercel.app/r/{name}.json"
+  }
+}
+```
+
+Then install components by name:
+
+```bash
+npx shadcn@latest add @spark-ui/accordion
+```
+
+### Manual installation
+
+If you prefer to install manually, copy the component source from its docs page (or from [`registry/spark-ui/`](https://github.com/codeweb-dev/spark-ui/tree/master/registry/spark-ui) on GitHub) into your components directory, then install the dependencies that component's registry item declares — for example:
+
+```bash
+npm install @radix-ui/react-accordion
+```
+
+The full dependency list for every component is in the [registry index](https://spark-ui-olive.vercel.app/r/registry.json).
+
+## Project structure
+
+After adding components, your project will look something like this:
+
+```text
+components/
+├── accordion.tsx
+├── kanban.tsx
+└── ...
+lib/
+└── utils.ts
+app/
+└── api/spotify/metadata/route.ts   ← installed by spotify-card only
+```
+
+Components land in your configured components directory (see the aliases in your `components.json`). A few multi-file items install extra files — `spotify-card` adds its API route, which requires the Next.js App Router.
+
+## Usage
+
+Import components from your local path — never from the registry:
+
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/accordion";
+
+export function FAQ() {
+  return (
+    <Accordion type="single" collapsible>
+      <AccordionItem value="what">
+        <AccordionTrigger>What is Spark UI?</AccordionTrigger>
+        <AccordionContent>
+          Polished React components you install as source code.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```
+
+See individual component pages for detailed usage and examples.

@@ -4,6 +4,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OpenInChatGPTButton } from "@/components/docs/open-in-chatgpt-button";
@@ -167,7 +168,11 @@ export default async function DocPage({ params }: PageProps) {
       <div className="h-px w-full bg-linear-to-r from-zinc-200 dark:from-zinc-800 to-transparent" />
 
       <article className="typeset typeset-docs max-w-none">
-        <MDXRemote source={doc.content} components={mdxComponents} />
+        <MDXRemote
+          source={doc.content}
+          components={mdxComponents}
+          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        />
       </article>
     </div>
   );

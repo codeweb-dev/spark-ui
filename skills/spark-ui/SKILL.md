@@ -48,7 +48,7 @@ npx shadcn@latest add https://spark-ui-olive.vercel.app/r/kanban.json
 - npm dependencies declared by the item (Radix packages, `framer-motion`, `qrcode`, …) are installed automatically by the CLI.
 - `alert-dialog` declares a registry dependency on `button` and pulls it in automatically.
 - The machine-readable index of all items is at `https://spark-ui-olive.vercel.app/r/registry.json`.
-- There is no npm package and no `@spark-ui/...` registry prefix — only direct URLs.
+- There is no npm package. Install via direct URLs, or map the `@spark-ui` namespace to `https://spark-ui-olive.vercel.app/r/{name}.json` in the consumer's `components.json` `registries` and use `npx shadcn@latest add @spark-ui/<name>`.
 - Installing copies remote source code into the project. That is the shadcn distribution model, not a hidden risk — but treat registry items as third-party code: inspect before adding, review the diff after.
 
 ## Import conventions

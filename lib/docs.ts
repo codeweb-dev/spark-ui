@@ -10,6 +10,7 @@ export interface DocMetadata {
   description?: string;
   slug: string;
   category?: string;
+  order?: number;
 }
 
 export interface DocContent extends DocMetadata {
@@ -53,6 +54,7 @@ export function getAllDocs(): DocMetadata[] {
       title: data.title || "Untitled",
       description: data.description || "",
       category: data.category || "General",
+      order: data.order,
     };
   });
 
@@ -62,6 +64,13 @@ export function getAllDocs(): DocMetadata[] {
 
     if (orderA !== orderB) {
       return orderA - orderB;
+    }
+
+    // Optional per-doc `order` frontmatter wins within a category.
+    const docOrderA = a.order ?? 99;
+    const docOrderB = b.order ?? 99;
+    if (docOrderA !== docOrderB) {
+      return docOrderA - docOrderB;
     }
 
     return a.title.localeCompare(b.title);
