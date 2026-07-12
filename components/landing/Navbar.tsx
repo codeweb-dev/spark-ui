@@ -38,19 +38,19 @@ export function Navbar() {
               Components
             </Link>
             <Link
-              href="/showcase"
+              href="/roadmap"
               className="hover:text-primary transition-colors"
             >
               Roadmap
             </Link>
             <Link
-              href="/templates"
+              href="/showcase"
               className="hover:text-primary transition-colors"
             >
               Showcase
             </Link>
             <Link
-              href="/docs/components/accordion"
+              href="/templates"
               className="hover:text-primary transition-colors"
             >
               Templates
