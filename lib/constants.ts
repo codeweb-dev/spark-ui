@@ -22,8 +22,12 @@ export const SITE_CONFIG = {
 };
 
 export const NEW_DOC_SLUGS = new Set([
-  "components/input",
   "components/qr-code",
-  "components/accordion",
+  "components/shimmer-text",
+  "components/tactile-highlight",
   "components/kanban",
+  "components/image-trail",
+  "components/logo-carousel",
+  "components/spotify-card",
+  "components/ghost-ether",
 ]);
