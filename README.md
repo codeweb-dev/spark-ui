@@ -71,6 +71,17 @@ See [ADDING_COMPONENTS.md](./ADDING_COMPONENTS.md) for the full maintainer guide
 - Set `NEXT_PUBLIC_APP_URL` to the production URL so metadata, sitemap, and install commands use the real domain.
 - Run `npm run check` before deploying; `registry:build` must run so `public/r/` is current.
 
+## GitHub authentication setup
+
+Private dashboard access uses Supabase Auth with the GitHub provider and cookie-based SSR sessions.
+
+1. Create a GitHub OAuth App and set its authorization callback URL to `https://PROJECT_REF.supabase.co/auth/v1/callback`.
+2. Add the GitHub Client ID and Client Secret to the GitHub provider settings in the Supabase dashboard.
+3. Configure the Supabase Site URL and add your application callback URLs, including `http://localhost:3000/auth/callback` for local development.
+4. Copy `.env.example` to `.env.local` and fill in `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` from the Supabase project settings.
+
+The GitHub Client Secret and Supabase service-role key must never be committed or exposed to browser code.
+
 ## License
 
 Released under the [MIT License](./LICENSE).

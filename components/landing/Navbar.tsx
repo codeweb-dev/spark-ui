@@ -2,9 +2,11 @@ import { MobileNav } from "@/components/docs/mobile-nav";
 import { SearchWrapper } from "@/components/landing/search-wrapper";
 import { GitHubStarButton } from "@/components/github-star-button";
 import { ModeToggle } from "@/components/mode-toggle";
+import { SignInDialog } from "@/components/auth/sign-in-dialog";
 import { SITE_CONFIG } from "@/lib/constants";
 import { getAllDocs } from "@/lib/docs";
 import Link from "next/link";
+import { Suspense } from "react";
 import { LogoIcon } from "./logo-icon";
 
 export function Navbar() {
@@ -61,6 +63,9 @@ export function Navbar() {
           <SearchWrapper items={docs} />
           <GitHubStarButton />
           <ModeToggle />
+          <Suspense fallback={null}>
+            <SignInDialog />
+          </Suspense>
         </div>
       </div>
     </nav>
