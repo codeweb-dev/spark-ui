@@ -25,7 +25,7 @@ Stack: React 19, Next.js (App Router), TypeScript, Tailwind CSS v4 with shadcn d
 
 ## Installation
 
-Components are installed individually by registry-item URL. The base URL is the deployed Spark UI site — `https://spark-ui.example.com` is the repo's placeholder; use `http://localhost:3000` when the registry repo runs locally, or the real domain once deployed:
+Components are installed individually by registry-item URL. The base URL is the deployed Spark UI site — `https://spark-ui-olive.vercel.app` is the repo's placeholder; use `http://localhost:3000` when the registry repo runs locally, or the real domain once deployed:
 
 ```bash
 npx shadcn@latest add https://spark-ui.example.com/r/<name>.json
@@ -69,43 +69,43 @@ import NumberTicker from "@/components/basic-number-ticker"; // default export
 
 ## Component catalog
 
-| Name | Main exports | Client | Purpose |
-|------|--------------|:------:|---------|
-| `accordion` | `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent` | yes | Vertically stacked disclosure sections |
-| `alert` | `Alert`, `AlertTitle`, `AlertDescription` | no | Callout with `default` / `destructive` variants |
-| `alert-dialog` | `AlertDialog` + Trigger/Content/Header/Footer/Title/Description/Action/Cancel | yes | Confirmation modal |
-| `animated-gradient` | `AnimatedGradient` | yes | Animated gradient background |
-| `badge` | `Badge`, `badgeVariants` | no | Status label; variants `default`, `secondary`, `destructive`, `outline` |
-| `basic-number-ticker` | `NumberTicker` (default), `NumberTickerRef` | yes | Animated number counter |
-| `breadcrumb` | `Breadcrumb` + List/Item/Link/Page/Separator/Ellipsis | no | Hierarchy navigation |
-| `button` | `Button`, `buttonVariants`, `ButtonProps` | no | Variants `default`, `secondary`, `outline`, `ghost`, `destructive`, `link`, `spark`; sizes `sm`, `default`, `lg`, `icon`; `asChild` |
-| `card` | `Card` + Header/Title/Description/Content/Footer | no | Bordered content container |
-| `checkbox` | `Checkbox` | yes | Radix checkbox |
-| `dialog` | `Dialog` + Trigger/Content/Header/Footer/Title/Description/Close | yes | Modal dialog |
-| `dropdown-menu` | `DropdownMenu` + Trigger/Content/Item/CheckboxItem/RadioGroup/RadioItem/Label/Separator/Shortcut/Sub… | yes | Menu with items, checkboxes, radios, submenus |
-| `empty` | `Empty` + Header/Media/Title/Description/Content | no | Empty-state block |
-| `ghost-ether` | `GhostEther`, `GhostEtherProps` | yes | Three.js animated background |
-| `hover-card` | `HoverCard`, `HoverCardTrigger`, `HoverCardContent` | yes | Preview on hover |
-| `image-trail` | `ImageTrail`, `ImageTrailItem`, `ImageTrailItemCaption` | no* | Mouse-tracking image trail |
-| `input` | `Input` | no | Text input |
-| `kanban` | `Kanban`, `KanbanColumn` (+Header/Title/Count/Content), `KanbanCard` (+Title/Description/Footer) | no | Drag-and-drop task board primitives |
-| `logo-carousel` | `LogoCarousel` | yes | Scrolling logo strip (ships demo logo assets) |
-| `logo-carousel-right` | `LogoCarouselDemoRight` | yes | Right-scrolling logo strip |
-| `pagination` | `Pagination`, `usePaginationState`, `PaginationProps` | yes | Animated pagination with variants/colors |
-| `popover` | `Popover`, `PopoverTrigger`, `PopoverContent` | yes | Floating panel |
-| `progress` | `Progress` | yes | Progress bar (`value` 0–100) |
-| `qr-code` | `QRCode` | yes | Canvas QR code |
-| `separator` | `Separator` | yes | Horizontal/vertical rule |
-| `sheet` | `Sheet` + Trigger/Content/Header/Footer/Title/Description/Close | yes | Edge-anchored slide-over panel |
-| `shimmer-text` | `ShimmerText` | yes | Shimmering text effect |
-| `skeleton` | `Skeleton` | no | Loading placeholder |
-| `spotify-card` | `SpotifyCard` | yes | Live Spotify track card (needs its API route) |
-| `switch` | `Switch` | yes | Toggle switch |
-| `table` | `Table` + Header/Body/Footer/Row/Head/Cell/Caption | no | Data table with built-in scroll wrapper |
-| `tactile-highlight` | `TactileHighlight` | yes | Viewport-reactive text highlight |
-| `textarea` | `Textarea` | no | Multi-line input |
-| `toggle` | `Toggle`, `toggleVariants` | yes | Pressed-state button; variants `default`, `outline`; sizes `default`, `sm`, `lg` |
-| `tooltip` | `Tooltip`, `TooltipTrigger`, `TooltipContent`, `TooltipProvider` | yes | Hover/focus tooltip (needs `TooltipProvider`) |
+| Name                  | Main exports                                                                                          | Client | Purpose                                                                                                                             |
+| --------------------- | ----------------------------------------------------------------------------------------------------- | :----: | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `accordion`           | `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent`                                  |  yes   | Vertically stacked disclosure sections                                                                                              |
+| `alert`               | `Alert`, `AlertTitle`, `AlertDescription`                                                             |   no   | Callout with `default` / `destructive` variants                                                                                     |
+| `alert-dialog`        | `AlertDialog` + Trigger/Content/Header/Footer/Title/Description/Action/Cancel                         |  yes   | Confirmation modal                                                                                                                  |
+| `animated-gradient`   | `AnimatedGradient`                                                                                    |  yes   | Animated gradient background                                                                                                        |
+| `badge`               | `Badge`, `badgeVariants`                                                                              |   no   | Status label; variants `default`, `secondary`, `destructive`, `outline`                                                             |
+| `basic-number-ticker` | `NumberTicker` (default), `NumberTickerRef`                                                           |  yes   | Animated number counter                                                                                                             |
+| `breadcrumb`          | `Breadcrumb` + List/Item/Link/Page/Separator/Ellipsis                                                 |   no   | Hierarchy navigation                                                                                                                |
+| `button`              | `Button`, `buttonVariants`, `ButtonProps`                                                             |   no   | Variants `default`, `secondary`, `outline`, `ghost`, `destructive`, `link`, `spark`; sizes `sm`, `default`, `lg`, `icon`; `asChild` |
+| `card`                | `Card` + Header/Title/Description/Content/Footer                                                      |   no   | Bordered content container                                                                                                          |
+| `checkbox`            | `Checkbox`                                                                                            |  yes   | Radix checkbox                                                                                                                      |
+| `dialog`              | `Dialog` + Trigger/Content/Header/Footer/Title/Description/Close                                      |  yes   | Modal dialog                                                                                                                        |
+| `dropdown-menu`       | `DropdownMenu` + Trigger/Content/Item/CheckboxItem/RadioGroup/RadioItem/Label/Separator/Shortcut/Sub… |  yes   | Menu with items, checkboxes, radios, submenus                                                                                       |
+| `empty`               | `Empty` + Header/Media/Title/Description/Content                                                      |   no   | Empty-state block                                                                                                                   |
+| `ghost-ether`         | `GhostEther`, `GhostEtherProps`                                                                       |  yes   | Three.js animated background                                                                                                        |
+| `hover-card`          | `HoverCard`, `HoverCardTrigger`, `HoverCardContent`                                                   |  yes   | Preview on hover                                                                                                                    |
+| `image-trail`         | `ImageTrail`, `ImageTrailItem`, `ImageTrailItemCaption`                                               |  no\*  | Mouse-tracking image trail                                                                                                          |
+| `input`               | `Input`                                                                                               |   no   | Text input                                                                                                                          |
+| `kanban`              | `Kanban`, `KanbanColumn` (+Header/Title/Count/Content), `KanbanCard` (+Title/Description/Footer)      |   no   | Drag-and-drop task board primitives                                                                                                 |
+| `logo-carousel`       | `LogoCarousel`                                                                                        |  yes   | Scrolling logo strip (ships demo logo assets)                                                                                       |
+| `logo-carousel-right` | `LogoCarouselDemoRight`                                                                               |  yes   | Right-scrolling logo strip                                                                                                          |
+| `pagination`          | `Pagination`, `usePaginationState`, `PaginationProps`                                                 |  yes   | Animated pagination with variants/colors                                                                                            |
+| `popover`             | `Popover`, `PopoverTrigger`, `PopoverContent`                                                         |  yes   | Floating panel                                                                                                                      |
+| `progress`            | `Progress`                                                                                            |  yes   | Progress bar (`value` 0–100)                                                                                                        |
+| `qr-code`             | `QRCode`                                                                                              |  yes   | Canvas QR code                                                                                                                      |
+| `separator`           | `Separator`                                                                                           |  yes   | Horizontal/vertical rule                                                                                                            |
+| `sheet`               | `Sheet` + Trigger/Content/Header/Footer/Title/Description/Close                                       |  yes   | Edge-anchored slide-over panel                                                                                                      |
+| `shimmer-text`        | `ShimmerText`                                                                                         |  yes   | Shimmering text effect                                                                                                              |
+| `skeleton`            | `Skeleton`                                                                                            |   no   | Loading placeholder                                                                                                                 |
+| `spotify-card`        | `SpotifyCard`                                                                                         |  yes   | Live Spotify track card (needs its API route)                                                                                       |
+| `switch`              | `Switch`                                                                                              |  yes   | Toggle switch                                                                                                                       |
+| `table`               | `Table` + Header/Body/Footer/Row/Head/Cell/Caption                                                    |   no   | Data table with built-in scroll wrapper                                                                                             |
+| `tactile-highlight`   | `TactileHighlight`                                                                                    |  yes   | Viewport-reactive text highlight                                                                                                    |
+| `textarea`            | `Textarea`                                                                                            |   no   | Multi-line input                                                                                                                    |
+| `toggle`              | `Toggle`, `toggleVariants`                                                                            |  yes   | Pressed-state button; variants `default`, `outline`; sizes `default`, `sm`, `lg`                                                    |
+| `tooltip`             | `Tooltip`, `TooltipTrigger`, `TooltipContent`, `TooltipProvider`                                      |  yes   | Hover/focus tooltip (needs `TooltipProvider`)                                                                                       |
 
 \* `image-trail` component file is server-safe; interactivity is internal.
 
@@ -152,7 +152,9 @@ Login card (button + card + input):
   </CardContent>
   <CardFooter className="flex-col gap-2">
     <Button className="w-full">Login</Button>
-    <Button variant="outline" className="w-full">Login with Google</Button>
+    <Button variant="outline" className="w-full">
+      Login with Google
+    </Button>
   </CardFooter>
 </Card>
 ```
@@ -167,7 +169,9 @@ Confirmation dialog:
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+      <AlertDialogDescription>
+        This action cannot be undone.
+      </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
       <AlertDialogCancel>Cancel</AlertDialogCancel>
