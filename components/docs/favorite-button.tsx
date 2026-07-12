@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Heart } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 /* Multiple previews on one page share the same slug; this event keeps
    their hearts in sync without shared state. */
@@ -64,13 +65,27 @@ export function FavoriteButton() {
     }
     setBusy(true);
     const supabase = createClient();
-    // RLS scopes both calls to the signed-in user; user_id defaults to auth.uid().
     const { error } = favorited
       ? await supabase.from("favorites").delete().eq("component_slug", slug)
       : await supabase.from("favorites").insert({ component_slug: slug });
     if (!error) {
       setFavorited(!favorited);
       window.dispatchEvent(new Event(FAVORITES_CHANGED));
+      if (!favorited) {
+        const title = slug
+          .split("/")
+          .pop()!
+          .split("-")
+          .map((word) => word[0].toUpperCase() + word.slice(1))
+          .join(" ");
+        toast(`${title} added to favorites`, {
+          description: "Saved to your favorites list.",
+          action: {
+            label: "View favorites",
+            onClick: () => router.push("/favorites"),
+          },
+        });
+      }
     }
     setBusy(false);
   };
