@@ -98,7 +98,7 @@ export default async function DocPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Breadcrumbs - Smaller & More Subtle */}
-      <nav className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">
+      <nav className="flex items-center gap-1.5 text-sm">
         <Link
           href="/docs/introduction"
           className="hover:text-primary transition-colors"

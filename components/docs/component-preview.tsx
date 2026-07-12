@@ -48,7 +48,7 @@ export function ComponentPreview({ name, usageCode }: ComponentPreviewProps) {
             <button
               onClick={() => setTab("preview")}
               className={cn(
-                "flex items-center gap-2 px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-md transition-all",
+                "flex items-center gap-2 px-3 py-1 text-sm rounded-md transition-all",
                 tab === "preview"
                   ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 shadow-xs"
                   : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300",
@@ -59,7 +59,7 @@ export function ComponentPreview({ name, usageCode }: ComponentPreviewProps) {
             <button
               onClick={() => setTab("code")}
               className={cn(
-                "flex items-center gap-2 px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-md transition-all",
+                "flex items-center gap-2 px-3 py-1 text-sm rounded-md transition-all",
                 tab === "code"
                   ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 shadow-xs"
                   : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300",
@@ -113,14 +113,16 @@ export function ComponentPreview({ name, usageCode }: ComponentPreviewProps) {
               transition={{ duration: 0.2 }}
               className={cn(
                 "w-full flex items-center justify-center min-h-75",
-                isFullBleed ? "p-0" : "p-6 sm:p-12"
+                isFullBleed ? "p-0" : "p-6 sm:p-12",
               )}
             >
               {Component ? (
-                <div className={cn(
-                  "origin-center transition-transform",
-                  isFullBleed ? "w-full h-full" : "scale-90 sm:scale-100"
-                )}>
+                <div
+                  className={cn(
+                    "origin-center transition-transform",
+                    isFullBleed ? "w-full h-full" : "scale-90 sm:scale-100",
+                  )}
+                >
                   <Component />
                 </div>
               ) : (
