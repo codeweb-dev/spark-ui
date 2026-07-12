@@ -92,7 +92,7 @@ export function MobileNav({ items }: MobileNavProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-x-0 bottom-0 top-16 z-90 flex flex-col bg-background"
+              className="fixed inset-x-0 bottom-0 top-16 z-60 flex flex-col bg-background"
             >
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
@@ -125,9 +125,7 @@ export function MobileNav({ items }: MobileNavProps) {
                     const { title } = getCategoryMeta(category);
                     return (
                       <div key={category}>
-                        <p className="text-sm text-muted-foreground">
-                          {title}
-                        </p>
+                        <p className="text-sm text-muted-foreground">{title}</p>
                         <div className="mt-3 flex flex-col gap-3">
                           {docs.map((doc) => (
                             <Link

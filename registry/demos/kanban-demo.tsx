@@ -50,7 +50,8 @@ export default function KanbanDemo() {
   };
 
   return (
-    <Kanban className="w-full min-w-200">
+    <div className="w-full overflow-x-auto">
+      <Kanban className="w-full min-w-200">
       {columns.map((column) => {
         const columnTasks = tasks.filter((task) => task.status === column.id);
 
@@ -101,6 +102,7 @@ export default function KanbanDemo() {
           </KanbanColumn>
         );
       })}
-    </Kanban>
+      </Kanban>
+    </div>
   );
 }

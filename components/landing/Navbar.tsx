@@ -13,7 +13,8 @@ export function Navbar() {
   const docs = getAllDocs();
 
   return (
-    <nav className="sticky top-0 z-100 w-full bg-background/80 backdrop-blur-xl transition-colors">
+    // Below the overlay layer (z-50) so sheets/dialogs cover the header
+    <nav className="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-xl transition-colors">
       <div className="max-w-350 mx-auto flex h-16 items-center justify-between px-6 md:px-10 lg:px-12">
         <div className="flex items-center gap-4 md:gap-8">
           <MobileNav items={docs} />
