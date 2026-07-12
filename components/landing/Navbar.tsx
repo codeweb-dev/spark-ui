@@ -2,7 +2,7 @@ import { MobileNav } from "@/components/docs/mobile-nav";
 import { SearchWrapper } from "@/components/landing/search-wrapper";
 import { GitHubStarButton } from "@/components/github-star-button";
 import { ModeToggle } from "@/components/mode-toggle";
-import { SignInDialog } from "@/components/auth/sign-in-dialog";
+import { UserMenu } from "@/components/auth/user-menu";
 import { SITE_CONFIG } from "@/lib/constants";
 import { getAllDocs } from "@/lib/docs";
 import Link from "next/link";
@@ -64,7 +64,7 @@ export function Navbar() {
           <GitHubStarButton />
           <ModeToggle />
           <Suspense fallback={null}>
-            <SignInDialog />
+            <UserMenu />
           </Suspense>
         </div>
       </div>

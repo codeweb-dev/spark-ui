@@ -21,17 +21,8 @@ export async function updateSession(request: NextRequest) {
     },
   });
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  const pathname = request.nextUrl.pathname;
-
-  if (pathname.startsWith("/dashboard") && !user) {
-    const loginUrl = request.nextUrl.clone();
-    loginUrl.pathname = "/";
-    loginUrl.search = "?login=1";
-    return NextResponse.redirect(loginUrl);
-  }
+  // Refresh the session cookie; no protected routes right now.
+  await supabase.auth.getUser();
 
   return response;
 }

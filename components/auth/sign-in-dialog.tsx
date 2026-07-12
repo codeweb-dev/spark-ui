@@ -33,14 +33,16 @@ export function SignInDialog() {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button>Login</Button>
+        <button className="inline-flex items-center justify-center gap-2 h-9 px-4 rounded-md border border-input bg-background text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+          Login
+        </button>
       </DialogTrigger>
       <DialogContent className="max-w-sm gap-0 rounded-2xl p-0">
         <div className="border-b p-6">
           <DialogHeader>
             <DialogTitle className="text-xl">Sign in to Spark UI</DialogTitle>
             <DialogDescription className="pt-1 leading-relaxed">
-              Continue with your GitHub account to access your dashboard.
+              Continue with your GitHub account.
             </DialogDescription>
           </DialogHeader>
         </div>
