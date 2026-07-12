@@ -35,10 +35,8 @@ export function Sidebar({ items }: SidebarProps) {
           return (
             <div key={category} className="pb-8">
               <div className="flex items-center gap-2 mb-2 px-2">
-                <Icon size={14} className="text-zinc-400" />
-                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
-                  {title}
-                </h4>
+                <Icon size={12} className="text-zinc-400" />
+                <h4 className="text-xs text-zinc-400">{title}</h4>
               </div>
               <div className="grid grid-flow-row auto-rows-max text-sm gap-1">
                 {docs.map((doc) => (
