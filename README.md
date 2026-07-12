@@ -53,13 +53,32 @@ npm run registry:build
 
 generates one JSON file per component under `public/r/`. Those static files are what the shadcn CLI consumes.
 
-## Installing a component into your app
+## Official links
 
-```bash
-npx shadcn@latest add https://spark-ui.example.com/r/accordion.json
+```text
+Official website:    https://spark-ui-olive.vercel.app
+Official repository: https://github.com/codeweb-dev/spark-ui
+Official registry:   https://spark-ui-olive.vercel.app/r
 ```
 
-> `https://spark-ui.example.com` is a placeholder. The real domain is configured in one place: `lib/constants.ts` (`SITE_CONFIG.url`, overridable via `NEXT_PUBLIC_APP_URL`).
+The site origin is configured in one place: `lib/constants.ts` (`SITE_CONFIG.url`, overridable via `NEXT_PUBLIC_APP_URL`).
+
+## Installing a component into your app
+
+Inspect an item first, then install it:
+
+```bash
+npx shadcn@latest view https://spark-ui-olive.vercel.app/r/accordion.json
+npx shadcn@latest add https://spark-ui-olive.vercel.app/r/accordion.json
+```
+
+The machine-readable index of all items is `https://spark-ui-olive.vercel.app/r/registry.json`.
+
+### Security note
+
+- Spark UI components are copied into your project as source code — review registry items (with `shadcn view` or by reading this repository) before installing.
+- The official repository above is the human-reviewable source of every registry item.
+- Registry downloads never require credentials. Spark UI will never ask you to upload local files, `.env` values, tokens, or secrets to install a component.
 
 ## AI Agent Skill
 
@@ -84,7 +103,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide to adding a new comp
 ## Deployment notes
 
 - Deploy as a standard Next.js app (Vercel or any Node host).
-- Set `NEXT_PUBLIC_APP_URL` to the production URL so metadata, sitemap, and install commands use the real domain.
+- Set `NEXT_PUBLIC_APP_URL=https://spark-ui-olive.vercel.app` in the Vercel project so metadata, sitemap, and install commands use the production domain.
 - Run `npm run check` before deploying; `registry:build` must run so `public/r/` is current.
 
 ## GitHub authentication setup

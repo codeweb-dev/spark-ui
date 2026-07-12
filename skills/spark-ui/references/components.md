@@ -3,10 +3,10 @@
 Install any component with:
 
 ```bash
-npx shadcn@latest add https://spark-ui.example.com/r/<name>.json
+npx shadcn@latest add https://spark-ui-olive.vercel.app/r/<name>.json
 ```
 
-(Base URL per SKILL.md: placeholder domain, `http://localhost:3000` for a local registry.) Import paths below assume the CLI's default target, `components/<name>` — verify against the consumer project's `components.json` aliases. All components accept `className`, merged via `cn()`. "Server-safe" means the file has no `"use client"` directive.
+(Official registry origin per SKILL.md — use `http://localhost:3000` only when the registry repo itself runs locally.) Import paths below assume the CLI's default target, `components/<name>` — verify against the consumer project's `components.json` aliases. All components accept `className`, merged via `cn()`. "Server-safe" means the file has no `"use client"` directive.
 
 ## Primitives
 
@@ -389,4 +389,4 @@ import { SpotifyCard } from "@/components/spotify-card";
 ```
 
 - Props: `trackUrl` (required), `className`.
-- Installs `app/api/spotify/metadata/route.ts`, which scrapes track metadata server-side (`got` + `cheerio`) — **requires Next.js App Router**. The card fetches `/api/spotify/metadata?url=...` at runtime.
+- Installs `app/api/spotify/metadata/route.ts`, which scrapes track metadata server-side (`got` + `cheerio`) — **requires Next.js App Router**. The card extracts the track ID from `trackUrl` and fetches `/api/spotify/metadata?trackId=...` at runtime; the route only ever requests `https://open.spotify.com/track/<id>` (SSRF-safe) and returns 400 for anything that isn't a valid track ID.

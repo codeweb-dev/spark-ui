@@ -5,6 +5,7 @@ import { Button } from "@/registry/spark-ui/button";
 import { Input } from "@/registry/spark-ui/input";
 import { Progress } from "@/registry/spark-ui/progress";
 import { QRCode } from "@/registry/spark-ui/qr-code";
+import { SITE_CONFIG } from "@/lib/constants";
 import { Switch } from "@/registry/spark-ui/switch";
 import { Textarea } from "@/registry/spark-ui/textarea";
 import {
@@ -146,7 +147,7 @@ export function Showcase() {
         className="flex min-h-125 flex-col items-center text-center"
       >
         <div className="rounded-2xl bg-white p-4">
-          <QRCode value="https://spark-ui.example.com" size={180} fgColor="#000" bgColor="#fff" />
+          <QRCode value={SITE_CONFIG.url} size={180} fgColor="#000" bgColor="#fff" />
         </div>
         <h3 className="mt-7 text-base font-medium">Scan to connect</h3>
         <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">

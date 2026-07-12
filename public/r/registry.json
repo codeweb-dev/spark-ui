@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "spark-ui",
-  "homepage": "https://spark-ui.example.com",
-  "author": "Spark UI (https://spark-ui.example.com)",
+  "homepage": "https://spark-ui-olive.vercel.app",
+  "author": "Spark UI (https://spark-ui-olive.vercel.app)",
   "items": [
     {
       "name": "pagination",

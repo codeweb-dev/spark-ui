@@ -57,11 +57,19 @@ export function SpotifyCard({ trackUrl, className }: SpotifyCardProps) {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration gate
     setMounted(true);
+    // The API accepts only a validated track ID (never a raw URL) to prevent
+    // server-side request forgery.
+    const trackId = trackUrl.match(/\/track\/([A-Za-z0-9]+)/)?.[1];
     const fetchMetadata = async () => {
+      if (!trackId) {
+        console.error("Spotify Card Error: invalid Spotify track URL");
+        setLoading(false);
+        return;
+      }
       setLoading(true);
       try {
         const response = await fetch(
-          `/api/spotify/metadata?url=${encodeURIComponent(trackUrl)}`,
+          `/api/spotify/metadata?trackId=${encodeURIComponent(trackId)}`,
         );
         if (!response.ok) throw new Error("Failed to fetch");
         const data = await response.json();
