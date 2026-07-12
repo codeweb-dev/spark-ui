@@ -1,10 +1,10 @@
 ---
 title: Image Trail
-description: An interactive mouse-tracking image trail with smooth momentum and customizable stack ordering.
+description: A framed, mouse-tracking image trail with momentum, captions, and customizable styling.
 category: Media
 ---
 
-The ImageTrail is an interactive component that displays a trail of images following the user's mouse cursor with physics-based momentum. It supports customized keyframe animations, distance thresholds, and custom stacking orders.
+The ImageTrail displays framed media following the user's pointer with physics-based momentum. It supports rounded frame variants, composable captions, custom keyframe animations, distance thresholds, and configurable stacking.
 
 ## Preview
 
@@ -19,7 +19,11 @@ The ImageTrail is an interactive component that displays a trail of images follo
 ### Basic Example
 
 ```tsx
-import { ImageTrail, ImageTrailItem } from "@/components/image-trail";
+import {
+  ImageTrail,
+  ImageTrailItem,
+  ImageTrailItemCaption,
+} from "@/components/image-trail";
 
 const IMAGES = [
   "/images/trail-1.jpg",
@@ -51,15 +55,13 @@ export default function App() {
       }}
     >
       {IMAGES.map((src, index) => (
-        <ImageTrailItem
-          key={index}
-          className="w-32 h-32 sm:w-40 sm:h-40 shadow-2xl overflow-hidden bg-zinc-200 dark:bg-zinc-800"
-        >
+        <ImageTrailItem key={index} radius="xl" variant="framed">
           <img
             src={src}
             alt={`Trail photo ${index + 1}`}
-            className="w-full h-full object-cover pointer-events-none select-none"
+            className="h-full w-full object-cover"
           />
+          <ImageTrailItemCaption>Photo {index + 1}</ImageTrailItemCaption>
         </ImageTrailItem>
       ))}
     </ImageTrail>
@@ -111,6 +113,18 @@ export default function App() {
     type="number"
     default="3"
     description="Number of times children are duplicated to prevent trail gaps."
+  />
+  <Prop
+    name="variant"
+    type='"plain" | "framed" | "glass"'
+    default='"framed"'
+    description="Visual treatment applied to ImageTrailItem."
+  />
+  <Prop
+    name="radius"
+    type='"none" | "sm" | "md" | "lg" | "xl" | "full"'
+    default='"xl"'
+    description="Corner radius applied to an ImageTrailItem and its direct image."
   />
   <Prop
     name="baseZIndex"

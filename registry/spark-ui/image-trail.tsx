@@ -73,7 +73,30 @@ interface ImageTrailItemProps extends HTMLAttributes<HTMLDivElement> {
    * The content to be displayed
    */
   children: React.ReactNode;
+
+  /** Visual treatment for the trail item. */
+  variant?: "plain" | "framed" | "glass";
+
+  /** Corner radius applied to the item and its media. */
+  radius?: "none" | "sm" | "md" | "lg" | "xl" | "full";
 }
+
+const radiusStyles = {
+  none: "rounded-none [&>img]:rounded-none",
+  sm: "rounded-sm [&>img]:rounded-[2px]",
+  md: "rounded-md [&>img]:rounded-[4px]",
+  lg: "rounded-lg [&>img]:rounded-[6px]",
+  xl: "rounded-2xl [&>img]:rounded-xl",
+  full: "rounded-full [&>img]:rounded-full",
+};
+
+const variantStyles = {
+  plain: "overflow-hidden",
+  framed:
+    "overflow-hidden border border-white/40 bg-background/90 p-1.5 shadow-[0_20px_50px_-18px_rgba(0,0,0,0.65)] ring-1 ring-black/10 dark:border-white/15 dark:ring-white/10",
+  glass:
+    "overflow-hidden border border-white/30 bg-white/15 p-1.5 shadow-2xl ring-1 ring-white/15 backdrop-blur-md",
+};
 
 /**
  * Helper functions
@@ -245,6 +268,8 @@ export const ImageTrailItem = ({
   className,
   children,
   as = "div",
+  variant = "framed",
+  radius = "xl",
   ...props
 }: ImageTrailItemProps) => {
   const ElementTag = as;
@@ -252,7 +277,10 @@ export const ImageTrailItem = ({
     <ElementTag
       {...props}
       className={cn(
-        "absolute top-0 left-0 will-change-transform hidden pointer-events-none select-none",
+        "absolute top-0 left-0 isolate hidden select-none will-change-transform pointer-events-none",
+        "before:pointer-events-none before:absolute before:inset-x-3 before:top-1 before:z-20 before:h-px before:bg-white/60 before:opacity-70",
+        variantStyles[variant],
+        radiusStyles[radius],
         className,
         "image-trail-item"
       )}
@@ -261,5 +289,18 @@ export const ImageTrailItem = ({
     </ElementTag>
   );
 };
+
+export const ImageTrailItemCaption = ({
+  className,
+  ...props
+}: HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "absolute inset-x-1.5 bottom-1.5 z-10 rounded-b-xl bg-linear-to-t from-black/85 via-black/45 to-transparent px-3 pb-2.5 pt-8 text-left text-xs font-medium text-white",
+      className,
+    )}
+    {...props}
+  />
+);
 
 export default ImageTrail;

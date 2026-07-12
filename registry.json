@@ -307,7 +307,7 @@
       "name": "image-trail",
       "type": "registry:component",
       "title": "Image Trail",
-      "description": "An interactive mouse-tracking image trail with smooth momentum and stacking options.",
+      "description": "A framed mouse-tracking image trail with momentum, captions, and customizable styling.",
       "files": [
         {
           "path": "registry/spark-ui/image-trail.tsx",
