@@ -58,10 +58,6 @@ export function Hero() {
         </span>
         <span className="h-4 w-px bg-border" />
         <span>
-          <strong className="text-foreground">100%</strong> open source
-        </span>
-        <span className="h-4 w-px bg-border" />
-        <span>
           <strong className="text-foreground">TypeScript</strong> ready
         </span>
       </div>

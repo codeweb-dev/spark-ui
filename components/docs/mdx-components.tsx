@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { registry } from "@/registry/components";
 import fs from "fs";
+import { Accessibility, Boxes, Code2, Palette, Sparkles } from "lucide-react";
 import path from "path";
 import React from "react";
 import { CodeBlock } from "./code-block";
@@ -19,6 +20,36 @@ interface PreProps extends React.HTMLAttributes<HTMLPreElement> {
 interface ComponentPreviewWrapperProps {
   name: string;
   children?: React.ReactNode;
+}
+
+const featureIcons = {
+  code: Code2,
+  palette: Palette,
+  accessibility: Accessibility,
+  sparkles: Sparkles,
+  boxes: Boxes,
+};
+
+function FeatureCard({
+  icon,
+  title,
+  children,
+}: {
+  icon: keyof typeof featureIcons;
+  title: string;
+  children: React.ReactNode;
+}) {
+  const Icon = featureIcons[icon];
+
+  return (
+    <div className="not-typeset rounded-2xl border border-border bg-muted/50 p-6 transition-colors hover:bg-muted">
+      <Icon className="mb-8 size-6 text-foreground" aria-hidden />
+      <h3 className="text-base font-semibold text-foreground">{title}</h3>
+      <div className="mt-2 text-sm leading-relaxed text-muted-foreground [&>p]:m-0">
+        {children}
+      </div>
+    </div>
+  );
 }
 
 function getDemoSourceCode(name: string): string | null {
@@ -54,6 +85,12 @@ export const mdxComponents = {
   InstallBlock: (props: { command: string }) => <InstallBlock {...props} />,
   PropsTable,
   Prop,
+  FeatureCard,
+  FeatureGrid: ({ children }: { children: React.ReactNode }) => (
+    <div className="not-typeset my-6 grid gap-4 sm:grid-cols-2">
+      {children}
+    </div>
+  ),
 
   // Spread registry components (dynamic imports from @/registry/components)
   ...registry,
