@@ -1,0 +1,46 @@
+---
+title: Switch
+description: A toggle control that switches between on and off.
+category: Form
+---
+
+The Switch toggles a setting on or off. Built on Radix UI with full keyboard support.
+
+## Preview
+
+<ComponentPreview name="switch" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="switch" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="checked"
+    type='boolean'
+    default='—'
+    description="Controlled checked state."
+  />
+  <Prop
+    name="onCheckedChange"
+    type='(checked: boolean) => void'
+    default='—'
+    description="Called when the checked state changes."
+  />
+  <Prop
+    name="disabled"
+    type='boolean'
+    default='false'
+    description="Disables the switch."
+  />
+  <Prop
+    name="className"
+    type='string'
+    default='—'
+    description="Additional CSS classes."
+  />
+</PropsTable>

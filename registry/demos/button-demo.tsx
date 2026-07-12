@@ -1,0 +1,16 @@
+import React from "react";
+import { Button } from "@/registry/spark-ui/button";
+
+export default function ButtonDemo() {
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-2 p-4">
+      <Button>Default</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="destructive">Destructive</Button>
+      <Button variant="link">Link</Button>
+      <Button variant="spark">Spark</Button>
+    </div>
+  );
+}

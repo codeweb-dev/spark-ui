@@ -1,0 +1,52 @@
+---
+title: Toggle
+description: A two-state button that can be toggled on or off.
+category: Button
+---
+
+The Toggle is a button with a pressed state, ideal for toolbar actions like bold or italic.
+
+## Preview
+
+<ComponentPreview name="toggle" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="toggle" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="variant"
+    type='"default" | "outline"'
+    default='"default"'
+    description="Visual style of the toggle."
+  />
+  <Prop
+    name="size"
+    type='"sm" | "default" | "lg"'
+    default='"default"'
+    description="Size of the toggle."
+  />
+  <Prop
+    name="pressed"
+    type='boolean'
+    default='—'
+    description="Controlled pressed state."
+  />
+  <Prop
+    name="onPressedChange"
+    type='(pressed: boolean) => void'
+    default='—'
+    description="Called when the pressed state changes."
+  />
+  <Prop
+    name="className"
+    type='string'
+    default='—'
+    description="Additional CSS classes."
+  />
+</PropsTable>

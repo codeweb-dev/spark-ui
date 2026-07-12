@@ -413,6 +413,316 @@
       ],
       "registryDependencies": [],
       "category": "layout"
+    },
+    {
+      "name": "alert",
+      "type": "registry:component",
+      "title": "Alert",
+      "description": "A callout for important information with default and destructive variants.",
+      "files": [
+        {
+          "path": "registry/spark-ui/alert.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:component",
+      "title": "Alert Dialog",
+      "description": "A modal dialog that interrupts the user for a confirmation.",
+      "files": [
+        {
+          "path": "registry/spark-ui/alert-dialog.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-alert-dialog"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "layout"
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:component",
+      "title": "Breadcrumb",
+      "description": "A navigation trail showing the current page's location in the hierarchy.",
+      "files": [
+        {
+          "path": "registry/spark-ui/breadcrumb.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "category": "navigation"
+    },
+    {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "description": "A button with default, secondary, outline, ghost, destructive, link, and spark variants.",
+      "files": [
+        {
+          "path": "registry/spark-ui/button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [],
+      "category": "button"
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:component",
+      "title": "Checkbox",
+      "description": "A control that toggles between checked and unchecked.",
+      "files": [
+        {
+          "path": "registry/spark-ui/checkbox.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-checkbox",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "category": "form"
+    },
+    {
+      "name": "dialog",
+      "type": "registry:component",
+      "title": "Dialog",
+      "description": "A modal window overlaid on the page with an optional close button.",
+      "files": [
+        {
+          "path": "registry/spark-ui/dialog.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:component",
+      "title": "Dropdown Menu",
+      "description": "A menu of actions opened from a trigger element.",
+      "files": [
+        {
+          "path": "registry/spark-ui/dropdown-menu.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "category": "navigation"
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:component",
+      "title": "Hover Card",
+      "description": "A card preview shown when hovering a trigger element.",
+      "files": [
+        {
+          "path": "registry/spark-ui/hover-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-hover-card"
+      ],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "popover",
+      "type": "registry:component",
+      "title": "Popover",
+      "description": "A floating panel anchored to a trigger element.",
+      "files": [
+        {
+          "path": "registry/spark-ui/popover.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-popover"
+      ],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "progress",
+      "type": "registry:component",
+      "title": "Progress",
+      "description": "A bar indicating the completion progress of a task.",
+      "files": [
+        {
+          "path": "registry/spark-ui/progress.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-progress"
+      ],
+      "registryDependencies": [],
+      "category": "form"
+    },
+    {
+      "name": "separator",
+      "type": "registry:component",
+      "title": "Separator",
+      "description": "A horizontal or vertical line separating content.",
+      "files": [
+        {
+          "path": "registry/spark-ui/separator.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-separator"
+      ],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "sheet",
+      "type": "registry:component",
+      "title": "Sheet",
+      "description": "A slide-over panel that extends from any edge of the screen.",
+      "files": [
+        {
+          "path": "registry/spark-ui/sheet.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:component",
+      "title": "Skeleton",
+      "description": "A pulsing placeholder shown while content loads.",
+      "files": [
+        {
+          "path": "registry/spark-ui/skeleton.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "switch",
+      "type": "registry:component",
+      "title": "Switch",
+      "description": "A toggle control that switches between on and off.",
+      "files": [
+        {
+          "path": "registry/spark-ui/switch.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-switch"
+      ],
+      "registryDependencies": [],
+      "category": "form"
+    },
+    {
+      "name": "table",
+      "type": "registry:component",
+      "title": "Table",
+      "description": "A responsive table with header, body, footer, and caption sections.",
+      "files": [
+        {
+          "path": "registry/spark-ui/table.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "textarea",
+      "type": "registry:component",
+      "title": "Textarea",
+      "description": "A multi-line text input field.",
+      "files": [
+        {
+          "path": "registry/spark-ui/textarea.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "form"
+    },
+    {
+      "name": "toggle",
+      "type": "registry:component",
+      "title": "Toggle",
+      "description": "A two-state button that can be toggled on or off.",
+      "files": [
+        {
+          "path": "registry/spark-ui/toggle.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-toggle",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [],
+      "category": "button"
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:component",
+      "title": "Tooltip",
+      "description": "A short label shown when hovering or focusing an element.",
+      "files": [
+        {
+          "path": "registry/spark-ui/tooltip.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "registryDependencies": [],
+      "category": "layout"
     }
   ]
 }

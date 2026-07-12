@@ -1,0 +1,46 @@
+---
+title: Button
+description: A button with default, secondary, outline, ghost, destructive, link, and spark variants.
+category: Button
+---
+
+The Button is Spark UI's core action component — shadcn-style variants plus a glowing `spark` variant, with subtle lift and press motion.
+
+## Preview
+
+<ComponentPreview name="button" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="button" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="variant"
+    type='"default" | "secondary" | "outline" | "ghost" | "destructive" | "link" | "spark"'
+    default='"default"'
+    description="Visual style of the button."
+  />
+  <Prop
+    name="size"
+    type='"sm" | "default" | "lg" | "icon"'
+    default='"default"'
+    description="Size of the button."
+  />
+  <Prop
+    name="asChild"
+    type='boolean'
+    default='false'
+    description="Render the child element (e.g. a link) with button styling."
+  />
+  <Prop
+    name="className"
+    type='string'
+    default='—'
+    description="Additional CSS classes."
+  />
+</PropsTable>

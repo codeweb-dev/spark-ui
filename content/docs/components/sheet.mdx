@@ -1,0 +1,34 @@
+---
+title: Sheet
+description: A slide-over panel that extends from any edge of the screen.
+category: Layout
+---
+
+The Sheet slides in from an edge of the screen. Compose it from `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetFooter`, `SheetTitle`, `SheetDescription`, and `SheetClose`.
+
+## Preview
+
+<ComponentPreview name="sheet" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="sheet" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="side"
+    type='"top" | "right" | "bottom" | "left"'
+    default='"right"'
+    description="SheetContent only: edge the sheet slides in from."
+  />
+  <Prop
+    name="className"
+    type='string'
+    default='—'
+    description="Additional CSS classes. Available on every subcomponent."
+  />
+</PropsTable>
