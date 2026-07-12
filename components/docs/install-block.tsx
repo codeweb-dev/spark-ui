@@ -41,7 +41,7 @@ export function InstallBlock({ command }: InstallBlockProps) {
               key={m}
               onClick={() => setActiveTab(m)}
               className={cn(
-                "text-[10px] font-black uppercase tracking-widest transition-colors",
+                "text-[10px] font-semibold uppercase tracking-widest transition-colors",
                 activeTab === m
                   ? "text-zinc-900 dark:text-zinc-50"
                   : "text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300",

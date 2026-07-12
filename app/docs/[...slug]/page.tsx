@@ -14,7 +14,9 @@ interface PageProps {
   }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const doc = getDocBySlug(slug);
 
@@ -96,7 +98,7 @@ export default async function DocPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Breadcrumbs - Smaller & More Subtle */}
-      <nav className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
+      <nav className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400">
         <Link
           href="/docs/introduction"
           className="hover:text-primary transition-colors"
@@ -124,7 +126,11 @@ export default async function DocPage({ params }: PageProps) {
 
         {/* Page Actions - Compact & Single Line */}
         <div className="flex items-center gap-2 shrink-0">
-          <OpenInChatGPTButton title={doc.title} description={doc.description} url={`${SITE_CONFIG.url}/docs/${doc.slug}`} />
+          <OpenInChatGPTButton
+            title={doc.title}
+            description={doc.description}
+            url={`${SITE_CONFIG.url}/docs/${doc.slug}`}
+          />
 
           <div className="flex items-center gap-1">
             {prev ? (

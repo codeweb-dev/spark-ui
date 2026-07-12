@@ -16,7 +16,11 @@ export function PropsTable({ children }: PropsTableProps) {
           No property data found
         </p>
         <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
-          Pass <code className="text-zinc-800 dark:text-zinc-200">&lt;Prop /&gt;</code> components as children.
+          Pass{" "}
+          <code className="text-zinc-800 dark:text-zinc-200">
+            &lt;Prop /&gt;
+          </code>{" "}
+          components as children.
         </p>
       </div>
     );
@@ -28,16 +32,16 @@ export function PropsTable({ children }: PropsTableProps) {
         <table className="w-full border-collapse text-left text-[13px] leading-relaxed">
           <thead className="bg-zinc-50/50 dark:bg-zinc-900/50">
             <tr className="border-b border-zinc-200 dark:border-zinc-800">
-              <th className="px-4 py-3.5 font-black uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400">
+              <th className="px-4 py-3.5 font-semibold uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400">
                 Prop
               </th>
-              <th className="px-4 py-3.5 font-black uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400">
+              <th className="px-4 py-3.5 font-semibold uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400">
                 Type
               </th>
-              <th className="px-4 py-3.5 font-black uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400">
+              <th className="px-4 py-3.5 font-semibold uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400">
                 Default
               </th>
-              <th className="px-4 py-3.5 font-black uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400 w-[40%]">
+              <th className="px-4 py-3.5 font-semibold uppercase tracking-widest text-[10px] text-zinc-500 dark:text-zinc-400 w-[40%]">
                 Description
               </th>
             </tr>

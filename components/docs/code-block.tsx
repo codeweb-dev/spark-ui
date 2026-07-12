@@ -37,7 +37,7 @@ export async function CodeBlock({
       </div>
       {filename && (
         <div className="flex items-center px-4 py-2 border-b border-zinc-200 dark:border-zinc-800 bg-background">
-          <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400">
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400">
             {filename}
           </span>
         </div>
