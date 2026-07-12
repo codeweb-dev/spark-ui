@@ -48,4 +48,7 @@ export const registry: Record<
     () => import("@/registry/demos/logo-carousel-demo-right"),
   ),
   "image-trail": dynamic(() => import("@/registry/demos/image-trail-demo")),
+  badge: dynamic(() => import("@/registry/demos/badge-demo")),
+  card: dynamic(() => import("@/registry/demos/card-demo")),
+  empty: dynamic(() => import("@/registry/demos/empty-demo")),
 };

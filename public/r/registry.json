@@ -364,6 +364,55 @@
       ],
       "registryDependencies": [],
       "category": "media"
+    },
+    {
+      "name": "badge",
+      "type": "registry:component",
+      "title": "Badge",
+      "description": "A small status label with default, secondary, destructive, and outline variants.",
+      "files": [
+        {
+          "path": "registry/spark-ui/badge.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [],
+      "category": "typography"
+    },
+    {
+      "name": "card",
+      "type": "registry:component",
+      "title": "Card",
+      "description": "A container with header, title, description, content, and footer sections.",
+      "files": [
+        {
+          "path": "registry/spark-ui/card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
+      "name": "empty",
+      "type": "registry:component",
+      "title": "Empty",
+      "description": "An empty state with media, title, description, and content slots.",
+      "files": [
+        {
+          "path": "registry/spark-ui/empty.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [],
+      "category": "layout"
     }
   ]
 }
