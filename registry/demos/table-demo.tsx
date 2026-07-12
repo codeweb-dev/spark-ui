@@ -17,8 +17,8 @@ const invoices = [
 
 export default function TableDemo() {
   return (
-    <div className="flex items-center justify-center p-4">
-      <Table className="max-w-md">
+    <div className="w-full p-4">
+      <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
