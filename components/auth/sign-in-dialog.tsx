@@ -89,7 +89,7 @@ export function SignInDialog() {
                   </span>
                 </p>
                 <p className="text-muted-foreground">
-                  Share your projects to the showcase and templates.
+                  Share your projects to the showcase.
                 </p>
               </div>
             </li>

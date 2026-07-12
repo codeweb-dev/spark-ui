@@ -21,8 +21,16 @@ export async function updateSession(request: NextRequest) {
     },
   });
 
-  // Refresh the session cookie; no protected routes right now.
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (request.nextUrl.pathname.startsWith("/favorites") && !user) {
+    const loginUrl = request.nextUrl.clone();
+    loginUrl.pathname = "/";
+    loginUrl.search = "?login=1";
+    return NextResponse.redirect(loginUrl);
+  }
 
   return response;
 }

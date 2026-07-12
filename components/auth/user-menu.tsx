@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import type { User } from "@supabase/supabase-js";
 import { LogOut, Star } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const itemClass =
@@ -71,10 +72,11 @@ export function UserMenu() {
             )}
           </div>
           <DropdownMenu.Separator className="my-1 h-px bg-border" />
-          {/* ponytail: placeholder — point at a favorites page once one exists */}
-          <DropdownMenu.Item className={itemClass}>
-            <Star className="size-4" aria-hidden />
-            Favorites
+          <DropdownMenu.Item asChild className={itemClass}>
+            <Link href="/favorites">
+              <Star className="size-4" aria-hidden />
+              Favorites
+            </Link>
           </DropdownMenu.Item>
           <DropdownMenu.Item
             className={itemClass}

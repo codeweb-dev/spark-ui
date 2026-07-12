@@ -1,5 +1,6 @@
 "use client";
 
+import { FavoriteButton } from "@/components/docs/favorite-button";
 import { cn } from "@/lib/utils";
 import { registry } from "@/registry/components";
 import { AnimatePresence, motion } from "framer-motion";
@@ -73,6 +74,7 @@ export function ComponentPreview({ name, usageCode }: ComponentPreviewProps) {
         <div className="flex items-center gap-1.5">
           {/* Action Buttons - Compact */}
           <div className="flex items-center gap-1">
+            <FavoriteButton />
             <button
               onClick={handleRefresh}
               aria-label="Refresh preview"
