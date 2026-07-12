@@ -49,6 +49,12 @@ export function Navbar() {
             >
               Showcase
             </Link>
+            <Link
+              href="/docs/components/accordion"
+              className="hover:text-primary transition-colors"
+            >
+              Templates
+            </Link>
           </div>
         </div>
         <div className="flex items-center gap-2">
