@@ -52,7 +52,7 @@ List every npm package your component imports (beyond React) in the item's `depe
 If your component uses another Spark UI component, list its slug in `registryDependencies` so the CLI installs it too:
 
 ```json
-"registryDependencies": ["rich-button"]
+"registryDependencies": ["button"]
 ```
 
 ## 9. Creating an MDX documentation page

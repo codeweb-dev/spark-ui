@@ -9,10 +9,8 @@ import {
 import NumberTicker from "@/registry/spark-ui/basic-number-ticker";
 import { LabelInput } from "@/registry/spark-ui/label-input";
 import { Pagination, usePaginationState } from "@/registry/spark-ui/pagination";
-import { RichButton } from "@/registry/spark-ui/rich-button";
 import { ShimmerText } from "@/registry/spark-ui/shimmer-text";
 import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
-import { Zap } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -143,23 +141,6 @@ export function Showcase() {
         </div>
       </ShowcaseCard>
 
-      <ShowcaseCard
-        href="/docs/components/rich-button"
-        title="Rich Button"
-        span="md:col-span-12"
-      >
-        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-          <RichButton color="default" size="sm" className="rounded-xl">
-            <Zap size={14} className="mr-2" /> Primary
-          </RichButton>
-          <RichButton color="emerald" size="sm" className="rounded-xl">
-            Success
-          </RichButton>
-          <RichButton color="purple" size="sm" className="rounded-xl">
-            Purple
-          </RichButton>
-        </div>
-      </ShowcaseCard>
     </section>
   );
 }

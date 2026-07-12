@@ -5,7 +5,6 @@ export const registry: Record<
   string,
   React.ComponentType<Record<string, unknown>>
 > = {
-  "rich-button": dynamic(() => import("@/registry/demos/rich-button-demo")),
   accordion: dynamic(() => import("@/registry/demos/accordion-demo")),
   "tactile-highlight": dynamic(
     () => import("@/registry/demos/tactile-highlight-demo"),
