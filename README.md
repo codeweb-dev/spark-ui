@@ -61,9 +61,9 @@ npx shadcn@latest add https://spark-ui.example.com/r/accordion.json
 
 > `https://spark-ui.example.com` is a placeholder. The real domain is configured in one place: `lib/constants.ts` (`SITE_CONFIG.url`, overridable via `NEXT_PUBLIC_APP_URL`).
 
-## Adding a new component
+## Contributing
 
-See [ADDING_COMPONENTS.md](./ADDING_COMPONENTS.md) for the full maintainer guide — source file, demo, registry entries, MDX docs, checklists, and templates.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide to adding a new component — source file, demo, registry entries, MDX docs, checklists, and templates.
 
 ## Deployment notes
 

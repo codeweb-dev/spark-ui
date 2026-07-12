@@ -1,4 +1,4 @@
-# Adding Components to Spark UI
+# Contributing to Spark UI
 
 A practical, self-contained guide for maintainers. All commands use **npm/npx**.
 
