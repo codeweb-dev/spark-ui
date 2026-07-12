@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { AlignLeft, ChevronDown } from "lucide-react";
+import { AlignLeft, ChevronDown, Dot } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -22,8 +22,31 @@ function slugify(text: string) {
 export function Toc({ mobile = false }: { mobile?: boolean }) {
   const pathname = usePathname();
   const [headings, setHeadings] = useState<TocHeading[]>([]);
-  const [activeId, setActiveId] = useState<string>("");
+  const [activeIds, setActiveIds] = useState<string[]>([]);
   const detailsRef = useRef<HTMLDetailsElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const [indicator, setIndicator] = useState({ top: 0, height: 0 });
+
+  // The indicator bar spans from the first to the last visible section's link.
+  useEffect(() => {
+    const links = activeIds
+      .map((id) =>
+        listRef.current?.querySelector<HTMLElement>(
+          `a[href="#${CSS.escape(id)}"]`,
+        ),
+      )
+      .filter((el): el is HTMLElement => Boolean(el));
+    const first = links[0];
+    const last = links[links.length - 1];
+    setIndicator(
+      first && last
+        ? {
+            top: first.offsetTop,
+            height: last.offsetTop + last.offsetHeight - first.offsetTop,
+          }
+        : { top: 0, height: 0 },
+    );
+  }, [activeIds, headings]);
 
   useEffect(() => {
     const elements = Array.from(
@@ -45,23 +68,35 @@ export function Toc({ mobile = false }: { mobile?: boolean }) {
     });
     // eslint-disable-next-line react-hooks/set-state-in-effect -- TOC is derived from the rendered DOM, only available post-render
     setHeadings(items);
-    setActiveId(items[0]?.id ?? "");
 
-    if (elements.length === 0) return;
+    if (elements.length === 0) {
+      setActiveIds([]);
+      return;
+    }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-            break;
-          }
-        }
-      },
-      { rootMargin: "-80px 0px -70% 0px" },
-    );
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    // Highlight every section currently visible in the viewport: a section
+    // runs from its heading to the next one (the last runs to document end).
+    const onScroll = () => {
+      const viewTop = 80; // below the sticky navbar
+      const viewBottom = window.innerHeight;
+      const tops = elements.map((el) => el.getBoundingClientRect().top);
+      const visible = elements
+        .filter((_, i) => {
+          const start = tops[i];
+          const end = i < tops.length - 1 ? tops[i + 1] : Infinity;
+          return end > viewTop && start < viewBottom;
+        })
+        .map((el) => el.id);
+      // Above the first heading (page intro), keep the first section lit.
+      setActiveIds(visible.length > 0 ? visible : [elements[0].id]);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, [pathname]);
 
   if (headings.length === 0) return null;
@@ -77,7 +112,12 @@ export function Toc({ mobile = false }: { mobile?: boolean }) {
   };
 
   const list = (
-    <ul className="border-l border-border">
+    <ul ref={listRef} className="relative border-l border-border">
+      <span
+        aria-hidden
+        className="absolute -left-px w-0.5 rounded-full bg-foreground transition-all duration-300 ease-out"
+        style={{ top: indicator.top, height: indicator.height }}
+      />
       {headings.map((h) => (
         <li key={h.id}>
           <a
@@ -88,11 +128,11 @@ export function Toc({ mobile = false }: { mobile?: boolean }) {
               detailsRef.current?.removeAttribute("open");
             }}
             className={cn(
-              "block -ml-px border-l-2 py-1 pl-4 transition-colors duration-200",
+              "block py-1 pl-4 transition-colors duration-200",
               h.level === 3 && "pl-8",
-              activeId === h.id
-                ? "border-foreground text-foreground"
-                : "border-transparent text-muted-foreground hover:text-foreground",
+              activeIds.includes(h.id)
+                ? "text-foreground"
+                : "text-muted-foreground hover:text-foreground",
             )}
           >
             {h.text}
@@ -102,19 +142,28 @@ export function Toc({ mobile = false }: { mobile?: boolean }) {
     </ul>
   );
 
+  const currentSection = headings.find((h) => h.id === activeIds[0]);
+
   if (mobile) {
     return (
       <details
         ref={detailsRef}
         className="group xl:hidden sticky top-18 z-40 mb-6 rounded-lg border border-border bg-background text-sm"
       >
-        <summary className="flex cursor-pointer select-none items-center gap-2 px-4 py-3 text-muted-foreground list-none [&::-webkit-details-marker]:hidden">
-          <AlignLeft size={14} aria-hidden />
-          On this page
+        <summary className="flex cursor-pointer select-none items-center gap-2 px-4 py-3 list-none [&::-webkit-details-marker]:hidden">
+          <AlignLeft size={14} aria-hidden className="text-muted-foreground" />
+          <div className="flex flex-row gap-1">
+            <div className="text-muted-foreground">On this page</div>
+            {currentSection && (
+              <div className="truncate text-foreground group-open:hidden">
+                <Dot className="inline" /> {currentSection.text}
+              </div>
+            )}
+          </div>
           <ChevronDown
             size={14}
             aria-hidden
-            className="ml-auto transition-transform duration-200 group-open:rotate-180"
+            className="ml-auto shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
           />
         </summary>
         <div className="max-h-[50vh] overflow-y-auto px-4 pb-3">{list}</div>
