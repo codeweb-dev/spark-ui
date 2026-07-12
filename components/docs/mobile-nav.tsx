@@ -121,19 +121,19 @@ export function MobileNav({ items }: MobileNavProps) {
                       const { title } = getCategoryMeta(category);
                       return (
                         <div key={category}>
-                          <h4 className="text-xs text-zinc-400 mb-2 px-2">
+                          <h4 className="text-sm text-muted-foreground mb-2 px-3">
                             {title}
                           </h4>
-                          <div className="flex flex-col gap-1">
+                          <div className="flex flex-col gap-0.5">
                             {docs.map((doc) => (
                               <Link
                                 key={doc.slug}
                                 href={`/docs/${doc.slug}`}
                                 className={cn(
-                                  "group flex w-full items-center rounded-lg px-3 py-2.5 transition-all text-sm",
+                                  "w-fit rounded-lg px-3 py-2 text-sm transition-colors",
                                   pathname === `/docs/${doc.slug}`
-                                    ? "bg-primary text-primary-foreground font-bold shadow-md shadow-primary/20"
-                                    : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800",
+                                    ? "bg-accent text-accent-foreground"
+                                    : "text-foreground/80 hover:bg-accent/50 hover:text-foreground",
                                 )}
                               >
                                 {doc.title}
