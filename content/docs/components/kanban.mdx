@@ -1,0 +1,73 @@
+---
+title: Kanban
+description: A composable drag-and-drop task board styled to match shadcn/ui.
+category: Layout
+---
+
+The Kanban component provides styled primitives for building task boards. Compose columns, cards, headers, counts, descriptions, and footers while keeping task state and drag behavior under your control.
+
+## Preview
+
+<ComponentPreview name="kanban" />
+
+## Usage
+
+### Installation
+
+<InstallBlock command="kanban" />
+
+### Basic Example
+
+```tsx
+import {
+  Kanban,
+  KanbanCard,
+  KanbanCardTitle,
+  KanbanColumn,
+  KanbanColumnContent,
+  KanbanColumnHeader,
+  KanbanColumnTitle,
+} from "@/components/kanban";
+
+export function Board() {
+  return (
+    <Kanban>
+      <KanbanColumn>
+        <KanbanColumnHeader>
+          <KanbanColumnTitle>Backlog</KanbanColumnTitle>
+        </KanbanColumnHeader>
+        <KanbanColumnContent>
+          <KanbanCard draggable>
+            <KanbanCardTitle>Write documentation</KanbanCardTitle>
+          </KanbanCard>
+        </KanbanColumnContent>
+      </KanbanColumn>
+    </Kanban>
+  );
+}
+```
+
+## Properties
+
+All Kanban primitives accept the standard HTML attributes for their rendered element, including `className` and native drag event handlers.
+
+<PropsTable>
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional CSS classes for any Kanban primitive."
+  />
+  <Prop
+    name="draggable"
+    type="boolean"
+    default="false"
+    description="Enables native dragging when applied to KanbanCard."
+  />
+  <Prop
+    name="data-over"
+    type="boolean"
+    default="false"
+    description="Highlights a KanbanColumn as the active drop target."
+  />
+</PropsTable>

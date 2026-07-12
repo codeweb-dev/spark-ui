@@ -25,4 +25,5 @@ export const NEW_DOC_SLUGS = new Set([
   "components/input",
   "components/qr-code",
   "components/accordion",
+  "components/kanban",
 ]);

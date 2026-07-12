@@ -688,6 +688,21 @@
       "category": "button"
     },
     {
+      "name": "kanban",
+      "type": "registry:component",
+      "title": "Kanban",
+      "description": "A composable drag-and-drop task board styled to match shadcn/ui.",
+      "files": [
+        {
+          "path": "registry/spark-ui/kanban.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
       "name": "tooltip",
       "type": "registry:component",
       "title": "Tooltip",

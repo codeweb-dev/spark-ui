@@ -21,6 +21,7 @@ export const registry: Record<
     () => import("@/registry/demos/basic-number-ticker-variants-demo"),
   ),
   input: dynamic(() => import("@/registry/demos/input-demo")),
+  kanban: dynamic(() => import("@/registry/demos/kanban-demo")),
   "qr-code": dynamic(() => import("@/registry/demos/qr-code-demo")),
   "qr-code-variants": dynamic(
     () => import("@/registry/demos/qr-code-variants-demo"),
