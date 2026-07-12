@@ -12,7 +12,7 @@ import {
 import { LogoIcon } from "@/components/landing/logo-icon";
 import { Send, Star } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function SignInDialog() {
   const searchParams = useSearchParams();
@@ -21,6 +21,10 @@ export function SignInDialog() {
   const requestedOpen = searchParams.get("login") === "1";
   const open = manualOpen || (requestedOpen && !dismissed);
   const oauthFailed = searchParams.get("error") === "oauth_failed";
+
+  useEffect(() => {
+    setDismissed(false);
+  }, [searchParams]);
 
   const handleOpenChange = (nextOpen: boolean) => {
     setManualOpen(nextOpen);
