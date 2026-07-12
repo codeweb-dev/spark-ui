@@ -37,6 +37,18 @@ export function Navbar() {
             >
               Components
             </Link>
+            <Link
+              href="/docs/components/accordion"
+              className="hover:text-primary transition-colors"
+            >
+              Roadmap
+            </Link>
+            <Link
+              href="/docs/components/accordion"
+              className="hover:text-primary transition-colors"
+            >
+              Showcase
+            </Link>
           </div>
         </div>
         <div className="flex items-center gap-2">
