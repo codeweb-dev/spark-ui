@@ -34,8 +34,8 @@ export function Sidebar({ items }: SidebarProps) {
           const { title } = getCategoryMeta(category);
           return (
             <div key={category} className="pb-8">
-              <h4 className="text-xs text-zinc-400 mb-2 px-2">{title}</h4>
-              <div className="grid grid-flow-row auto-rows-max text-sm gap-1">
+              <h4 className="text-xs text-zinc-400 mb-2">{title}</h4>
+              <div className="grid grid-flow-row auto-rows-max text-sm">
                 {docs.map((doc) => (
                   <Link
                     key={doc.slug}

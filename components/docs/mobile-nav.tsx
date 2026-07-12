@@ -121,7 +121,7 @@ export function MobileNav({ items }: MobileNavProps) {
                       const { title } = getCategoryMeta(category);
                       return (
                         <div key={category}>
-                          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-4 px-2">
+                          <h4 className="text-xs text-zinc-400 mb-2 px-2">
                             {title}
                           </h4>
                           <div className="flex flex-col gap-1">

@@ -75,11 +75,7 @@ export function SearchDialog({ items, open, onOpenChange }: SearchDialogProps) {
               return (
                 <CommandGroup
                   key={category}
-                  heading={
-                    <span className="px-0.5 text-xs font-black uppercase tracking-[0.2em]">
-                      {title}
-                    </span>
-                  }
+                  heading={<span className="text-xs mb-2 px-0.5">{title}</span>}
                 >
                   {docs.map((doc) => (
                     <CommandItem
