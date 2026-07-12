@@ -5,6 +5,7 @@ import { getCategoryMeta } from "@/lib/categories";
 import { NEW_DOC_SLUGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Sparkles } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 interface SidebarProps {
@@ -53,7 +54,8 @@ export function Sidebar({ items }: SidebarProps) {
                     <span className="flex items-center gap-2">
                       {doc.title}
                       {NEW_DOC_SLUGS.has(doc.slug) && (
-                        <span className="rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
+                          <Sparkles className="size-2.5" aria-hidden />
                           New
                         </span>
                       )}

@@ -6,7 +6,7 @@ import { getCategoryMeta } from "@/lib/categories";
 import { NEW_DOC_SLUGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, Sparkles, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -140,7 +140,8 @@ export function MobileNav({ items }: MobileNavProps) {
                                 <span className="flex items-center gap-2">
                                   {doc.title}
                                   {NEW_DOC_SLUGS.has(doc.slug) && (
-                                    <span className="rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
+                                    <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
+                                      <Sparkles className="size-2.5" aria-hidden />
                                       New
                                     </span>
                                   )}
