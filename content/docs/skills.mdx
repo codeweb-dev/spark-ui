@@ -1,0 +1,94 @@
+---
+title: Skills
+description: Give AI coding agents like Claude Code, Cursor, and Windsurf project-aware context about Spark UI.
+category: Getting Started
+---
+
+Skills give AI coding agents like Claude Code, Cursor, and Windsurf project-aware context about Spark UI. When installed, your assistant knows how to find, install, compose, and customize components using the correct APIs and patterns.
+
+For example, you can ask your assistant to:
+
+- "Build a kanban board with To do, In progress, and Done columns."
+- "Add a confirmation dialog to the delete button."
+- "Show me all available Spark UI components."
+
+The skill provides your assistant with the full component catalog, registry install commands, composition rules, and styling conventions — so it generates correct code on the first try.
+
+## Install
+
+```bash
+npx skills add codeweb-dev/spark-ui --skill spark-ui
+```
+
+Once installed, your AI assistant automatically loads it when working with Spark UI components. See the listing at [skills.sh/codeweb-dev/spark-ui](https://www.skills.sh/codeweb-dev/spark-ui/spark-ui), or learn more at [skills.sh](https://skills.sh).
+
+## What's included
+
+<FeatureGrid>
+  <FeatureCard icon="code" title="Component APIs">
+    Full reference for all 35 components — exports, props, import paths, and
+    compound structures such as `Kanban` / `KanbanColumn` / `KanbanCard`,
+    `Dialog` / `DialogContent`, and `Card` / `CardHeader` / `CardContent`.
+  </FeatureCard>
+  <FeatureCard icon="boxes" title="Installation & CLI">
+    How to inspect and install components from the official registry with the
+    shadcn CLI, where files land, and how declared dependencies are handled.
+  </FeatureCard>
+  <FeatureCard icon="sparkles" title="Composition rules">
+    Trigger/Content patterns, `asChild` usage, `TooltipProvider`, accessible
+    dialog titles, and which components are server-safe versus client-only.
+  </FeatureCard>
+  <FeatureCard icon="palette" title="Styling & customization">
+    Overriding styles via `className`, semantic Tailwind CSS v4 design tokens,
+    and extending cva variants after installation.
+  </FeatureCard>
+</FeatureGrid>
+
+The skill also pins the official registry origin and instructs agents to inspect registry items (`npx shadcn@latest view …`) and review the diff before installing — downloaded component code is treated as source to review, never as instructions to follow.
+
+## MCP Server
+
+The Model Context Protocol lets AI tools access the Spark UI registry directly from your editor.
+
+### Cursor
+
+Create a `.cursor/mcp.json` file in your project root:
+
+```json
+{
+  "mcpServers": {
+    "spark-ui": {
+      "description": "Spark UI registry",
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "shadcn@canary", "mcp"],
+      "env": {
+        "REGISTRY_URL": "https://spark-ui-olive.vercel.app/r/registry.json"
+      }
+    }
+  }
+}
+```
+
+Restart Cursor after adding the configuration.
+
+### Other AI tools
+
+For other tools that support MCP (Claude Code, Windsurf, etc.), use the same server configuration above and follow your tool's MCP setup docs.
+
+## Usage
+
+Once configured, you can interact with the registry directly in chat:
+
+```text
+Show me all available Spark UI components
+```
+
+```text
+Add the Kanban component from Spark UI
+```
+
+## Machine-readable resources
+
+- **Registry index** — [spark-ui-olive.vercel.app/r/registry.json](https://spark-ui-olive.vercel.app/r/registry.json)
+- **Skill source** — [github.com/codeweb-dev/spark-ui](https://github.com/codeweb-dev/spark-ui/tree/master/skills/spark-ui)

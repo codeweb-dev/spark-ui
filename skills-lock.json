@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "spark-ui": {
+      "source": "codeweb-dev/spark-ui",
+      "sourceType": "github",
+      "skillPath": "skills/spark-ui/SKILL.md",
+      "computedHash": "2c97debe23837ba431c8c956501eec4e826650eda868461b41ff51ab18d94324"
+    }
+  }
+}
