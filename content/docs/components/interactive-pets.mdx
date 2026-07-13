@@ -56,6 +56,61 @@ Override any pet's name, starting position, or messages. Pets you omit are left 
 />
 ```
 
+### Custom Position
+
+`initialPosition` sets a pet's starting position in pixels from the playground's top-left corner.
+
+```tsx
+<InteractivePets
+  pets={[
+    { id: "cat", initialPosition: { x: 24, y: 40 } },
+    { id: "dog", initialPosition: { x: 180, y: 120 } },
+  ]}
+/>
+```
+
+Food bowls sit along the bottom by default. Use the `data-food-controls` styling hook when you need a different position:
+
+```tsx
+<InteractivePets playgroundClassName="[&_[data-food-controls]]:top-6 [&_[data-food-controls]]:bottom-auto" />
+```
+
+### Show a Pet Across the Entire Site
+
+Mount `InteractivePets` inside `app/layout.tsx` with a fixed, transparent, full-viewport playground. The wrapper ignores pointer events while the pet and bowl remain interactive, so the page underneath still works.
+
+```tsx title="app/layout.tsx"
+import { InteractivePets } from "@/components/interactive-pets";
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <InteractivePets
+          pets={[
+            {
+              id: "cat",
+              name: "Mochi",
+              initialPosition: { x: 24, y: 80 },
+              idleMessage: ["Hello!", "Welcome back."],
+              fedMessage: "Thank you!",
+            },
+          ]}
+          showInstructions={false}
+          className="pointer-events-none fixed inset-0 z-40"
+          playgroundClassName="h-dvh rounded-none border-0 bg-transparent sm:h-dvh"
+        />
+      </body>
+    </html>
+  );
+}
+```
+
+Because it lives in the root layout, the pet stays visible and draggable across page navigation. Change `initialPosition` to choose where it starts.
+
 ### Event Callbacks
 
 `onPetMove` fires after a drag ends or a keyboard move, with the pet's position in pixels relative to the playground. `onPetFeed` fires when a food button is pressed.

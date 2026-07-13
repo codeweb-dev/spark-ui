@@ -302,6 +302,7 @@ function PetActor({
 
   return (
     <motion.div
+      data-pet-actor
       ref={(el) => {
         ref.current = el;
         registerRef(el);
@@ -495,7 +496,10 @@ export function InteractivePets({
             onMove={(position) => onPetMove?.(pet.id, position)}
           />
         ))}
-        <div className="absolute inset-x-4 bottom-3 flex justify-around">
+        <div
+          data-food-controls
+          className="absolute inset-x-4 bottom-3 flex justify-around"
+        >
           {resolvedPets.map((pet) => (
             <motion.button
               key={pet.id}

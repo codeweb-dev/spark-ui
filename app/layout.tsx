@@ -77,6 +77,7 @@ export default function RootLayout({
               {
                 id: "cat",
                 name: "Mochi",
+                initialPosition: { x: 0, y: 0 },
                 idleMessage: [
                   "Interactive Pets is now in beta!",
                   "New this version: pets roam the whole site.",
@@ -87,7 +88,7 @@ export default function RootLayout({
               },
             ]}
             showInstructions={false}
-            className="pointer-events-none fixed inset-0 z-40"
+            className="pointer-events-none fixed inset-0 z-40 **:data-food-controls:inset-x-auto **:data-food-controls:top-24 **:data-food-controls:bottom-auto **:data-food-controls:left-[calc(50%+1rem)] **:data-pet-actor:top-24 **:data-pet-actor:left-[calc(50%-5rem)] :left-[calc(50%-5rem)]"
             playgroundClassName="h-dvh rounded-none border-0 bg-transparent sm:h-dvh"
           />
           <Toaster />
