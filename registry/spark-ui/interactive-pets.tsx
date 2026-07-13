@@ -15,7 +15,7 @@ export type PetConfig = {
   id: PetType;
   name?: string;
   initialPosition?: { x: number; y: number };
-  idleMessage?: string;
+  idleMessage?: string | string[];
   fedMessage?: string;
 };
 
@@ -36,21 +36,21 @@ const PET_DEFAULTS: Record<
   cat: {
     name: "Mochi",
     initialPosition: { x: 24, y: 64 },
-    idleMessage: "do not perceive me.",
+    idleMessage: ["do not perceive me.", "busy napping.", "you may proceed."],
     fedMessage: "purr. accepted.",
     food: "fish",
   },
   dog: {
     name: "Biscuit",
     initialPosition: { x: 128, y: 152 },
-    idleMessage: "hi. HI. HELLO.",
+    idleMessage: ["hi. HI. HELLO.", "walk time?", "you are my favorite."],
     fedMessage: "A BONE?! FOR ME?!",
     food: "bone",
   },
   bird: {
     name: "Pip",
     initialPosition: { x: 216, y: 48 },
-    idleMessage: "observing.",
+    idleMessage: ["observing.", "a curious development.", "chirp."],
     fedMessage: "delightful",
     food: "seeds",
   },
@@ -63,7 +63,7 @@ const DEFAULT_PETS: PetConfig[] = [
 ];
 
 const DEFAULT_INSTRUCTIONS =
-  "The office. Drag them anywhere, tap to feed — fish for the cat, a bone for the dog, seeds for the bird.";
+  "Drag a pet anywhere, click it to chat, or tap its bowl to feed it.";
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), Math.max(min, max));
@@ -223,6 +223,11 @@ function PetActor({
   const y = useMotionValue(pet.initialPosition.y);
   const [dragging, setDragging] = React.useState(false);
   const [showIdleBubble, setShowIdleBubble] = React.useState(false);
+  const idleMessages = Array.isArray(pet.idleMessage)
+    ? pet.idleMessage
+    : [pet.idleMessage];
+  const [idleMessage, setIdleMessage] = React.useState(idleMessages[0]);
+  const idleTimer = React.useRef<ReturnType<typeof setTimeout>>(undefined);
   const [fx, setFx] = React.useState<{
     type: "settle" | "bounce";
     id: number;
@@ -253,7 +258,14 @@ function PetActor({
     return () => observer.disconnect();
   }, [playgroundRef, x, y]);
 
+  React.useEffect(() => () => clearTimeout(idleTimer.current), []);
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      showRandomMessage();
+      return;
+    }
     const step = event.shiftKey ? 24 : 8;
     const delta = {
       ArrowLeft: { dx: -step, dy: 0 },
@@ -273,6 +285,15 @@ function PetActor({
     onMove({ x: Math.round(x.get()), y: Math.round(y.get()) });
   };
 
+  const showRandomMessage = () => {
+    setIdleMessage(
+      idleMessages[Math.floor(Math.random() * idleMessages.length)] ?? "",
+    );
+    setShowIdleBubble(true);
+    clearTimeout(idleTimer.current);
+    idleTimer.current = setTimeout(() => setShowIdleBubble(false), 2400);
+  };
+
   return (
     <motion.div
       ref={(el) => {
@@ -290,15 +311,12 @@ function PetActor({
         if (!reduceMotion) setFx({ type: "settle", id: Date.now() });
         onMove({ x: Math.round(x.get()), y: Math.round(y.get()) });
       }}
-      onHoverStart={() => setShowIdleBubble(true)}
-      onHoverEnd={() => setShowIdleBubble(false)}
-      onFocus={() => setShowIdleBubble(true)}
-      onBlur={() => setShowIdleBubble(false)}
+      onClick={showRandomMessage}
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="button"
       aria-roledescription="draggable pet"
-      aria-label={`${pet.name} the ${pet.id}. Drag to move, or use arrow keys.`}
+      aria-label={`${pet.name} the ${pet.id}. Click to chat, drag to move, or use arrow keys.`}
       style={{ x, y, touchAction: "none" }}
       className={cn(
         "absolute left-0 top-0 select-none rounded-2xl outline-none",
@@ -321,7 +339,7 @@ function PetActor({
             transition={{ duration: reduceMotion ? 0 : 0.2 }}
             className="pointer-events-none absolute -top-8 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full border border-border bg-popover px-2.5 py-1 text-[11px] leading-none text-popover-foreground shadow-sm"
           >
-            {reactionVisible ? pet.fedMessage : pet.idleMessage}
+            {reactionVisible ? pet.fedMessage : idleMessage}
           </motion.div>
         )}
       </AnimatePresence>

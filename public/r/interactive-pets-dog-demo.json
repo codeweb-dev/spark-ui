@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/demos/interactive-pets-dog-demo.tsx",
-      "content": "\"use client\";\n\nimport { InteractivePets } from \"@/registry/spark-ui/interactive-pets\";\n\nexport default function InteractivePetsDogDemo() {\n  return (\n    <div className=\"w-full max-w-xl\">\n      <InteractivePets\n        pets={[{ id: \"dog\", name: \"Biscuit\" }]}\n        instructionText=\"Drag Biscuit anywhere or tap to feed.\"\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { InteractivePets } from \"@/registry/spark-ui/interactive-pets\";\n\nexport default function InteractivePetsDogDemo() {\n  return (\n    <div className=\"w-full max-w-xl\">\n      <InteractivePets\n        pets={[{ id: \"dog\", name: \"Biscuit\" }]}\n        instructionText=\"Click Biscuit to chat or tap the bowl to feed.\"\n      />\n    </div>\n  );\n}\n",
       "type": "registry:component"
     }
   ],

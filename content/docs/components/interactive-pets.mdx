@@ -4,7 +4,7 @@ description: A playful playground of draggable office pets — a cat, a dog, and
 category: Media
 ---
 
-The Interactive Pets component renders a small bounded playground with a cat, a dog, and a bird. Each pet can be dragged anywhere inside the playground (mouse, touch, or keyboard) and fed with its matching food — fish for the cat, a bone for the dog, seeds for the bird. Feeding flies the food to the pet, bounces it, and pops a short reaction bubble.
+The Interactive Pets component renders a small bounded playground with a cat, a dog, and a bird. Each pet can be dragged, clicked for a random message, and fed with its matching food.
 
 ## Usage
 
@@ -49,7 +49,7 @@ Override any pet's name, starting position, or messages. Pets you omit are left 
 ```tsx
 <InteractivePets
   pets={[
-    { id: "cat", name: "Nimbus", fedMessage: "an acceptable offering." },
+    { id: "cat", name: "Nimbus", idleMessage: ["hello.", "still watching."], fedMessage: "an acceptable offering." },
     { id: "dog", name: "Waffles", fedMessage: "BEST. DAY. EVER." },
     { id: "bird", name: "Pixel", fedMessage: "chirp of approval" },
   ]}
@@ -76,7 +76,7 @@ Override any pet's name, starting position, or messages. Pets you omit are left 
     name="pets"
     type="PetConfig[]"
     default="cat, dog, bird"
-    description="The pets to render. Each entry can override name, initialPosition, idleMessage, and fedMessage."
+    description="The pets to render. idleMessage accepts one string or an array of randomized click messages."
   />
   <Prop
     name="className"
@@ -118,7 +118,7 @@ Override any pet's name, starting position, or messages. Pets you omit are left 
 
 ## Accessibility
 
-- Each pet is focusable and exposes an accessible label (e.g. "Mochi the cat. Drag to move, or use arrow keys.").
+- Each pet is focusable and exposes an accessible label. Enter or Space shows a random message.
 - Focused pets move with the arrow keys (8px per press, 24px with <kbd>Shift</kbd>) and stay inside the playground.
 - Food controls are native buttons with descriptive `aria-label`s.
 - Feeding reactions are announced through a polite `aria-live` region.

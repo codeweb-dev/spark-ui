@@ -23,12 +23,15 @@ export const registry: Record<
   input: dynamic(() => import("@/registry/demos/input-demo")),
   "interactive-pets": dynamic(
     () => import("@/registry/demos/interactive-pets-demo"),
+    { ssr: false },
   ),
   "interactive-pets-dog": dynamic(
     () => import("@/registry/demos/interactive-pets-dog-demo"),
+    { ssr: false },
   ),
   "interactive-pets-bird": dynamic(
     () => import("@/registry/demos/interactive-pets-bird-demo"),
+    { ssr: false },
   ),
   kanban: dynamic(() => import("@/registry/demos/kanban-demo")),
   "qr-code": dynamic(() => import("@/registry/demos/qr-code-demo")),

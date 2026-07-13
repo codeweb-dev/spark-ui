@@ -7,7 +7,7 @@ export default function InteractivePetsBirdDemo() {
     <div className="w-full max-w-xl">
       <InteractivePets
         pets={[{ id: "bird", name: "Pip" }]}
-        instructionText="Drag Pip anywhere or tap to feed."
+        instructionText="Click Pip to chat or tap the bowl to feed."
       />
     </div>
   );
