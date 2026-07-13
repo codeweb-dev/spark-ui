@@ -21,6 +21,15 @@ export const registry: Record<
     () => import("@/registry/demos/basic-number-ticker-variants-demo"),
   ),
   input: dynamic(() => import("@/registry/demos/input-demo")),
+  "interactive-pets": dynamic(
+    () => import("@/registry/demos/interactive-pets-demo"),
+  ),
+  "interactive-pets-dog": dynamic(
+    () => import("@/registry/demos/interactive-pets-dog-demo"),
+  ),
+  "interactive-pets-bird": dynamic(
+    () => import("@/registry/demos/interactive-pets-bird-demo"),
+  ),
   kanban: dynamic(() => import("@/registry/demos/kanban-demo")),
   "qr-code": dynamic(() => import("@/registry/demos/qr-code-demo")),
   "qr-code-variants": dynamic(

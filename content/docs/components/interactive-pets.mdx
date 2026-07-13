@@ -1,0 +1,129 @@
+---
+title: Interactive Pets
+description: A playful playground of draggable office pets — a cat, a dog, and a bird — with feeding reactions and idle animations.
+category: Media
+---
+
+The Interactive Pets component renders a small bounded playground with a cat, a dog, and a bird. Each pet can be dragged anywhere inside the playground (mouse, touch, or keyboard) and fed with its matching food — fish for the cat, a bone for the dog, seeds for the bird. Feeding flies the food to the pet, bounces it, and pops a short reaction bubble.
+
+## Usage
+
+### Installation
+
+<InstallBlock command="interactive-pets" />
+
+### Basic Example
+
+```tsx
+import { InteractivePets } from "@/components/interactive-pets";
+
+export default function App() {
+  return <InteractivePets />;
+}
+```
+
+## Examples
+
+### Cat — Mochi
+
+Mochi the cat, with fish as the feeding action.
+
+<ComponentPreview name="interactive-pets" />
+
+### Dog — Biscuit
+
+Biscuit the dog, with a bone as the feeding action.
+
+<ComponentPreview name="interactive-pets-dog" />
+
+### Bird — Pip
+
+Pip the bird, with seeds as the feeding action.
+
+<ComponentPreview name="interactive-pets-bird" />
+
+### Custom Messages
+
+Override any pet's name, starting position, or messages. Pets you omit are left out entirely.
+
+```tsx
+<InteractivePets
+  pets={[
+    { id: "cat", name: "Nimbus", fedMessage: "an acceptable offering." },
+    { id: "dog", name: "Waffles", fedMessage: "BEST. DAY. EVER." },
+    { id: "bird", name: "Pixel", fedMessage: "chirp of approval" },
+  ]}
+/>
+```
+
+### Event Callbacks
+
+`onPetMove` fires after a drag ends or a keyboard move, with the pet's position in pixels relative to the playground. `onPetFeed` fires when a food button is pressed.
+
+```tsx
+<InteractivePets
+  onPetMove={(pet, position) =>
+    console.log(`${pet} moved to`, position)
+  }
+  onPetFeed={(pet) => console.log(`${pet} was fed`)}
+/>
+```
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="pets"
+    type="PetConfig[]"
+    default="cat, dog, bird"
+    description="The pets to render. Each entry can override name, initialPosition, idleMessage, and fedMessage."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional classes for the outer wrapper."
+  />
+  <Prop
+    name="playgroundClassName"
+    type="string"
+    default="—"
+    description="Additional classes for the playground area (e.g. a custom height)."
+  />
+  <Prop
+    name="showInstructions"
+    type="boolean"
+    default="true"
+    description="Whether to show the instruction line below the playground."
+  />
+  <Prop
+    name="instructionText"
+    type="string"
+    default="The office. Drag them anywhere…"
+    description="Custom instruction text."
+  />
+  <Prop
+    name="onPetMove"
+    type="(pet: PetType, position: { x: number; y: number }) => void"
+    default="—"
+    description="Called after a pet is dropped or moved with the keyboard."
+  />
+  <Prop
+    name="onPetFeed"
+    type="(pet: PetType) => void"
+    default="—"
+    description="Called when a pet's food button is pressed."
+  />
+</PropsTable>
+
+## Accessibility
+
+- Each pet is focusable and exposes an accessible label (e.g. "Mochi the cat. Drag to move, or use arrow keys.").
+- Focused pets move with the arrow keys (8px per press, 24px with <kbd>Shift</kbd>) and stay inside the playground.
+- Food controls are native buttons with descriptive `aria-label`s.
+- Feeding reactions are announced through a polite `aria-live` region.
+- A visible focus ring is shown on pets and food buttons.
+
+## Reduced Motion
+
+When `prefers-reduced-motion` is set, idle animations (tail sways, bobbing) are disabled, the food travel animation is skipped, and reaction bubbles appear and disappear without transitions — feeding still shows the reaction bubble and fires callbacks, so nothing is lost besides the motion.
