@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { SITE_CONFIG } from "@/lib/constants";
-import { CatSprite } from "@/registry/spark-ui/interactive-pets";
 import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
 import { ArrowRight, Github } from "lucide-react";
 import Link from "next/link";
@@ -11,9 +10,8 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-size-[56px_56px] opacity-25 mask-[radial-gradient(ellipse_55%_55%_at_50%_42%,black,transparent)]" />
       <Link
         href="/docs/components/interactive-pets"
-        className="group flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+        className="group text-muted-foreground transition-colors hover:text-foreground"
       >
-        <CatSprite idle className="size-16" />
         <span className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/70 px-3.5 py-1.5 text-xs font-medium shadow-sm backdrop-blur">
           Introducing Interactive Pets
           <ArrowRight

@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE_CONFIG } from "@/lib/constants";
+import { InteractivePets } from "@/registry/spark-ui/interactive-pets";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -71,6 +72,24 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <InteractivePets
+            pets={[
+              {
+                id: "cat",
+                name: "Mochi",
+                idleMessage: [
+                  "Interactive Pets is now in beta!",
+                  "New this version: pets roam the whole site.",
+                  "Drag me around and try my food bowl.",
+                  "Click me anytime for release updates.",
+                ],
+                fedMessage: "Thanks for testing the beta!",
+              },
+            ]}
+            showInstructions={false}
+            className="pointer-events-none fixed inset-0 z-40"
+            playgroundClassName="h-dvh rounded-none border-0 bg-transparent sm:h-dvh"
+          />
           <Toaster />
           <Analytics />
         </ThemeProvider>
