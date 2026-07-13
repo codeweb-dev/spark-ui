@@ -22,9 +22,12 @@ export default function QRCodeVariants() {
     <div className="flex flex-col gap-4 p-4 sm:p-6">
       <div className="grid grid-cols-2 gap-3 sm:gap-6 sm:grid-cols-3 lg:grid-cols-4">
         {gradientPresets.map((preset) => (
-          <div key={preset.label} className="flex flex-col items-center gap-2 sm:gap-3">
+          <div
+            key={preset.label}
+            className="flex flex-col items-center gap-2 sm:gap-3"
+          >
             <QRCode
-              value="https://example.com"
+              value="https://spark-ui-olive.vercel.app"
               size={100}
               className="w-full max-w-[100px] sm:max-w-[140px] lg:max-w-[160px]"
               gradient={preset.gradient}

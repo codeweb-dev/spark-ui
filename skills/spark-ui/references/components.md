@@ -28,7 +28,7 @@ import { Button, buttonVariants, type ButtonProps } from "@/components/button";
 
 ```tsx
 import { Badge, badgeVariants } from "@/components/badge";
-<Badge variant="secondary">Beta</Badge>
+<Badge variant="secondary">Beta</Badge>;
 ```
 
 - `variant`: `default` | `secondary` | `destructive` | `outline`.
@@ -68,7 +68,7 @@ import { Separator } from "@/components/separator";
 
 ```tsx
 import { Skeleton } from "@/components/skeleton";
-<Skeleton className="h-4 w-48" />
+<Skeleton className="h-4 w-48" />;
 ```
 
 Size it entirely with `className`.
@@ -81,7 +81,7 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/alert";
 <Alert variant="destructive">
   <AlertTitle>Heads up</AlertTitle>
   <AlertDescription>Something needs attention.</AlertDescription>
-</Alert>
+</Alert>;
 ```
 
 - `variant`: `default` | `destructive`.
@@ -89,16 +89,27 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/alert";
 ### empty — server-safe
 
 ```tsx
-import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent } from "@/components/empty";
+import {
+  Empty,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+  EmptyDescription,
+  EmptyContent,
+} from "@/components/empty";
 
 <Empty>
   <EmptyHeader>
-    <EmptyMedia variant="icon"><InboxIcon /></EmptyMedia>
+    <EmptyMedia variant="icon">
+      <InboxIcon />
+    </EmptyMedia>
     <EmptyTitle>No results</EmptyTitle>
     <EmptyDescription>Try a different search.</EmptyDescription>
   </EmptyHeader>
-  <EmptyContent><Button>Clear filters</Button></EmptyContent>
-</Empty>
+  <EmptyContent>
+    <Button>Clear filters</Button>
+  </EmptyContent>
+</Empty>;
 ```
 
 ## Layout
@@ -106,7 +117,14 @@ import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyCont
 ### card — server-safe
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/card";
 ```
 
 Hierarchy: `Card` > `CardHeader` (`CardTitle`, `CardDescription`) / `CardContent` / `CardFooter`. All are styled `div`s — safe to omit or reorder sections.
@@ -114,17 +132,32 @@ Hierarchy: `Card` > `CardHeader` (`CardTitle`, `CardDescription`) / `CardContent
 ### table — server-safe
 
 ```tsx
-import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from "@/components/table";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableCaption,
+} from "@/components/table";
 
 <Table>
   <TableCaption>A list of recent invoices.</TableCaption>
   <TableHeader>
-    <TableRow><TableHead>Invoice</TableHead><TableHead className="text-right">Amount</TableHead></TableRow>
+    <TableRow>
+      <TableHead>Invoice</TableHead>
+      <TableHead className="text-right">Amount</TableHead>
+    </TableRow>
   </TableHeader>
   <TableBody>
-    <TableRow><TableCell>INV001</TableCell><TableCell className="text-right">$250.00</TableCell></TableRow>
+    <TableRow>
+      <TableCell>INV001</TableCell>
+      <TableCell className="text-right">$250.00</TableCell>
+    </TableRow>
   </TableBody>
-</Table>
+</Table>;
 ```
 
 The root renders its own `overflow-auto` wrapper and is `w-full` — give the parent real width.
@@ -133,8 +166,16 @@ The root renders its own `overflow-auto` wrapper and is `w-full` — give the pa
 
 ```tsx
 import {
-  Kanban, KanbanColumn, KanbanColumnHeader, KanbanColumnTitle, KanbanColumnCount,
-  KanbanColumnContent, KanbanCard, KanbanCardTitle, KanbanCardDescription, KanbanCardFooter,
+  Kanban,
+  KanbanColumn,
+  KanbanColumnHeader,
+  KanbanColumnTitle,
+  KanbanColumnCount,
+  KanbanColumnContent,
+  KanbanCard,
+  KanbanCardTitle,
+  KanbanCardDescription,
+  KanbanCardFooter,
 } from "@/components/kanban";
 
 <Kanban className="min-w-200">
@@ -148,8 +189,11 @@ import {
     </KanbanColumnHeader>
     <KanbanColumnContent>
       {doneTasks.map((t) => (
-        <KanbanCard key={t.id} draggable
-          onDragStart={(e) => e.dataTransfer.setData("text/plain", t.id)}>
+        <KanbanCard
+          key={t.id}
+          draggable
+          onDragStart={(e) => e.dataTransfer.setData("text/plain", t.id)}
+        >
           <KanbanCardTitle>{t.title}</KanbanCardTitle>
           <KanbanCardDescription>{t.description}</KanbanCardDescription>
           <KanbanCardFooter>…</KanbanCardFooter>
@@ -157,7 +201,7 @@ import {
       ))}
     </KanbanColumnContent>
   </KanbanColumn>
-</Kanban>
+</Kanban>;
 ```
 
 - Pure structural primitives: you own the task array, filtering, and HTML drag-and-drop handlers.
@@ -171,19 +215,32 @@ Shared rules: Trigger/Content pairs inside the root; use `asChild` on triggers t
 ### dialog
 
 ```tsx
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/dialog";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from "@/components/dialog";
 
 <Dialog>
-  <DialogTrigger asChild><Button>Edit profile</Button></DialogTrigger>
+  <DialogTrigger asChild>
+    <Button>Edit profile</Button>
+  </DialogTrigger>
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Edit profile</DialogTitle>
       <DialogDescription>Make changes and save.</DialogDescription>
     </DialogHeader>
     {/* body */}
-    <DialogFooter><Button type="submit">Save</Button></DialogFooter>
+    <DialogFooter>
+      <Button type="submit">Save</Button>
+    </DialogFooter>
   </DialogContent>
-</Dialog>
+</Dialog>;
 ```
 
 Also exports `DialogOverlay`, `DialogPortal` for advanced use. `DialogContent` accepts `showCloseButton={false}` to hide the built-in ✕. Controlled: `open` + `onOpenChange` on `Dialog`.
@@ -195,17 +252,28 @@ Same shape as dialog with `AlertDialogAction` / `AlertDialogCancel` in the foote
 ### sheet
 
 ```tsx
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetClose } from "@/components/sheet";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetFooter,
+  SheetClose,
+} from "@/components/sheet";
 
 <Sheet>
-  <SheetTrigger asChild><Button variant="outline">Open</Button></SheetTrigger>
+  <SheetTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </SheetTrigger>
   <SheetContent side="right">
     <SheetHeader>
       <SheetTitle>Edit profile</SheetTitle>
       <SheetDescription>Make changes to your profile here.</SheetDescription>
     </SheetHeader>
   </SheetContent>
-</Sheet>
+</Sheet>;
 ```
 
 `SheetContent side`: `top` | `right` | `bottom` | `left` (cva variant).
@@ -214,36 +282,62 @@ import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescri
 
 ```tsx
 import {
-  DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem,
-  DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut,
-  DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem,
-  DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
 } from "@/components/dropdown-menu";
 
 <DropdownMenu>
-  <DropdownMenuTrigger asChild><Button variant="outline">Actions</Button></DropdownMenuTrigger>
+  <DropdownMenuTrigger asChild>
+    <Button variant="outline">Actions</Button>
+  </DropdownMenuTrigger>
   <DropdownMenuContent align="end">
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
     <DropdownMenuSeparator />
     <DropdownMenuItem onSelect={handleEdit}>Edit</DropdownMenuItem>
-    <DropdownMenuCheckboxItem checked={muted} onCheckedChange={setMuted}>Muted</DropdownMenuCheckboxItem>
+    <DropdownMenuCheckboxItem checked={muted} onCheckedChange={setMuted}>
+      Muted
+    </DropdownMenuCheckboxItem>
   </DropdownMenuContent>
-</DropdownMenu>
+</DropdownMenu>;
 ```
 
 ### popover / hover-card / tooltip
 
 ```tsx
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/popover";
-import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/hover-card";
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/tooltip";
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from "@/components/hover-card";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/tooltip";
 
 <TooltipProvider>
   <Tooltip>
-    <TooltipTrigger asChild><Button size="icon" aria-label="Add"><Plus /></Button></TooltipTrigger>
+    <TooltipTrigger asChild>
+      <Button size="icon" aria-label="Add">
+        <Plus />
+      </Button>
+    </TooltipTrigger>
     <TooltipContent>Add item</TooltipContent>
   </Tooltip>
-</TooltipProvider>
+</TooltipProvider>;
 ```
 
 - Tooltip requires `TooltipProvider` (place once near the app root).
@@ -255,15 +349,27 @@ import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/comp
 ### breadcrumb — server-safe
 
 ```tsx
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbEllipsis } from "@/components/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from "@/components/breadcrumb";
 
 <Breadcrumb>
   <BreadcrumbList>
-    <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
     <BreadcrumbSeparator />
-    <BreadcrumbItem><BreadcrumbPage>Current</BreadcrumbPage></BreadcrumbItem>
+    <BreadcrumbItem>
+      <BreadcrumbPage>Current</BreadcrumbPage>
+    </BreadcrumbItem>
   </BreadcrumbList>
-</Breadcrumb>
+</Breadcrumb>;
 ```
 
 `BreadcrumbLink` supports `asChild` for framework `Link` components. `BreadcrumbPage` marks the current page (aria-current).
@@ -271,14 +377,19 @@ import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbP
 ### accordion — client
 
 ```tsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/accordion";
 
 <Accordion type="single" collapsible>
   <AccordionItem value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionContent>Yes — Radix accordion underneath.</AccordionContent>
   </AccordionItem>
-</Accordion>
+</Accordion>;
 ```
 
 `type="single" | "multiple"`; each `AccordionItem` needs a unique `value`.
@@ -289,8 +400,14 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 import { Pagination, usePaginationState } from "@/components/pagination";
 
 const { currentPage, setCurrentPage } = usePaginationState(1);
-<Pagination totalPages={12} currentPage={currentPage} onPageChange={setCurrentPage}
-  variant="outline" color="violet" showEdges />
+<Pagination
+  totalPages={12}
+  currentPage={currentPage}
+  onPageChange={setCurrentPage}
+  variant="outline"
+  color="violet"
+  showEdges
+/>;
 ```
 
 - Required: `totalPages`, `currentPage` (1-indexed), `onPageChange`.
@@ -303,7 +420,7 @@ const { currentPage, setCurrentPage } = usePaginationState(1);
 
 ```tsx
 import { ShimmerText } from "@/components/shimmer-text";
-<ShimmerText duration={2}>Shipping soon</ShimmerText>
+<ShimmerText duration={2}>Shipping soon</ShimmerText>;
 ```
 
 Props: `shimmerColor`, `shimmerColor2`, `direction`, `duration`, plus more in the source.
@@ -312,7 +429,7 @@ Props: `shimmerColor`, `shimmerColor2`, `direction`, `duration`, plus more in th
 
 ```tsx
 import { TactileHighlight } from "@/components/tactile-highlight";
-<TactileHighlight trigger="inView">important phrase</TactileHighlight>
+<TactileHighlight trigger="inView">important phrase</TactileHighlight>;
 ```
 
 Props: `direction`, `delay`, `trigger` (`auto` | `hover` | `inView`). Uses `mix-blend-difference`, so contrast holds in both themes.
@@ -320,8 +437,10 @@ Props: `direction`, `delay`, `trigger` (`auto` | `hover` | `inView`). Uses `mix-
 ### basic-number-ticker
 
 ```tsx
-import NumberTicker, { type NumberTickerRef } from "@/components/basic-number-ticker";
-<NumberTicker from={0} target={1024} />
+import NumberTicker, {
+  type NumberTickerRef,
+} from "@/components/basic-number-ticker";
+<NumberTicker from={0} target={1024} />;
 ```
 
 - **Default export.** Props: `from`, `target` (required), `transition`, `autoStart`, `onStart`, `onComplete`.
@@ -332,15 +451,21 @@ import NumberTicker, { type NumberTickerRef } from "@/components/basic-number-ti
 ### image-trail — server-safe file
 
 ```tsx
-import { ImageTrail, ImageTrailItem, ImageTrailItemCaption } from "@/components/image-trail";
+import {
+  ImageTrail,
+  ImageTrailItem,
+  ImageTrailItemCaption,
+} from "@/components/image-trail";
 
 <ImageTrail className="h-96">
-  <ImageTrailItem><img src="/a.jpg" alt="" /></ImageTrailItem>
+  <ImageTrailItem>
+    <img src="/a.jpg" alt="" />
+  </ImageTrailItem>
   <ImageTrailItem>
     <img src="/b.jpg" alt="" />
     <ImageTrailItemCaption>Caption</ImageTrailItemCaption>
   </ImageTrailItem>
-</ImageTrail>
+</ImageTrail>;
 ```
 
 Framed images follow the pointer with momentum; ships demo assets. Needs a sized container.
@@ -349,7 +474,12 @@ Framed images follow the pointer with momentum; ships demo assets. Needs a sized
 
 ```tsx
 import { AnimatedGradient } from "@/components/animated-gradient";
-<AnimatedGradient variant="vortex" speed={1} opacity={0.8} className="absolute inset-0" />
+<AnimatedGradient
+  variant="vortex"
+  speed={1}
+  opacity={0.8}
+  className="absolute inset-0"
+/>;
 ```
 
 `variant`: `mist` | `lava` | `vortex`. WebGL shader background; accepts `children` to render content on top.
@@ -358,7 +488,7 @@ import { AnimatedGradient } from "@/components/animated-gradient";
 
 ```tsx
 import { GhostEther, type GhostEtherProps } from "@/components/ghost-ether";
-<GhostEther className="absolute inset-0" />
+<GhostEther className="absolute inset-0" />;
 ```
 
 Three.js fluid background (installs `three` + `@types/three`). Tunables include `mouseForce`, `cursorSize`, `isViscous`, `viscous` — see `GhostEtherProps` in the installed source. Heavy: render once per page, client only.
@@ -367,7 +497,9 @@ Three.js fluid background (installs `three` + `@types/three`). Tunables include 
 
 ```tsx
 import { LogoCarousel } from "@/components/logo-carousel";
-<LogoCarousel duration={30} pauseOnHover fade>{logos}</LogoCarousel>
+<LogoCarousel duration={30} pauseOnHover fade>
+  {logos}
+</LogoCarousel>;
 ```
 
 Props: `duration`, `pauseOnHover`, `direction` (`left`|`right`|`up`|`down`), `reverse`, `fade`, `fadeAmount`, `repeat`, `gap`. `logo-carousel` installs demo logo assets. `logo-carousel-right` exports `LogoCarouselDemoRight`, a preconfigured right-scrolling variant.
@@ -376,7 +508,11 @@ Props: `duration`, `pauseOnHover`, `direction` (`left`|`right`|`up`|`down`), `re
 
 ```tsx
 import { QRCode } from "@/components/qr-code";
-<QRCode value="https://example.com" size={160} gradient="sunset" />
+<QRCode
+  value="https://spark-ui-olive.vercel.app"
+  size={160}
+  gradient="sunset"
+/>;
 ```
 
 Props: `value` (required), `size`, `fgColor`, `bgColor`, `errorCorrectionLevel` (`L`|`M`|`Q`|`H`), `gradient` presets. Renders an SVG.
@@ -385,7 +521,7 @@ Props: `value` (required), `size`, `fgColor`, `bgColor`, `errorCorrectionLevel` 
 
 ```tsx
 import { SpotifyCard } from "@/components/spotify-card";
-<SpotifyCard trackUrl="https://open.spotify.com/track/..." />
+<SpotifyCard trackUrl="https://open.spotify.com/track/..." />;
 ```
 
 - Props: `trackUrl` (required), `className`.
