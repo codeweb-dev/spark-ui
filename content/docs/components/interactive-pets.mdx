@@ -6,6 +6,8 @@ category: Media
 
 The Interactive Pets component renders a small bounded playground with a cat, a dog, and a bird. Each pet can be dragged, clicked for a random message, and fed with its matching food.
 
+> **Beta:** Interactive Pets is still in beta. More pets and richer idle animations—such as moving tails, blinking eyes, and other small reactions—are coming soon.
+
 ## Usage
 
 ### Installation
@@ -49,7 +51,12 @@ Override any pet's name, starting position, or messages. Pets you omit are left 
 ```tsx
 <InteractivePets
   pets={[
-    { id: "cat", name: "Nimbus", idleMessage: ["hello.", "still watching."], fedMessage: "an acceptable offering." },
+    {
+      id: "cat",
+      name: "Nimbus",
+      idleMessage: ["hello.", "still watching."],
+      fedMessage: "an acceptable offering.",
+    },
     { id: "dog", name: "Waffles", fedMessage: "BEST. DAY. EVER." },
     { id: "bird", name: "Pixel", fedMessage: "chirp of approval" },
   ]}
@@ -117,9 +124,7 @@ Because it lives in the root layout, the pet stays visible and draggable across 
 
 ```tsx
 <InteractivePets
-  onPetMove={(pet, position) =>
-    console.log(`${pet} moved to`, position)
-  }
+  onPetMove={(pet, position) => console.log(`${pet} moved to`, position)}
   onPetFeed={(pet) => console.log(`${pet} was fed`)}
 />
 ```
