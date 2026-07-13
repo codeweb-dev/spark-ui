@@ -72,7 +72,7 @@ const clamp = (value: number, min: number, max: number) =>
 
 type SpriteProps = { idle: boolean; className?: string };
 
-function CatSprite({ idle, className }: SpriteProps) {
+export function CatSprite({ idle, className }: SpriteProps) {
   return (
     <motion.svg
       viewBox="0 0 736 736"

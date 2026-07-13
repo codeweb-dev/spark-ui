@@ -2,7 +2,7 @@
 
 import { DocMetadata } from "@/lib/docs";
 import { getCategoryMeta } from "@/lib/categories";
-import { NEW_DOC_SLUGS } from "@/lib/constants";
+import { BETA_DOC_SLUGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Sparkles, X } from "lucide-react";
@@ -139,11 +139,16 @@ export function MobileNav({ items }: MobileNavProps) {
                               )}
                             >
                               {doc.title}
-                              {NEW_DOC_SLUGS.has(doc.slug) && (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
-                                  <Sparkles className="size-2.5" aria-hidden />
-                                  New
-                                </span>
+                              {BETA_DOC_SLUGS.has(doc.slug) && (
+                                <>
+                                  <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
+                                    <Sparkles className="size-2.5" aria-hidden />
+                                    New
+                                  </span>
+                                  <span className="rounded-full border border-border px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide">
+                                    Beta
+                                  </span>
+                                </>
                               )}
                             </Link>
                           ))}

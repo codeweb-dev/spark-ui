@@ -2,11 +2,12 @@
 
 import { DocMetadata } from "@/lib/docs";
 import { getCategoryMeta } from "@/lib/categories";
-import { NEW_DOC_SLUGS } from "@/lib/constants";
+import { BETA_DOC_SLUGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 interface SidebarProps {
   items: DocMetadata[];
@@ -14,6 +15,11 @@ interface SidebarProps {
 
 export function Sidebar({ items }: SidebarProps) {
   const pathname = usePathname();
+  const activeItemRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    activeItemRef.current?.scrollIntoView({ block: "center" });
+  }, [pathname]);
 
   const categories = items.reduce(
     (acc, item) => {
@@ -44,6 +50,11 @@ export function Sidebar({ items }: SidebarProps) {
                   <Link
                     key={doc.slug}
                     href={`/docs/${doc.slug}`}
+                    ref={
+                      pathname === `/docs/${doc.slug}`
+                        ? activeItemRef
+                        : undefined
+                    }
                     className={cn(
                       "w-fit ml-3 rounded-lg px-3 py-1.5 text-sm transition-colors",
                       pathname === `/docs/${doc.slug}`
@@ -53,11 +64,16 @@ export function Sidebar({ items }: SidebarProps) {
                   >
                     <span className="flex items-center gap-2">
                       {doc.title}
-                      {NEW_DOC_SLUGS.has(doc.slug) && (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
-                          <Sparkles className="size-2.5" aria-hidden />
-                          New
-                        </span>
+                      {BETA_DOC_SLUGS.has(doc.slug) && (
+                        <>
+                          <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
+                            <Sparkles className="size-2.5" aria-hidden />
+                            New
+                          </span>
+                          <span className="rounded-full border border-border px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide">
+                            Beta
+                          </span>
+                        </>
                       )}
                     </span>
                   </Link>

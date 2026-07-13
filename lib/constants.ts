@@ -25,13 +25,6 @@ export const SITE_CONFIG = {
   defaultOgImage: "/opengraph-image",
 };
 
-export const NEW_DOC_SLUGS = new Set([
-  "components/qr-code",
-  "components/shimmer-text",
-  "components/tactile-highlight",
-  "components/kanban",
-  "components/image-trail",
-  "components/logo-carousel",
-  "components/spotify-card",
-  "components/ghost-ether",
+export const BETA_DOC_SLUGS = new Set([
+  "components/interactive-pets",
 ]);

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { SITE_CONFIG } from "@/lib/constants";
+import { CatSprite } from "@/registry/spark-ui/interactive-pets";
 import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
 import { ArrowRight, Github } from "lucide-react";
 import Link from "next/link";
@@ -9,15 +10,18 @@ export function Hero() {
     <section className="relative flex min-h-[70vh] flex-col items-center justify-center gap-7 py-20 text-center md:min-h-[76vh] md:py-30">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-size-[56px_56px] opacity-25 mask-[radial-gradient(ellipse_55%_55%_at_50%_42%,black,transparent)]" />
       <Link
-        href="/docs/introduction"
-        className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/70 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur hover:border-foreground/20 hover:text-foreground transition-colors"
+        href="/docs/components/interactive-pets"
+        className="group flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
       >
-        Introducing {SITE_CONFIG.name}
-        <ArrowRight
-          size={12}
-          className="transition-transform group-hover:translate-x-0.5"
-          aria-hidden
-        />
+        <CatSprite idle className="size-16" />
+        <span className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/70 px-3.5 py-1.5 text-xs font-medium shadow-sm backdrop-blur">
+          Introducing Interactive Pets
+          <ArrowRight
+            size={12}
+            className="transition-transform group-hover:translate-x-0.5"
+            aria-hidden
+          />
+        </span>
       </Link>
 
       <h1 className="max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.055em] text-foreground text-balance sm:text-6xl md:text-7xl lg:text-8xl">
