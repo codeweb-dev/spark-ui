@@ -163,71 +163,10 @@ const SPRITES: Record<PetType, React.ComponentType<SpriteProps>> = {
   bird: BirdSprite,
 };
 
-type FoodIconProps = { className?: string };
-
-function FishIcon({ className }: FoodIconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-      <path
-        d="M3 12 C6 6.5 12.5 5.5 17 9 L21 6 L19.8 12 L21 18 L17 15 C12.5 18.5 6 17.5 3 12 Z"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        className="fill-current stroke-current"
-      />
-      <circle cx="8" cy="10.5" r="1.2" className="fill-card" />
-    </svg>
-  );
-}
-
-function BoneIcon({ className }: FoodIconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-      <path
-        d="M8.5 10 L14 4.5 A2.4 2.4 0 1 1 17.5 8 A2.4 2.4 0 1 1 19.5 10 L14 15.5 A2.4 2.4 0 1 1 10.5 19 A2.4 2.4 0 1 1 5 14 Z"
-        transform="rotate(45 12 12)"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        className="fill-current stroke-current"
-      />
-    </svg>
-  );
-}
-
-function SeedsIcon({ className }: FoodIconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-      <ellipse
-        cx="7"
-        cy="9"
-        rx="2.4"
-        ry="3.2"
-        transform="rotate(-20 7 9)"
-        className="fill-current"
-      />
-      <ellipse
-        cx="15.5"
-        cy="7.5"
-        rx="2.4"
-        ry="3.2"
-        transform="rotate(15 15.5 7.5)"
-        className="fill-current"
-      />
-      <ellipse
-        cx="11.5"
-        cy="16.5"
-        rx="2.4"
-        ry="3.2"
-        transform="rotate(-5 11.5 16.5)"
-        className="fill-current"
-      />
-    </svg>
-  );
-}
-
-const FOOD_ICONS: Record<PetType, React.ComponentType<FoodIconProps>> = {
-  cat: FishIcon,
-  dog: BoneIcon,
-  bird: SeedsIcon,
+const FOOD_EMOJIS: Record<PetType, string> = {
+  cat: "🐟",
+  dog: "🦴",
+  bird: "🌾",
 };
 
 /* -------------------------------- Effects ------------------------------- */
@@ -406,7 +345,9 @@ function PetActor({
           )}
         />
       </motion.div>
-      {feedCount > 0 && !reduceMotion && <Crumbs key={feedCount} />}
+      {feedCount > 0 && !reduceMotion && (
+        <Crumbs key={`crumbs-${feedCount}`} />
+      )}
     </motion.div>
   );
 }
@@ -530,26 +471,33 @@ export function InteractivePets({
             onMove={(position) => onPetMove?.(pet.id, position)}
           />
         ))}
-      </div>
-
-      <div className="mt-4 flex justify-center gap-2">
-        {resolvedPets.map((pet) => {
-          const FoodIcon = FOOD_ICONS[pet.id];
-          return (
-            <button
+        <div className="absolute inset-x-4 bottom-3 flex justify-around">
+          {resolvedPets.map((pet) => (
+            <motion.button
               key={pet.id}
               type="button"
               ref={(el) => {
                 buttonRefs.current[pet.id] = el;
               }}
-              onClick={() => feed(pet)}
-              aria-label={`Feed ${pet.name} the ${pet.id} some ${pet.food}`}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card text-foreground shadow-xs transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              drag
+              dragConstraints={playgroundRef}
+              dragElastic={0}
+              dragMomentum={false}
+              whileDrag={{ scale: 1.1 }}
+              onTap={() => feed(pet)}
+              aria-label={`${pet.name}'s bowl. Drag to move or activate to feed ${pet.name} some ${pet.food}`}
+              className="cursor-grab rounded-lg p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:cursor-grabbing"
+              style={{ touchAction: "none" }}
             >
-              <FoodIcon className="h-4.5 w-4.5" />
-            </button>
-          );
-        })}
+              <img
+                src="/bowl.svg"
+                alt=""
+                className="h-10 w-14 dark:invert"
+                draggable={false}
+              />
+            </motion.button>
+          ))}
+        </div>
       </div>
 
       {showInstructions && (
@@ -561,7 +509,6 @@ export function InteractivePets({
       {resolvedPets.map((pet) => {
         const flight = flights[pet.id];
         if (!flight) return null;
-        const FoodIcon = FOOD_ICONS[pet.id];
         return (
           <motion.div
             key={flight.id}
@@ -572,9 +519,9 @@ export function InteractivePets({
               setFlights((prev) => ({ ...prev, [pet.id]: undefined }));
               land(pet);
             }}
-            className="pointer-events-none absolute left-0 top-0 z-20 text-foreground"
+            className="pointer-events-none absolute left-0 top-0 z-20 text-xl leading-none"
           >
-            <FoodIcon className="h-5 w-5" />
+            <span aria-hidden>{FOOD_EMOJIS[pet.id]}</span>
           </motion.div>
         );
       })}

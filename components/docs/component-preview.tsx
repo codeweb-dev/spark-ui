@@ -105,7 +105,7 @@ export function ComponentPreview({ name, usageCode }: ComponentPreviewProps) {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="mt-1 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 overflow-hidden shadow-xl shadow-zinc-200/10 dark:shadow-none relative"
       >
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="wait">
           {tab === "preview" ? (
             <motion.div
               key={`preview-${key}`}
