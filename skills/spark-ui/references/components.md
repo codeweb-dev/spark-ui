@@ -448,6 +448,46 @@ import NumberTicker, {
 
 ## Media & backgrounds
 
+### interactive-pets
+
+```tsx
+import { InteractivePets } from "@/components/interactive-pets";
+
+<InteractivePets
+  pets={[
+    {
+      id: "cat",
+      name: "Mochi",
+      initialPosition: { x: 24, y: 64 },
+      idleMessage: ["Hello!", "Feed me?"],
+      fedMessage: "Thank you!",
+    },
+  ]}
+  onPetMove={(pet, position) => console.log(pet, position)}
+  onPetFeed={(pet) => console.log(`${pet} was fed`)}
+/>
+```
+
+- `pets`: `PetConfig[]`; IDs are `cat` | `dog` | `bird`. Omitted pets are not rendered.
+- Each config accepts `name`, pixel-based `initialPosition: { x, y }`, `idleMessage: string | string[]`, and `fedMessage`. Clicking a pet selects a random message when an array is supplied.
+- Other props: `className`, `playgroundClassName`, `showInstructions`, `instructionText`, `onPetMove`, `onPetFeed`.
+- Pets support pointer dragging and arrow-key movement; Enter/Space shows a message. Food bowls can also be dragged and activated to feed their matching pet.
+- The component respects reduced motion. Feeding still updates messages and callbacks when travel/bounce animations are skipped.
+
+Site-wide pet in Next.js App Router:
+
+```tsx
+// app/layout.tsx
+<InteractivePets
+  pets={[{ id: "cat", initialPosition: { x: 24, y: 80 } }]}
+  showInstructions={false}
+  className="pointer-events-none fixed inset-0 z-40"
+  playgroundClassName="h-dvh rounded-none border-0 bg-transparent sm:h-dvh"
+/>
+```
+
+Mount it once in the root layout so it persists across navigation. The transparent full-viewport wrapper provides drag constraints without intercepting page input; the component's pet and bowl elements use `pointer-events-auto`. Food controls sit along the playground bottom by default and expose `data-food-controls` for scoped position overrides.
+
 ### image-trail — server-safe file
 
 ```tsx

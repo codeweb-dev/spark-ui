@@ -1,11 +1,11 @@
 ---
 name: spark-ui
-description: Install and compose Spark UI React components. Use when the user asks for Spark UI, when a project imports from @/components using Spark UI component names (Kanban, ShimmerText, GhostEther, ImageTrail, SpotifyCard, TactileHighlight, AnimatedGradient), when installing from a spark-ui shadcn registry URL (/r/<name>.json), or when building interfaces with this repository's components.
+description: Install and compose Spark UI React components. Use when the user asks for Spark UI, when a project imports from @/components using Spark UI component names (InteractivePets, Kanban, ShimmerText, GhostEther, ImageTrail, SpotifyCard, TactileHighlight, AnimatedGradient), when installing from a spark-ui shadcn registry URL (/r/<name>.json), or when building interfaces with this repository's components.
 ---
 
 # Spark UI
 
-Spark UI is an open-source, shadcn-compatible **source registry** of 35 React components: shadcn-style primitives (button, dialog, table, form controls) plus animated/branded components (kanban, shimmer-text, image-trail, ghost-ether, spotify-card). Components are distributed as source code copied into the consumer's project by the shadcn CLI — there is no `spark-ui` npm package to install or import from.
+Spark UI is an open-source, shadcn-compatible **source registry** of 36 React components: shadcn-style primitives (button, dialog, table, form controls) plus animated/branded components (interactive-pets, kanban, shimmer-text, image-trail, ghost-ether, spotify-card). Components are distributed as source code copied into the consumer's project by the shadcn CLI — there is no `spark-ui` npm package to install or import from.
 
 Stack: React 19, Next.js (App Router), TypeScript, Tailwind CSS v4 with shadcn design tokens, Radix UI primitives, `class-variance-authority`, `framer-motion` for animated components.
 
@@ -14,7 +14,7 @@ Stack: React 19, Next.js (App Router), TypeScript, Tailwind CSS v4 with shadcn d
 - The user asks to use Spark UI or one of its components.
 - Code imports Spark UI component names from `@/components/...`.
 - The user wants to install a component from a `/r/<name>.json` registry URL served by a Spark UI site.
-- The user wants to reproduce a design using Kanban boards, shimmer text, image trails, QR codes, Spotify cards, or animated gradient/ether backgrounds together with shadcn-style primitives.
+- The user wants to reproduce a design using interactive pets, Kanban boards, shimmer text, image trails, QR codes, Spotify cards, or animated gradient/ether backgrounds together with shadcn-style primitives.
 
 ## Requirements
 
@@ -105,6 +105,7 @@ import NumberTicker from "@/components/basic-number-ticker"; // default export
 | `hover-card`          | `HoverCard`, `HoverCardTrigger`, `HoverCardContent`                                                   |  yes   | Preview on hover                                                                                                                    |
 | `image-trail`         | `ImageTrail`, `ImageTrailItem`, `ImageTrailItemCaption`                                               |  no\*  | Mouse-tracking image trail                                                                                                          |
 | `input`               | `Input`                                                                                               |   no   | Text input                                                                                                                          |
+| `interactive-pets`    | `InteractivePets`, `PetType`, `PetConfig`, `InteractivePetsProps`                                    |  yes   | Draggable cat, dog, and bird with click messages, food controls, and feeding reactions                                             |
 | `kanban`              | `Kanban`, `KanbanColumn` (+Header/Title/Count/Content), `KanbanCard` (+Title/Description/Footer)      |   no   | Drag-and-drop task board primitives                                                                                                 |
 | `logo-carousel`       | `LogoCarousel`                                                                                        |  yes   | Scrolling logo strip (ships demo logo assets)                                                                                       |
 | `logo-carousel-right` | `LogoCarouselDemoRight`                                                                               |  yes   | Right-scrolling logo strip                                                                                                          |
@@ -136,6 +137,7 @@ Per-component APIs, props, and examples: **references/components.md**.
 - Give every `DialogContent` / `SheetContent` / `AlertDialogContent` a `Title` (and ideally `Description`) subcomponent — Radix warns and screen readers suffer otherwise.
 - `Tooltip` must be wrapped in `TooltipProvider` (once near the root is fine).
 - Kanban is state-agnostic: you own the task array and pass standard `draggable` / `onDragStart` / `onDragOver` / `onDrop` handlers; the components only provide structure and styling.
+- Interactive Pets accepts only the pets listed in `pets`; customize names, pixel-based `initialPosition`, click-message arrays, and fed messages there. For a site-wide pet, mount one fixed full-viewport instance in the root layout and keep its wrapper `pointer-events-none`; pet and bowl controls opt back into pointer events.
 - Overlays render in portals at `z-50`. Keep sticky headers below `z-50` if overlays should cover them.
 
 ## Styling and theming
@@ -211,6 +213,7 @@ More patterns (kanban board, dropdown actions, sheet) in references/components.m
 - Nesting a `Button` inside a trigger without `asChild`.
 - Hard-coding colors (`bg-zinc-900`) where tokens exist (`bg-background`).
 - Assuming `NumberTicker` is a named export — it is the default export of `basic-number-ticker`.
+- Mounting a full-page `InteractivePets` wrapper without `pointer-events-none`, which blocks the page underneath.
 - Installing `spotify-card` outside a Next.js App Router project (its API route won't work).
 
 ## Troubleshooting
