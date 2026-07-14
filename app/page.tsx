@@ -14,24 +14,8 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground font-sans">
       <Navbar />
 
-      <main className="relative z-10 max-w-350 mx-auto px-5 sm:px-6 md:px-10 lg:px-12 pb-24">
+      <main className="relative z-10 max-w-350 mx-auto px-5 sm:px-6 md:px-10 lg:px-12">
         <Hero />
-        <section id="showcase" className="scroll-mt-24 pt-6 md:pt-12">
-          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                Built to compose
-              </p>
-              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-                A better starting point
-              </h2>
-            </div>
-            <p className="max-w-md text-sm leading-relaxed text-muted-foreground sm:text-right">
-              Accessible primitives, thoughtful motion, and source code you own.
-            </p>
-          </div>
-          <Showcase />
-        </section>
       </main>
 
       <footer className="py-8">
