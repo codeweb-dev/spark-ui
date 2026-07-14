@@ -35,7 +35,7 @@ export function Navbar() {
               Docs
             </Link>
             <Link
-              href="/docs/components/button"
+              href="/docs/components"
               className="hover:text-primary transition-colors"
             >
               Components

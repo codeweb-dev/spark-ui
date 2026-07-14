@@ -18,7 +18,7 @@ interface MobileNavProps {
 const MAIN_LINKS = [
   { title: "Home", href: "/" },
   { title: "Docs", href: "/docs/introduction" },
-  { title: "Components", href: "/docs/components/button" },
+  { title: "Components", href: "/docs/components" },
   { title: "Roadmap", href: "/docs/roadmap" },
   { title: "Showcase", href: "/showcase" },
   { title: "Templates", href: "/templates" },

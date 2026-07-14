@@ -1,3 +1,4 @@
+import { BETA_DOC_SLUGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import registryIndex from "@/registry.json";
 import fs from "fs";
@@ -7,6 +8,7 @@ import path from "path";
 import React from "react";
 import { CodeBlock } from "./code-block";
 import { ComponentPreview } from "./component-preview";
+import { ComponentsGallery } from "./components-gallery";
 import { InstallBlock } from "./install-block";
 import { Prop } from "./Prop";
 import { PropsTable } from "./PropsTable";
@@ -92,6 +94,37 @@ function ComponentsIndex() {
   );
 }
 
+function getGalleryItems() {
+  return registryIndex.items
+    .map((item) => {
+      const section = ["components", "backgrounds"].find((section) =>
+        fs.existsSync(
+          path.join(process.cwd(), "content/docs", section, `${item.name}.mdx`),
+        ),
+      );
+
+      return section
+        ? { ...item, href: `/docs/${section}/${item.name}` }
+        : null;
+    })
+    .filter((item) => item !== null)
+    .sort((a, b) => a.title.localeCompare(b.title));
+}
+
+function NewComponents() {
+  return (
+    <ComponentsGallery
+      items={getGalleryItems().filter((item) =>
+        BETA_DOC_SLUGS.has(item.href.replace("/docs/", "")),
+      )}
+    />
+  );
+}
+
+function AllComponents() {
+  return <ComponentsGallery items={getGalleryItems()} />;
+}
+
 function getDemoSourceCode(name: string): string | null {
   try {
     const demoPath = path.join(
@@ -133,6 +166,8 @@ export const mdxComponents = {
   ),
 
   ComponentsIndex,
+  NewComponents,
+  AllComponents,
 
   // Typography (headings, paragraphs, lists, tables, inline code) is styled
   // by the typeset container on the docs article — no overrides needed here.
