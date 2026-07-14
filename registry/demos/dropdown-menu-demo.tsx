@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@/registry/spark-ui/button";
 import {
   DropdownMenu,

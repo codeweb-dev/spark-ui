@@ -1,4 +1,3 @@
-import React from "react";
 import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
 
 export default function TactileHighlightDemo() {

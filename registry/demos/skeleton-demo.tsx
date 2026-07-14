@@ -1,4 +1,3 @@
-import React from "react";
 import { Skeleton } from "@/registry/spark-ui/skeleton";
 
 export default function SkeletonDemo() {

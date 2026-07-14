@@ -1,5 +1,4 @@
 import { Inbox } from "lucide-react";
-import React from "react";
 import {
   Empty,
   EmptyDescription,

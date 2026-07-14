@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { LogoCarousel } from "@/registry/spark-ui/logo-carousel";
 
 const LOGOS = [

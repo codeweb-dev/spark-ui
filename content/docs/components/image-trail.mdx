@@ -10,64 +10,14 @@ The ImageTrail displays framed media following the user's pointer with physics-b
 
 <ComponentPreview name="image-trail" />
 
-## Usage
-
-### Installation
+## Installation
 
 <InstallBlock command="image-trail" />
 
-### Basic Example
+## Usage
 
-```tsx
-import {
-  ImageTrail,
-  ImageTrailItem,
-  ImageTrailItemCaption,
-} from "@/components/image-trail";
+<UsageCode name="image-trail" />
 
-const IMAGES = [
-  "/images/trail-1.jpg",
-  "/images/trail-2.jpg",
-  "/images/trail-3.jpg",
-  "/images/trail-4.jpg",
-  "/images/trail-5.jpg",
-];
-
-export default function App() {
-  return (
-    <ImageTrail
-      threshold={90}
-      intensity={0.2}
-      repeatChildren={12}
-      keyframes={{
-        scale: [0.3, 1, 1, 0.3],
-        rotate: [0, -10, 10, 0],
-        opacity: [0, 1, 1, 0],
-      }}
-      keyframesOptions={{
-        duration: 1.2,
-        times: [0, 0.05, 0.85, 1],
-        ease: "easeOut",
-      }}
-      trailElementAnimationKeyframes={{
-        x: { duration: 0.35, type: "tween", ease: "easeOut" },
-        y: { duration: 0.35, type: "tween", ease: "easeOut" },
-      }}
-    >
-      {IMAGES.map((src, index) => (
-        <ImageTrailItem key={index} radius="xl" variant="framed">
-          <img
-            src={src}
-            alt={`Trail photo ${index + 1}`}
-            className="h-full w-full object-cover"
-          />
-          <ImageTrailItemCaption>Photo {index + 1}</ImageTrailItemCaption>
-        </ImageTrailItem>
-      ))}
-    </ImageTrail>
-  );
-}
-```
 
 ## Properties
 

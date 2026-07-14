@@ -1,4 +1,3 @@
-import React from "react";
 import { Checkbox } from "@/registry/spark-ui/checkbox";
 
 export default function CheckboxDemo() {

@@ -1,4 +1,3 @@
-import React from "react";
 import { Badge } from "@/registry/spark-ui/badge";
 
 export default function BadgeDemo() {

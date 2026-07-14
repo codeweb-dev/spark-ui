@@ -1,5 +1,4 @@
 import { Bold } from "lucide-react";
-import React from "react";
 import { Toggle } from "@/registry/spark-ui/toggle";
 
 export default function ToggleDemo() {

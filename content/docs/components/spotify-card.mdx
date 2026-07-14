@@ -10,11 +10,13 @@ The Spotify Card component is a premium, interactive interface that fetches live
 
 <ComponentPreview name="spotify-card" />
 
-## Usage
-
-### Installation
+## Installation
 
 <InstallBlock command="spotify-card" />
+
+## Usage
+
+<UsageCode name="spotify-card" />
 
 ### API Setup
 
@@ -97,19 +99,6 @@ export async function GET(req: NextRequest) {
 }
 ```
 
-### Basic Example
-
-```tsx
-import { SpotifyCard } from "@/components/spotify-card";
-
-export default function App() {
-  return (
-    <div className="flex items-center justify-center p-8">
-      <SpotifyCard trackUrl="https://open.spotify.com/track/3sK8wGT43QFpWrvNQsrQya" />
-    </div>
-  );
-}
-```
 
 ## Properties
 

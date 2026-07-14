@@ -10,42 +10,14 @@ The Kanban component provides styled primitives for building task boards. Compos
 
 <ComponentPreview name="kanban" />
 
-## Usage
-
-### Installation
+## Installation
 
 <InstallBlock command="kanban" />
 
-### Basic Example
+## Usage
 
-```tsx
-import {
-  Kanban,
-  KanbanCard,
-  KanbanCardTitle,
-  KanbanColumn,
-  KanbanColumnContent,
-  KanbanColumnHeader,
-  KanbanColumnTitle,
-} from "@/components/kanban";
+<UsageCode name="kanban" />
 
-export function Board() {
-  return (
-    <Kanban>
-      <KanbanColumn>
-        <KanbanColumnHeader>
-          <KanbanColumnTitle>Backlog</KanbanColumnTitle>
-        </KanbanColumnHeader>
-        <KanbanColumnContent>
-          <KanbanCard draggable>
-            <KanbanCardTitle>Write documentation</KanbanCardTitle>
-          </KanbanCard>
-        </KanbanColumnContent>
-      </KanbanColumn>
-    </Kanban>
-  );
-}
-```
 
 ## Properties
 

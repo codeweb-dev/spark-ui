@@ -41,7 +41,7 @@ export function Hero() {
           size="lg"
           className="h-11 rounded-full px-6 shadow-lg shadow-foreground/10"
         >
-          <Link href="/docs/components/accordion">
+          <Link href="/docs/components">
             Browse components <ArrowRight size={16} />
           </Link>
         </Button>

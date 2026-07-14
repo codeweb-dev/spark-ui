@@ -1,4 +1,3 @@
-import React from "react";
 import { Switch } from "@/registry/spark-ui/switch";
 
 export default function SwitchDemo() {

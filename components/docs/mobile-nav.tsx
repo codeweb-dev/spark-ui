@@ -2,14 +2,20 @@
 
 import { DocMetadata } from "@/lib/docs";
 import { getCategoryMeta } from "@/lib/categories";
-import { BETA_DOC_SLUGS } from "@/lib/constants";
+import {
+  BETA_DOC_SLUGS,
+  SITE_CONFIG,
+  UPDATED_DOC_SLUGS,
+} from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Sparkles, X } from "lucide-react";
+import { FlaskConical, Menu, RefreshCw, Sparkles, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { GitHubStarButton } from "../github-star-button";
+import { LogoIcon } from "../landing/logo-icon";
 
 interface MobileNavProps {
   items: DocMetadata[];
@@ -98,10 +104,23 @@ export function MobileNav({ items }: MobileNavProps) {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: 0.05 }}
-                className="flex-1 overflow-y-auto px-6 pb-16 pt-4"
+                className="flex-1 overflow-y-auto px-6 pb-16 pt-3"
               >
                 <div className="space-y-10">
                   <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <Link href="/" className="flex items-center group">
+                        <LogoIcon className="size-8 mr-2 text-foreground group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" />
+                        <span className="text-xl md:text-xl font-bold text-foreground tracking-tighter leading-none -ml-2">
+                          {SITE_CONFIG.name.split(" ")[0]}
+                          <span className="text-muted-foreground font-medium ml-1">
+                            {SITE_CONFIG.name.split(" ")[1]}
+                          </span>
+                        </span>
+                      </Link>
+                      <GitHubStarButton />
+                    </div>
+
                     <p className="text-sm text-muted-foreground">Menu</p>
                     <div className="mt-3 flex flex-col gap-3">
                       {MAIN_LINKS.map((link) => (
@@ -142,13 +161,26 @@ export function MobileNav({ items }: MobileNavProps) {
                               {BETA_DOC_SLUGS.has(doc.slug) && (
                                 <>
                                   <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
-                                    <Sparkles className="size-2.5" aria-hidden />
+                                    <Sparkles
+                                      className="size-2.5"
+                                      aria-hidden
+                                    />
                                     New
                                   </span>
-                                  <span className="rounded-full border border-border px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide">
+                                  <span className="inline-flex items-center gap-1 rounded-full border border-border px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide">
+                                    <FlaskConical
+                                      className="size-2.5"
+                                      aria-hidden
+                                    />
                                     Beta
                                   </span>
                                 </>
+                              )}
+                              {UPDATED_DOC_SLUGS.has(doc.slug) && (
+                                <span className="inline-flex items-center gap-1 rounded-full border border-border bg-foreground px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-background">
+                                  <RefreshCw className="size-2.5" aria-hidden />
+                                  Updated
+                                </span>
                               )}
                             </Link>
                           ))}

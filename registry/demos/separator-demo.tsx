@@ -1,4 +1,3 @@
-import React from "react";
 import { Separator } from "@/registry/spark-ui/separator";
 
 export default function SeparatorDemo() {

@@ -1,5 +1,4 @@
 import { Terminal } from "lucide-react";
-import React from "react";
 import {
   Alert,
   AlertDescription,

@@ -2,10 +2,10 @@
 
 import { DocMetadata } from "@/lib/docs";
 import { getCategoryMeta } from "@/lib/categories";
-import { BETA_DOC_SLUGS } from "@/lib/constants";
+import { BETA_DOC_SLUGS, UPDATED_DOC_SLUGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import { FlaskConical, RefreshCw, Sparkles } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
@@ -70,10 +70,17 @@ export function Sidebar({ items }: SidebarProps) {
                             <Sparkles className="size-2.5" aria-hidden />
                             New
                           </span>
-                          <span className="rounded-full border border-border px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide">
+                          <span className="inline-flex items-center gap-1 rounded-full border border-border px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide">
+                            <FlaskConical className="size-2.5" aria-hidden />
                             Beta
                           </span>
                         </>
+                      )}
+                      {UPDATED_DOC_SLUGS.has(doc.slug) && (
+                        <span className="inline-flex items-center gap-1 rounded-full border border-border bg-foreground px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-background">
+                          <RefreshCw className="size-2.5" aria-hidden />
+                          Updated
+                        </span>
                       )}
                     </span>
                   </Link>

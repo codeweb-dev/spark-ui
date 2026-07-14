@@ -61,6 +61,48 @@ export const registry: Record<
   "alert-dialog": dynamic(() => import("@/registry/demos/alert-dialog-demo")),
   breadcrumb: dynamic(() => import("@/registry/demos/breadcrumb-demo")),
   button: dynamic(() => import("@/registry/demos/button-demo")),
+  "button-default": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonDefaultDemo),
+  ),
+  "button-outline": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonOutlineDemo),
+  ),
+  "button-secondary": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) =>
+      mod.ButtonSecondaryDemo,
+    ),
+  ),
+  "button-ghost": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonGhostDemo),
+  ),
+  "button-destructive": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) =>
+      mod.ButtonDestructiveDemo,
+    ),
+  ),
+  "button-link": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonLinkDemo),
+  ),
+  "button-spark": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonSparkDemo),
+  ),
+  "button-size": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonSizeDemo),
+  ),
+  "button-icon": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonIconDemo),
+  ),
+  "button-with-icon": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) =>
+      mod.ButtonWithIconDemo,
+    ),
+  ),
+  "button-rounded": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonRoundedDemo),
+  ),
+  "button-as-link": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonAsLinkDemo),
+  ),
   checkbox: dynamic(() => import("@/registry/demos/checkbox-demo")),
   dialog: dynamic(() => import("@/registry/demos/dialog-demo")),
   "dropdown-menu": dynamic(() => import("@/registry/demos/dropdown-menu-demo")),

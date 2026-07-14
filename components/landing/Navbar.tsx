@@ -13,12 +13,11 @@ export function Navbar() {
   const docs = getAllDocs();
 
   return (
-    // Below the overlay layer (z-50) so sheets/dialogs cover the header
     <nav className="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-xl transition-colors">
       <div className="max-w-350 mx-auto flex h-16 items-center justify-between px-6 md:px-10 lg:px-12">
         <div className="flex items-center gap-4 md:gap-8">
           <MobileNav items={docs} />
-          <Link href="/" className="flex items-center group -ml-2">
+          <Link href="/" className="hidden md:flex items-center group -ml-2">
             <LogoIcon className="size-8 mr-2 text-foreground group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" />
             <span className="text-xl md:text-xl font-bold text-foreground tracking-tighter leading-none -ml-2">
               {SITE_CONFIG.name.split(" ")[0]}
@@ -62,7 +61,9 @@ export function Navbar() {
         </div>
         <div className="flex items-center gap-2">
           <SearchWrapper items={docs} />
-          <GitHubStarButton />
+          <div className="hidden md:inline-flex">
+            <GitHubStarButton />
+          </div>
           <ModeToggle />
           <Suspense fallback={null}>
             <UserMenu />

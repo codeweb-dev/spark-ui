@@ -1,4 +1,3 @@
-import React from "react";
 import { Textarea } from "@/registry/spark-ui/textarea";
 
 export default function TextareaDemo() {

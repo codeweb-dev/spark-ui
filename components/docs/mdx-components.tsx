@@ -1,4 +1,4 @@
-import { BETA_DOC_SLUGS } from "@/lib/constants";
+import { BETA_DOC_SLUGS, UPDATED_DOC_SLUGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import registryIndex from "@/registry.json";
 import fs from "fs";
@@ -24,6 +24,78 @@ interface ComponentPreviewWrapperProps {
   name: string;
   children?: React.ReactNode;
 }
+
+const buttonDemoSnippets: Record<string, string> = {
+  "button-default": `import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button>Button</Button>;
+}`,
+  "button-outline": `import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button variant="outline">Outline</Button>;
+}`,
+  "button-secondary": `import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button variant="secondary">Secondary</Button>;
+}`,
+  "button-ghost": `import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button variant="ghost">Ghost</Button>;
+}`,
+  "button-destructive": `import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button variant="destructive">Destructive</Button>;
+}`,
+  "button-link": `import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button variant="link">Link</Button>;
+}`,
+  "button-spark": `import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button variant="spark">Spark</Button>;
+}`,
+  "button-size": `import { Button } from "@/components/button";
+
+export default function Example() {
+  return <>
+    <Button size="sm">Small</Button>
+    <Button>Default</Button>
+    <Button size="lg">Large</Button>
+  </>;
+}`,
+  "button-icon": `import { CircleArrowUp } from "lucide-react";
+import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button size="icon" aria-label="Move up"><CircleArrowUp /></Button>;
+}`,
+  "button-with-icon": `import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button>Continue <ArrowRight /></Button>;
+}`,
+  "button-rounded": `import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button className="rounded-full">Get Started <ArrowRight /></Button>;
+}`,
+  "button-as-link": `import Link from "next/link";
+import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/button";
+
+export default function Example() {
+  return <Button asChild><Link href="/docs/installation">Installation <ExternalLink /></Link></Button>;
+}`,
+};
 
 const featureIcons = {
   code: Code2,
@@ -121,11 +193,22 @@ function NewComponents() {
   );
 }
 
+function UpdatedComponents() {
+  return (
+    <ComponentsGallery
+      items={getGalleryItems().filter((item) =>
+        UPDATED_DOC_SLUGS.has(item.href.replace("/docs/", "")),
+      )}
+    />
+  );
+}
+
 function AllComponents() {
   return <ComponentsGallery items={getGalleryItems()} />;
 }
 
 function getDemoSourceCode(name: string): string | null {
+  if (buttonDemoSnippets[name]) return buttonDemoSnippets[name];
   try {
     const demoPath = path.join(
       process.cwd(),
@@ -137,6 +220,28 @@ function getDemoSourceCode(name: string): string | null {
   } catch {
     return null;
   }
+}
+
+async function UsageCode({ name }: { name: string }) {
+  const source = getDemoSourceCode(name)?.replaceAll(
+    "@/registry/spark-ui/",
+    "@/components/",
+  );
+  if (!source) return null;
+
+  const imports = source.match(/^import[\s\S]*?;$/gm) || [];
+  const example = imports.reduce((code, statement) => code.replace(statement, ""), source).trim();
+  const usageImports = imports.filter(
+    (statement) =>
+      statement !== 'import React from "react";' || example.includes("React."),
+  );
+
+  return (
+    <div className="not-typeset my-6 space-y-4">
+      <CodeBlock code={usageImports.join("\n")} language="tsx" />
+      <CodeBlock code={example} language="tsx" />
+    </div>
+  );
 }
 
 async function DemoCodeBlock({ sourceCode }: { sourceCode: string }) {
@@ -156,6 +261,7 @@ export const mdxComponents = {
     return <ComponentPreview name={name} usageCode={children || demoCode} />;
   },
   InstallBlock: (props: { command: string }) => <InstallBlock {...props} />,
+  UsageCode,
   PropsTable,
   Prop,
   FeatureCard,
@@ -167,6 +273,7 @@ export const mdxComponents = {
 
   ComponentsIndex,
   NewComponents,
+  UpdatedComponents,
   AllComponents,
 
   // Typography (headings, paragraphs, lists, tables, inline code) is styled
