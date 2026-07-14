@@ -378,6 +378,21 @@
       "category": "layout"
     },
     {
+      "name": "receipt",
+      "type": "registry:component",
+      "title": "Receipt",
+      "description": "A polished payment receipt with ticket details, card information, and a decorative barcode.",
+      "files": [
+        {
+          "path": "registry/spark-ui/receipt.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "layout"
+    },
+    {
       "name": "empty",
       "type": "registry:component",
       "title": "Empty",

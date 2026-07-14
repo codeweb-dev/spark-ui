@@ -1,4 +1,4 @@
-import { BETA_DOC_SLUGS, UPDATED_DOC_SLUGS } from "@/lib/constants";
+import { NEW_DOC_SLUGS, UPDATED_DOC_SLUGS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import registryIndex from "@/registry.json";
 import fs from "fs";
@@ -187,7 +187,7 @@ function NewComponents() {
   return (
     <ComponentsGallery
       items={getGalleryItems().filter((item) =>
-        BETA_DOC_SLUGS.has(item.href.replace("/docs/", "")),
+        NEW_DOC_SLUGS.has(item.href.replace("/docs/", "")),
       )}
     />
   );

@@ -1,0 +1,34 @@
+---
+title: Receipt
+description: A polished payment receipt with ticket details, card information, and a decorative barcode.
+category: Layout
+---
+
+Receipt presents a successful ticket or payment confirmation in a compact, theme-aware ticket layout.
+
+## Preview
+
+<ComponentPreview name="receipt" />
+
+## Installation
+
+<InstallBlock command="receipt" />
+
+## Usage
+
+<UsageCode name="receipt" />
+
+## Properties
+
+<PropsTable>
+  <Prop name="ticketId" type="string" default="—" description="Ticket or transaction identifier." />
+  <Prop name="amount" type="string" default="—" description="Formatted payment amount." />
+  <Prop name="dateTime" type="string" default="—" description="Formatted issue date and time." />
+  <Prop name="cardholder" type="string" default="—" description="Name shown in the payment row." />
+  <Prop name="cardLastFour" type="string" default="—" description="Last four digits of the payment card." />
+  <Prop name="barcodeValue" type="string" default="ticketId" description="Text displayed beneath the decorative barcode." />
+  <Prop name="title" type="string" default='"Thank you!"' description="Receipt heading." />
+  <Prop name="description" type="string" default='"Your ticket has been issued successfully"' description="Receipt supporting message." />
+  <Prop name="successIcon" type="ReactNode" default='"🎉"' description="Icon displayed above the heading." />
+  <Prop name="className" type="string" default="—" description="Additional CSS classes." />
+</PropsTable>

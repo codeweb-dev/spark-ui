@@ -25,7 +25,10 @@ export const SITE_CONFIG = {
   defaultOgImage: "/opengraph-image",
 };
 
-export const BETA_DOC_SLUGS = new Set([
+export const BETA_DOC_SLUGS = new Set(["components/interactive-pets"]);
+
+export const NEW_DOC_SLUGS = new Set([
+  "components/receipt",
   "components/interactive-pets",
 ]);
 
