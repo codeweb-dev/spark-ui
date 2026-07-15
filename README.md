@@ -2,7 +2,7 @@
 
 **Components that make interfaces feel alive.**
 
-Spark UI is a collection of polished React components, thoughtful interactions, and open-source building blocks for modern products. It is a **shadcn-compatible source registry**: instead of installing a runtime package, you use the shadcn CLI to copy component source code directly into your project, where it is fully yours.
+Spark UI is a focused collection of signature React components with expressive motion, distinctive visuals, and memorable interactions. It is a **shadcn-compatible source registry**: instead of installing a runtime package, you use the shadcn CLI to copy component source code directly into your project, where it is fully yours.
 
 ## Key features
 
@@ -68,8 +68,8 @@ The site origin is configured in one place: `lib/constants.ts` (`SITE_CONFIG.url
 Inspect an item first, then install it:
 
 ```bash
-npx shadcn@latest view https://spark-ui-olive.vercel.app/r/accordion.json
-npx shadcn@latest add https://spark-ui-olive.vercel.app/r/accordion.json
+npx shadcn@latest view https://spark-ui-olive.vercel.app/r/shimmer-text.json
+npx shadcn@latest add https://spark-ui-olive.vercel.app/r/shimmer-text.json
 ```
 
 The machine-readable index of all items is `https://spark-ui-olive.vercel.app/r/registry.json`.

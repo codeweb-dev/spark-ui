@@ -10,7 +10,7 @@ export default function TemplatesPage() {
     <ComingSoonPage
       eyebrow="Templates"
       title="Start from something great"
-      description="Production-ready dashboards, landing pages, and application templates are currently in development. Check the roadmap for upcoming releases."
+      description="Production-ready dashboards, landing pages, and application templates are currently in development. Check the blog for upcoming releases."
     />
   );
 }

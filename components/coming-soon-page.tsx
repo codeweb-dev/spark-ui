@@ -30,8 +30,8 @@ export function ComingSoonPage({
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild>
-            <Link href="/docs/roadmap">
-              View roadmap <ArrowRight className="size-4" />
+            <Link href="/blog">
+              Read the blog <ArrowRight className="size-4" />
             </Link>
           </Button>
           <Button asChild variant="outline">

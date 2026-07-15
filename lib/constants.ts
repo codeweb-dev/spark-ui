@@ -8,14 +8,14 @@ export const SITE_CONFIG = {
   name: "Spark UI",
   tagline: "Components that make interfaces feel alive.",
   description:
-    "A collection of polished React components, thoughtful interactions, and open-source building blocks for modern products.",
+    "A focused collection of signature React components with expressive motion and distinctive interactions.",
   url: APP_URL,
   github: "https://github.com/codeweb-dev/spark-ui",
   author: "Spark UI",
   authorUrl: APP_URL,
   keywords: [
     "React components",
-    "UI library",
+    "Signature UI components",
     "shadcn registry",
     "Tailwind CSS",
     "Framer Motion",
@@ -32,7 +32,4 @@ export const NEW_DOC_SLUGS = new Set([
   "components/interactive-pets",
 ]);
 
-export const UPDATED_DOC_SLUGS = new Set([
-  "components/button",
-  "components/kanban",
-]);
+export const UPDATED_DOC_SLUGS = new Set<string>();

@@ -5,8 +5,11 @@ export interface CategoryMeta {
 
 export const CATEGORIES: Record<string, CategoryMeta> = {
   "Getting Started": { title: "Getting Started", order: 0 },
-  Components: { title: "Components", order: 1 },
-  "Signature Components": { title: "Signature Components", order: 2 },
+  Backgrounds: { title: "Backgrounds", order: 1 },
+  "Text & Motion": { title: "Text & Motion", order: 2 },
+  Media: { title: "Media", order: 3 },
+  Interactive: { title: "Interactive", order: 4 },
+  Commerce: { title: "Commerce", order: 5 },
 };
 
 export const FALLBACK_CATEGORY: CategoryMeta = {

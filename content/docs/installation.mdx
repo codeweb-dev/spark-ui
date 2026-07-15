@@ -31,9 +31,9 @@ npm install framer-motion lucide-react clsx tailwind-merge
 
 ### Option 1: Direct URL (recommended)
 
-Pass the component's registry URL straight to the shadcn CLI — no configuration needed. For example, to add the Accordion:
+Pass the component's registry URL straight to the shadcn CLI — no configuration needed. For example, to add Shimmer Text:
 
-<InstallBlock command="accordion" />
+<InstallBlock command="shimmer-text" />
 
 Each component's docs page shows its exact install command.
 
@@ -52,7 +52,7 @@ Add the Spark UI registry to your `components.json` once:
 Then install components by name:
 
 ```bash
-npx shadcn@latest add @spark-ui/accordion
+npx shadcn@latest add @spark-ui/shimmer-text
 ```
 
 ### Manual installation
@@ -60,7 +60,7 @@ npx shadcn@latest add @spark-ui/accordion
 If you prefer to install manually, copy the component source from its docs page (or from [`registry/spark-ui/`](https://github.com/codeweb-dev/spark-ui/tree/master/registry/spark-ui) on GitHub) into your components directory, then install the dependencies that component's registry item declares — for example:
 
 ```bash
-npm install @radix-ui/react-accordion
+npm install framer-motion
 ```
 
 The full dependency list for every component is in the [registry index](https://spark-ui-olive.vercel.app/r/registry.json).
@@ -71,8 +71,8 @@ After adding components, your project will look something like this:
 
 ```text
 components/
-├── accordion.tsx
-├── kanban.tsx
+├── shimmer-text.tsx
+├── tactile-highlight.tsx
 └── ...
 lib/
 └── utils.ts
@@ -87,24 +87,10 @@ Components land in your configured components directory (see the aliases in your
 Import components from your local path — never from the registry:
 
 ```tsx
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/accordion";
+import { ShimmerText } from "@/components/shimmer-text";
 
-export function FAQ() {
-  return (
-    <Accordion type="single" collapsible>
-      <AccordionItem value="what">
-        <AccordionTrigger>What is Spark UI?</AccordionTrigger>
-        <AccordionContent>
-          Polished React components you install as source code.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  );
+export function Announcement() {
+  return <ShimmerText>Something special is coming.</ShimmerText>;
 }
 ```
 

@@ -9,11 +9,13 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { LogoIcon } from "./logo-icon";
 
-export function Navbar() {
+export function Navbar({ overlay = false }: { overlay?: boolean }) {
   const docs = getAllDocs();
 
   return (
-    <nav className="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-xl transition-colors">
+    <nav
+      className={`${overlay ? "absolute bg-transparent" : "sticky bg-background/80 backdrop-blur-xl"} top-0 z-40 w-full transition-colors`}
+    >
       <div className="max-w-350 mx-auto flex h-16 items-center justify-between px-6 md:px-10 lg:px-12">
         <div className="flex items-center gap-4 md:gap-8">
           <MobileNav items={docs} />
@@ -39,11 +41,8 @@ export function Navbar() {
             >
               Components
             </Link>
-            <Link
-              href="/docs/roadmap"
-              className="hover:text-primary transition-colors"
-            >
-              Roadmap
+            <Link href="/blog" className="hover:text-primary transition-colors">
+              Blog
             </Link>
             <Link
               href="/showcase"

@@ -10,7 +10,7 @@ export default function ShowcasePage() {
     <ComingSoonPage
       eyebrow="Showcase"
       title="Made with Spark UI"
-      description="We are preparing a collection of polished products and community projects built with Spark UI. Follow the roadmap for progress and launch updates."
+      description="We are preparing a collection of polished products and community projects built with Spark UI. Follow the blog for progress and launch updates."
     />
   );
 }

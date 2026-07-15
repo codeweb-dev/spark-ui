@@ -24,117 +24,6 @@ interface ComponentPreviewWrapperProps {
   children?: React.ReactNode;
 }
 
-const buttonDemoSnippets: Record<string, string> = {
-  "button-default": `import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button>Button</Button>;
-}`,
-  "button-outline": `import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button variant="outline">Outline</Button>;
-}`,
-  "button-secondary": `import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button variant="secondary">Secondary</Button>;
-}`,
-  "button-ghost": `import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button variant="ghost">Ghost</Button>;
-}`,
-  "button-destructive": `import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button variant="destructive">Destructive</Button>;
-}`,
-  "button-link": `import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button variant="link">Link</Button>;
-}`,
-  "button-spark": `import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button variant="spark">Spark</Button>;
-}`,
-  "button-size": `import { Button } from "@/components/button";
-
-export default function Example() {
-  return <>
-    <Button size="sm">Small</Button>
-    <Button>Default</Button>
-    <Button size="lg">Large</Button>
-  </>;
-}`,
-  "button-icon": `import { CircleArrowUp } from "lucide-react";
-import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button size="icon" aria-label="Move up"><CircleArrowUp /></Button>;
-}`,
-  "button-with-icon": `import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button>Continue <ArrowRight /></Button>;
-}`,
-  "button-rounded": `import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button className="rounded-full">Get Started <ArrowRight /></Button>;
-}`,
-  "button-as-link": `import Link from "next/link";
-import { ExternalLink } from "lucide-react";
-import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button asChild><Link href="/docs/installation">Installation <ExternalLink /></Link></Button>;
-}`,
-  "button-disabled": `import { Button } from "@/components/button";
-
-export default function Example() {
-  return <Button disabled>Disabled</Button>;
-}`,
-  "toggle-default": `import { Bold } from "lucide-react";
-import { Toggle } from "@/components/toggle";
-
-export default function Example() {
-  return <Toggle aria-label="Toggle bold"><Bold /></Toggle>;
-}`,
-  "toggle-outline": `import { Bold } from "lucide-react";
-import { Toggle } from "@/components/toggle";
-
-export default function Example() {
-  return <Toggle variant="outline" aria-label="Toggle bold"><Bold /></Toggle>;
-}`,
-  "toggle-with-text": `import { Bold } from "lucide-react";
-import { Toggle } from "@/components/toggle";
-
-export default function Example() {
-  return <Toggle aria-label="Toggle bold"><Bold /> Bold</Toggle>;
-}`,
-  "toggle-size": `import { Bold } from "lucide-react";
-import { Toggle } from "@/components/toggle";
-
-export default function Example() {
-  return <div className="flex items-center gap-2">
-    <Toggle size="sm" aria-label="Toggle bold small"><Bold /></Toggle>
-    <Toggle aria-label="Toggle bold"><Bold /></Toggle>
-    <Toggle size="lg" aria-label="Toggle bold large"><Bold /></Toggle>
-  </div>;
-}`,
-  "toggle-disabled": `import { Bold } from "lucide-react";
-import { Toggle } from "@/components/toggle";
-
-export default function Example() {
-  return <Toggle disabled aria-label="Toggle bold"><Bold /></Toggle>;
-}`,
-};
-
 const featureIcons = {
   code: Code2,
   palette: Palette,
@@ -207,7 +96,6 @@ function AllComponents() {
 }
 
 function getDemoSourceCode(name: string): string | null {
-  if (buttonDemoSnippets[name]) return buttonDemoSnippets[name];
   try {
     const demoPath = path.join(
       process.cwd(),

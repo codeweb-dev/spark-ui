@@ -52,7 +52,7 @@ List every npm package your component imports (beyond React) in the item's `depe
 If your component uses another Spark UI component, list its slug in `registryDependencies` so the CLI installs it too:
 
 ```json
-"registryDependencies": ["button"]
+"registryDependencies": []
 ```
 
 ## 9. Creating an MDX documentation page
@@ -61,7 +61,7 @@ Create `content/docs/components/<slug>.mdx` with frontmatter (`title`, `descript
 
 ## 10. Adding navigation/category metadata
 
-Navigation, search, and the sidebar are generated from MDX frontmatter. Set `category` to one defined in `lib/categories.ts` (Button, Form, Navigation, Layout, Typography, Media, Backgrounds). To introduce a new category, add it to `CATEGORIES` there with an icon and order.
+Navigation, search, and the sidebar are generated from MDX frontmatter. Choose the most relevant category defined in `lib/categories.ts`: `Backgrounds`, `Text & Motion`, `Media`, `Interactive`, or `Commerce`.
 
 ## 11. Building the registry
 
@@ -139,7 +139,7 @@ Or all three: `npm run check`. All must pass before a PR.
 
 1. Delete `registry/spark-ui/<slug>*`, `registry/demos/<slug>*`, `content/docs/**/<slug>.mdx`
 2. Remove the entry from `registry/components.ts` and the item from `registry.json`
-3. Remove demo usages on the homepage (`components/landing/Showcase.tsx`) and any internal links
+3. Remove homepage usages and any internal links
 4. Delete assets used only by that component (`public/…`) and API routes only it used
 5. Remove npm dependencies no other component uses (verify with a repo-wide grep first)
 6. Run `npm run registry:build` and confirm `public/r/<slug>.json` is gone
@@ -219,7 +219,7 @@ export default function GlowCardDemo() {
   ],
   "dependencies": [],
   "registryDependencies": [],
-  "category": "layout"
+  "category": "signature"
 }
 ```
 
@@ -229,7 +229,7 @@ export default function GlowCardDemo() {
 ---
 title: Glow Card
 description: A card with a soft, theme-aware glow on hover.
-category: Layout
+category: Text & Motion
 ---
 
 The Glow Card wraps content in a themed surface with a restrained hover glow.

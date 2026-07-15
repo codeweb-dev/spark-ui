@@ -34,7 +34,10 @@ export default async function FavoritesPage() {
     .order("created_at", { ascending: false });
 
   const docsBySlug = new Map(getAllDocs().map((doc) => [doc.slug, doc]));
-  const count = favorites?.length ?? 0;
+  const visibleFavorites = favorites?.filter((favorite) =>
+    docsBySlug.has(favorite.component_slug),
+  );
+  const count = visibleFavorites?.length ?? 0;
 
   return (
     <>
@@ -74,12 +77,12 @@ export default async function FavoritesPage() {
                 Tap the heart on any component page and it will show up here.
               </p>
               <Button asChild variant="outline" className="mt-6">
-                <Link href="/docs/components/button">Browse components</Link>
+                <Link href="/docs/components">Browse components</Link>
               </Button>
             </div>
           ) : (
             <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-              {favorites!.map((favorite) => {
+              {visibleFavorites!.map((favorite) => {
                 const doc = docsBySlug.get(favorite.component_slug);
                 const title = doc?.title ?? favorite.component_slug;
                 return (

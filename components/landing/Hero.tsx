@@ -2,25 +2,54 @@ import { Button } from "@/components/ui/button";
 import { SITE_CONFIG } from "@/lib/constants";
 import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
 import { ArrowRight, Github } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[70vh] flex-col items-center justify-center gap-7 py-20 text-center md:min-h-[76vh] md:py-30">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-size-[56px_56px] opacity-25 mask-[radial-gradient(ellipse_55%_55%_at_50%_42%,black,transparent)]" />
-      <Link
-        href="/docs/components/interactive-pets"
-        className="group text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <span className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/70 px-3.5 py-1.5 text-xs font-medium shadow-sm backdrop-blur">
+    <section className="relative flex min-h-screen flex-col items-center justify-center gap-7 overflow-hidden px-5 py-24 text-center md:px-10 md:py-30">
+      <Image
+        src="/light-background.png"
+        alt=""
+        fill
+        priority
+        sizes="(min-width: 1400px) 87.5rem, 100vw"
+        className="pointer-events-none -z-20 object-cover dark:hidden opacity-35"
+      />
+      <Image
+        src="/background.png"
+        alt=""
+        fill
+        priority
+        sizes="(min-width: 1400px) 87.5rem, 100vw"
+        className="pointer-events-none -z-20 hidden object-cover opacity-35 dark:block"
+      />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-b from-background/35 via-transparent to-background/75 dark:from-background/35 dark:via-background/75 dark:to-background" />
+
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        <Link
+          href="/docs/components/interactive-pets"
+          className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/70 px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur transition-colors hover:text-foreground"
+        >
           Introducing Interactive Pets
           <ArrowRight
             size={12}
             className="transition-transform group-hover:translate-x-0.5"
             aria-hidden
           />
-        </span>
-      </Link>
+        </Link>
+        <Link
+          href="/blog/v2-signature-components"
+          className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground px-3.5 py-1.5 text-xs font-medium text-background shadow-sm transition-opacity hover:opacity-85"
+        >
+          Version 2 · Read the blog post
+          <ArrowRight
+            size={12}
+            className="transition-transform group-hover:translate-x-0.5"
+            aria-hidden
+          />
+        </Link>
+      </div>
       <p className="-mt-5 text-xs text-muted-foreground">
         Drag the pet anywhere and click the bowl to feed it.
       </p>
@@ -31,8 +60,8 @@ export function Hero() {
       </h1>
 
       <p className="max-w-2xl text-base leading-relaxed text-muted-foreground text-balance md:text-lg">
-        Beautiful, accessible React components designed to be copied,
-        customized, and made entirely yours.
+        Signature React components with expressive motion, distinctive visuals,
+        and source code made entirely yours.
       </p>
 
       <div className="mt-1 flex flex-col items-center gap-3 sm:flex-row">
@@ -80,7 +109,7 @@ export function Hero() {
 
       <div className="mt-6 flex items-center gap-6 text-xs text-muted-foreground sm:gap-10">
         <span>
-          <strong className="text-foreground">30+</strong> components
+          <strong className="text-foreground">11</strong> components
         </span>
         <span className="h-4 w-px bg-border" />
         <span>

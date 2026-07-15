@@ -26,7 +26,7 @@ const MAIN_LINKS = [
   { title: "Home", href: "/" },
   { title: "Docs", href: "/docs/introduction" },
   { title: "Components", href: "/docs/components" },
-  { title: "Roadmap", href: "/docs/roadmap" },
+  { title: "Blog", href: "/blog" },
   { title: "Showcase", href: "/showcase" },
   { title: "Templates", href: "/templates" },
 ];
