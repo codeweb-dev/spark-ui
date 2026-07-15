@@ -87,3 +87,7 @@ export function ButtonAsLinkDemo() {
     </Button>
   );
 }
+
+export function ButtonDisabledDemo() {
+  return <Button disabled>Disabled</Button>;
+}

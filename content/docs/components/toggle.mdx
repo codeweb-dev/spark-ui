@@ -16,7 +16,23 @@ The Toggle is a button with a pressed state, ideal for toolbar actions like bold
 
 ## Usage
 
-<UsageCode name="toggle" />
+<UsageCode name="toggle-default" />
+
+## Outline
+
+<ComponentPreview name="toggle-outline" />
+
+## With Text
+
+<ComponentPreview name="toggle-with-text" />
+
+## Size
+
+<ComponentPreview name="toggle-size" />
+
+## Disabled
+
+<ComponentPreview name="toggle-disabled" />
 
 ## Properties
 
@@ -44,6 +60,12 @@ The Toggle is a button with a pressed state, ideal for toolbar actions like bold
     type='(pressed: boolean) => void'
     default='—'
     description="Called when the pressed state changes."
+  />
+  <Prop
+    name="disabled"
+    type='boolean'
+    default='false'
+    description="Prevent interaction with the toggle."
   />
   <Prop
     name="className"

@@ -104,6 +104,9 @@ export const registry: Record<
   "button-as-link": dynamic(() =>
     import("@/registry/demos/button-demo").then((mod) => mod.ButtonAsLinkDemo),
   ),
+  "button-disabled": dynamic(() =>
+    import("@/registry/demos/button-demo").then((mod) => mod.ButtonDisabledDemo),
+  ),
   checkbox: dynamic(() => import("@/registry/demos/checkbox-demo")),
   dialog: dynamic(() => import("@/registry/demos/dialog-demo")),
   "dropdown-menu": dynamic(() => import("@/registry/demos/dropdown-menu-demo")),
@@ -117,5 +120,17 @@ export const registry: Record<
   table: dynamic(() => import("@/registry/demos/table-demo")),
   textarea: dynamic(() => import("@/registry/demos/textarea-demo")),
   toggle: dynamic(() => import("@/registry/demos/toggle-demo")),
+  "toggle-outline": dynamic(() =>
+    import("@/registry/demos/toggle-demo").then((mod) => mod.ToggleOutlineDemo),
+  ),
+  "toggle-with-text": dynamic(() =>
+    import("@/registry/demos/toggle-demo").then((mod) => mod.ToggleWithTextDemo),
+  ),
+  "toggle-size": dynamic(() =>
+    import("@/registry/demos/toggle-demo").then((mod) => mod.ToggleSizeDemo),
+  ),
+  "toggle-disabled": dynamic(() =>
+    import("@/registry/demos/toggle-demo").then((mod) => mod.ToggleDisabledDemo),
+  ),
   tooltip: dynamic(() => import("@/registry/demos/tooltip-demo")),
 };
