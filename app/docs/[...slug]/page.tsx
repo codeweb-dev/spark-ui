@@ -1,4 +1,5 @@
 import { mdxComponents } from "@/components/docs/mdx-components";
+import { Footer } from "@/components/landing/Footer";
 import { getAdjacentDocs, getDocBySlug, getDocSlugs } from "@/lib/docs";
 import { SITE_CONFIG } from "@/lib/constants";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -174,6 +175,8 @@ export default async function DocPage({ params }: PageProps) {
           options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
         />
       </article>
+
+      <Footer className="mt-16 border-t border-border/60 py-10 [&>div]:px-0" />
     </div>
   );
 }
