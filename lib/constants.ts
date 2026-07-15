@@ -32,4 +32,7 @@ export const NEW_DOC_SLUGS = new Set([
   "components/interactive-pets",
 ]);
 
-export const UPDATED_DOC_SLUGS = new Set(["components/button"]);
+export const UPDATED_DOC_SLUGS = new Set([
+  "components/button",
+  "components/kanban",
+]);

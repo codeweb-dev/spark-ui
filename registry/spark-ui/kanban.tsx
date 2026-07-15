@@ -25,7 +25,7 @@ function KanbanColumn({
     <section
       data-slot="kanban-column"
       className={cn(
-        "flex min-h-80 flex-col rounded-xl border bg-muted/40 p-2 transition-colors data-[over=true]:border-ring data-[over=true]:bg-muted",
+        "flex min-h-80 flex-col rounded-xl border bg-muted/40 p-2 transition-colors duration-200 data-[over=true]:border-ring data-[over=true]:bg-muted",
         className,
       )}
       {...props}
@@ -96,7 +96,7 @@ function KanbanCard({
     <article
       data-slot="kanban-card"
       className={cn(
-        "cursor-grab rounded-lg border bg-card p-3 text-card-foreground shadow-xs transition-[box-shadow,opacity] hover:shadow-sm active:cursor-grabbing data-[dragging=true]:opacity-50",
+        "cursor-grab rounded-lg border bg-card p-3 text-card-foreground shadow-xs transition-[box-shadow,opacity,transform] duration-200 hover:-translate-y-0.5 hover:shadow-sm active:cursor-grabbing active:translate-y-0 data-[dragging=true]:opacity-50",
         className,
       )}
       {...props}

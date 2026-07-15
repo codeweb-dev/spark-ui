@@ -55,6 +55,7 @@ export const registry: Record<
   ),
   "image-trail": dynamic(() => import("@/registry/demos/image-trail-demo")),
   badge: dynamic(() => import("@/registry/demos/badge-demo")),
+  avatar: dynamic(() => import("@/registry/demos/avatar-demo")),
   card: dynamic(() => import("@/registry/demos/card-demo")),
   receipt: dynamic(() => import("@/registry/demos/receipt-demo")),
   empty: dynamic(() => import("@/registry/demos/empty-demo")),

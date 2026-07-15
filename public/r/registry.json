@@ -346,6 +346,23 @@
       "category": "media"
     },
     {
+      "name": "avatar",
+      "type": "registry:component",
+      "title": "Avatar",
+      "description": "An image with a fallback for representing a user.",
+      "files": [
+        {
+          "path": "registry/spark-ui/avatar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [],
+      "category": "components"
+    },
+    {
       "name": "badge",
       "type": "registry:component",
       "title": "Badge",
@@ -706,15 +723,21 @@
       "name": "kanban",
       "type": "registry:component",
       "title": "Kanban",
-      "description": "A composable drag-and-drop task board styled to match shadcn/ui.",
+      "description": "A composable task board with smooth drag reordering and a clear drag affordance.",
       "files": [
         {
           "path": "registry/spark-ui/kanban.tsx",
           "type": "registry:component"
         }
       ],
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "badge"
+      ],
       "category": "layout"
     },
     {
