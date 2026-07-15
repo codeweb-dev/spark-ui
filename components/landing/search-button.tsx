@@ -24,16 +24,6 @@ export function SearchButton({ className, onOpen }: SearchButtonProps) {
           <span className="text-xs">⌘</span>K
         </kbd>
       </button>
-
-      <button
-        onClick={() => onOpen?.()}
-        className={cn(
-          "inline-flex sm:hidden items-center gap-2 h-9 w-auto px-2 rounded-md border border-input bg-background text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors cursor-pointer justify-between",
-          className,
-        )}
-      >
-        <Search size={18} />
-      </button>
     </>
   );
 }

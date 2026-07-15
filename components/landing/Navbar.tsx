@@ -60,9 +60,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
         </div>
         <div className="flex items-center gap-2">
           <SearchWrapper items={docs} />
-          <div className="hidden md:inline-flex">
-            <GitHubStarButton />
-          </div>
+          <GitHubStarButton />
           <ModeToggle />
           <Suspense fallback={null}>
             <UserMenu />

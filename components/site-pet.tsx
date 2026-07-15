@@ -21,13 +21,14 @@ export function SitePet() {
             "Click me anytime for release updates.",
           ],
           fedMessage: "Thanks for testing the beta!",
+          fullMessage: "I'm full! Come back later.",
         },
       ]}
       showInstructions={false}
       className={
         "pointer-events-none fixed inset-0 z-40 **:data-food-controls:inset-x-auto " +
         (isHome
-          ? "**:data-food-controls:top-24 **:data-food-controls:bottom-auto **:data-food-controls:left-[calc(50%+1rem)] **:data-pet-actor:top-24 **:data-pet-actor:left-[calc(50%-5rem)]"
+          ? "**:data-food-controls:top-50 sm:**:data-food-controls:top-26 **:data-food-controls:bottom-auto **:data-food-controls:left-[calc(50%+1rem)] **:data-pet-actor:top-45 sm:**:data-pet-actor:top-20 **:data-pet-actor:left-[calc(50%-5rem)]"
           : "**:data-food-controls:top-auto **:data-food-controls:right-6 **:data-food-controls:bottom-6 **:data-food-controls:left-auto **:data-pet-actor:top-auto **:data-pet-actor:right-24 **:data-pet-actor:bottom-6 **:data-pet-actor:left-auto")
       }
       playgroundClassName="h-dvh rounded-none border-0 bg-transparent sm:h-dvh"

@@ -86,9 +86,9 @@ export function MobileNav({ items }: MobileNavProps) {
       <button
         onClick={() => setOpen(!open)}
         className="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors flex items-center justify-center relative z-101"
-        aria-label={open ? "Close navigation" : "Open navigation"}
+        aria-label="Open navigation"
       >
-        {open ? <X size={20} /> : <Menu size={20} />}
+        <Menu size={20} />
       </button>
 
       {createPortal(
@@ -99,7 +99,7 @@ export function MobileNav({ items }: MobileNavProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-x-0 bottom-0 top-16 z-60 flex flex-col bg-background"
+              className="fixed inset-x-0 bottom-0 top-0 z-60 flex flex-col bg-background"
             >
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
@@ -109,7 +109,15 @@ export function MobileNav({ items }: MobileNavProps) {
               >
                 <div className="space-y-10">
                   <div>
-                    <div className="flex items-center justify-between mb-6">
+                    <div className="mb-6 flex flex-col gap-6 items-start">
+                      <button
+                        onClick={() => setOpen(!open)}
+                        className="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-primary transition-colors flex items-center justify-center relative z-101"
+                        aria-label="Close navigation"
+                      >
+                        <X size={20} />
+                      </button>
+
                       <Link href="/" className="flex items-center group">
                         <LogoIcon className="size-8 mr-2 text-foreground group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" />
                         <span className="text-xl md:text-xl font-bold text-foreground tracking-tighter leading-none -ml-2">
@@ -119,7 +127,6 @@ export function MobileNav({ items }: MobileNavProps) {
                           </span>
                         </span>
                       </Link>
-                      <GitHubStarButton />
                     </div>
 
                     <p className="text-sm text-muted-foreground">Menu</p>
@@ -167,7 +174,10 @@ export function MobileNav({ items }: MobileNavProps) {
                               )}
                               {BETA_DOC_SLUGS.has(doc.slug) && (
                                 <span className="inline-flex items-center gap-1 rounded-full border border-border px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide">
-                                  <FlaskConical className="size-2.5" aria-hidden />
+                                  <FlaskConical
+                                    className="size-2.5"
+                                    aria-hidden
+                                  />
                                   Beta
                                 </span>
                               )}
