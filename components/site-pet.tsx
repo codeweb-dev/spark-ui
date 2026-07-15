@@ -17,7 +17,7 @@ export function SitePet() {
           idleMessage: [
             "Interactive Pets is now in beta!",
             "New this version: pets roam the whole site.",
-            "Drag me around and try my food bowl.",
+            "Drag me around and try my bone.",
             "Click me anytime for release updates.",
           ],
           fedMessage: "Thanks for testing the beta!",

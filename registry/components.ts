@@ -23,14 +23,6 @@ export const registry: Record<
     () => import("@/registry/demos/interactive-pets-demo"),
     { ssr: false },
   ),
-  "interactive-pets-dog": dynamic(
-    () => import("@/registry/demos/interactive-pets-dog-demo"),
-    { ssr: false },
-  ),
-  "interactive-pets-bird": dynamic(
-    () => import("@/registry/demos/interactive-pets-bird-demo"),
-    { ssr: false },
-  ),
   "logo-carousel": dynamic(() => import("@/registry/demos/logo-carousel-demo")),
   "logo-carousel-right": dynamic(
     () => import("@/registry/demos/logo-carousel-demo-right"),

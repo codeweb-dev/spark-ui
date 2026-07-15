@@ -51,7 +51,7 @@ export function Hero() {
         </Link>
       </div>
       <p className="-mt-5 text-xs text-muted-foreground">
-        Drag the pet anywhere and click the bowl to feed it.
+        Drag the pet anywhere and click the bone to feed it.
       </p>
 
       <h1 className="max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.055em] text-foreground text-balance sm:text-6xl md:text-7xl lg:text-8xl">

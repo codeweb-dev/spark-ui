@@ -301,7 +301,7 @@
       "name": "interactive-pets",
       "type": "registry:component",
       "title": "Interactive Pets",
-      "description": "A playful playground of draggable office pets — a cat, a dog, and a bird — with feeding reactions and idle animations.",
+      "description": "A playful draggable cat with feeding reactions and idle animations.",
       "files": [
         {
           "path": "registry/spark-ui/interactive-pets.tsx",
@@ -322,40 +322,6 @@
       "files": [
         {
           "path": "registry/demos/interactive-pets-demo.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "dependencies": [
-        "framer-motion"
-      ],
-      "registryDependencies": [],
-      "category": "signature"
-    },
-    {
-      "name": "interactive-pets-dog-demo",
-      "type": "registry:component",
-      "title": "Interactive Pets Dog Demo",
-      "description": "Demo of Biscuit the interactive dog.",
-      "files": [
-        {
-          "path": "registry/demos/interactive-pets-dog-demo.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "dependencies": [
-        "framer-motion"
-      ],
-      "registryDependencies": [],
-      "category": "signature"
-    },
-    {
-      "name": "interactive-pets-bird-demo",
-      "type": "registry:component",
-      "title": "Interactive Pets Bird Demo",
-      "description": "Demo of Pip the interactive bird.",
-      "files": [
-        {
-          "path": "registry/demos/interactive-pets-bird-demo.tsx",
           "type": "registry:component"
         }
       ],

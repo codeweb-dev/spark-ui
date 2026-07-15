@@ -1,5 +1,20 @@
 export const BLOG_POSTS = [
   {
+    slug: "interactive-pets-2-0-1",
+    title: "Interactive Pets gets a livelier cat",
+    version: "Version 2.0.1",
+    date: "July 15, 2026",
+    description:
+      "A focused Interactive Pets update with new cat artwork, livelier motion, and a cleaner feeding experience.",
+    paragraphs: [
+      "Interactive Pets 2.0.1 focuses the playground on one companion: Mochi the cat. The previous cat, dog, and bird sprites have been removed for now, giving the component a smaller API and a clearer foundation for future pets.",
+      "Mochi now uses the solid cat artwork from the Spark UI site across the component and generated registry output. The new silhouette supports light and dark interfaces while staying portable when the component is installed into another project.",
+      "The cat feels more alive even while the page is idle. Mochi continuously dances with a gentle bounce and tilt and blinks every few seconds. Dragging, keyboard movement, click messages, feeding reactions, and position callbacks continue to work alongside the new animation.",
+      "Feeding has also been simplified. The old bowl is replaced by a compact black bone button, the bone travels toward the cat when activated, and the small feeding effect now appears at the cat's mouth. Message bubbles sit closer to the pet so reactions feel connected instead of floating above the scene. After the third feeding, Mochi says that it is full; projects can customize this response with the new `fullMessage` pet option.",
+      "This is a small release by design: fewer pets, cleaner artwork, and more personality in the companion that remains. More animals can return once each one has artwork and motion that feels as considered as Mochi.",
+    ],
+  },
+  {
     slug: "v2-signature-components",
     title: "A more focused Spark UI",
     version: "Version 2.0",

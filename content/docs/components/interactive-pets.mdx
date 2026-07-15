@@ -1,12 +1,12 @@
 ---
 title: Interactive Pets
-description: A playful playground of draggable office pets — a cat, a dog, and a bird — with feeding reactions and idle animations.
+description: A playful draggable cat with feeding reactions and idle animations.
 category: Interactive
 ---
 
-The Interactive Pets component renders a small bounded playground with a cat, a dog, and a bird. Each pet can be dragged, clicked for a random message, and fed with its matching food.
+The Interactive Pets component renders a small bounded playground with a cat. It can be dragged, clicked for a random message, and fed with a bone.
 
-> **Beta:** Interactive Pets is still in beta. More pets and richer idle animations—such as moving tails, blinking eyes, and other small reactions—are coming soon.
+> **Beta:** Interactive Pets is still in beta. Richer idle animations—such as moving tails, blinking eyes, and other small reactions—are coming soon.
 
 ## Installation
 
@@ -21,21 +21,9 @@ The Interactive Pets component renders a small bounded playground with a cat, a 
 
 ### Cat — Mochi
 
-Mochi the cat, with fish as the feeding action.
+Mochi the cat, with a bone as the feeding action.
 
 <ComponentPreview name="interactive-pets" />
-
-### Dog — Biscuit
-
-Biscuit the dog, with a bone as the feeding action.
-
-<ComponentPreview name="interactive-pets-dog" />
-
-### Bird — Pip
-
-Pip the bird, with seeds as the feeding action.
-
-<ComponentPreview name="interactive-pets-bird" />
 
 ### Custom Messages
 
@@ -49,12 +37,13 @@ Override any pet's name, starting position, or messages. Pets you omit are left 
       name: "Nimbus",
       idleMessage: ["hello.", "still watching."],
       fedMessage: "an acceptable offering.",
+      fullMessage: "i'm full now.",
     },
-    { id: "dog", name: "Waffles", fedMessage: "BEST. DAY. EVER." },
-    { id: "bird", name: "Pixel", fedMessage: "chirp of approval" },
   ]}
 />
 ```
+
+After the third feeding, the pet shows `fullMessage` instead of `fedMessage`.
 
 ### Custom Position
 
@@ -64,12 +53,11 @@ Override any pet's name, starting position, or messages. Pets you omit are left 
 <InteractivePets
   pets={[
     { id: "cat", initialPosition: { x: 24, y: 40 } },
-    { id: "dog", initialPosition: { x: 180, y: 120 } },
   ]}
 />
 ```
 
-Food bowls sit along the bottom by default. Use the `data-food-controls` styling hook when you need a different position:
+The bone sits along the bottom by default. Use the `data-food-controls` styling hook when you need a different position:
 
 ```tsx
 <InteractivePets playgroundClassName="[&_[data-food-controls]]:top-6 [&_[data-food-controls]]:bottom-auto" />
@@ -77,7 +65,7 @@ Food bowls sit along the bottom by default. Use the `data-food-controls` styling
 
 ### Show a Pet Across the Entire Site
 
-Mount `InteractivePets` inside `app/layout.tsx` with a fixed, transparent, full-viewport playground. The wrapper ignores pointer events while the pet and bowl remain interactive, so the page underneath still works.
+Mount `InteractivePets` inside `app/layout.tsx` with a fixed, transparent, full-viewport playground. The wrapper ignores pointer events while the pet and bone remain interactive, so the page underneath still works.
 
 ```tsx title="app/layout.tsx"
 import { InteractivePets } from "@/components/interactive-pets";
@@ -128,7 +116,7 @@ Because it lives in the root layout, the pet stays visible and draggable across 
   <Prop
     name="pets"
     type="PetConfig[]"
-    default="cat, dog, bird"
+    default="cat"
     description="The pets to render. idleMessage accepts one string or an array of randomized click messages."
   />
   <Prop
@@ -176,7 +164,3 @@ Because it lives in the root layout, the pet stays visible and draggable across 
 - Food controls are native buttons with descriptive `aria-label`s.
 - Feeding reactions are announced through a polite `aria-live` region.
 - A visible focus ring is shown on pets and food buttons.
-
-## Reduced Motion
-
-When `prefers-reduced-motion` is set, idle animations (tail sways, bobbing) are disabled, the food travel animation is skipped, and reaction bubbles appear and disappear without transitions — feeding still shows the reaction bubble and fires callbacks, so nothing is lost besides the motion.
