@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import registryIndex from "@/registry.json";
 import fs from "fs";
 import { Accessibility, Boxes, Code2, Palette, Sparkles } from "lucide-react";
-import Link from "next/link";
 import path from "path";
 import React from "react";
 import { CodeBlock } from "./code-block";
@@ -127,45 +126,6 @@ function FeatureCard({
   );
 }
 
-// Build-time index of every documented registry item, so new components show
-// up on the introduction page automatically once they have a docs page.
-function ComponentsIndex() {
-  const rows = registryIndex.items
-    .map((item) => {
-      const section = ["components", "backgrounds"].find((s) =>
-        fs.existsSync(
-          path.join(process.cwd(), "content/docs", s, `${item.name}.mdx`),
-        ),
-      );
-      return section
-        ? { ...item, href: `/docs/${section}/${item.name}` }
-        : null;
-    })
-    .filter((item) => item !== null)
-    .sort((a, b) => a.title.localeCompare(b.title));
-
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Component</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((row) => (
-          <tr key={row.name}>
-            <td>
-              <Link href={row.href}>{row.title}</Link>
-            </td>
-            <td>{row.description}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
 function getGalleryItems() {
   return registryIndex.items
     .map((item) => {
@@ -271,7 +231,6 @@ export const mdxComponents = {
     </div>
   ),
 
-  ComponentsIndex,
   NewComponents,
   UpdatedComponents,
   AllComponents,
