@@ -85,27 +85,6 @@ export function Hero() {
             <Github size={16} /> View on GitHub
           </Link>
         </Button>
-        <a
-          href="https://www.producthunt.com/products/spark-ui?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-spark-ui"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="h-11 overflow-hidden rounded-lg transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        >
-          <img
-            alt="Spark UI - A source-first React component library for modern apps | Product Hunt"
-            width="250"
-            height="54"
-            className="h-11 w-auto dark:hidden"
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1194771&amp;theme=light&amp;t=1784009987628"
-          />
-          <img
-            alt="Spark UI - A source-first React component library for modern apps | Product Hunt"
-            width="250"
-            height="54"
-            className="hidden h-11 w-auto dark:block"
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1194771&amp;theme=dark&amp;t=1784010380773"
-          />
-        </a>
       </div>
 
       <div className="mt-6 flex items-center gap-6 text-xs text-muted-foreground sm:gap-10">
