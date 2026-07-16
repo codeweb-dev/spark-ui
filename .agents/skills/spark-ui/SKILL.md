@@ -1,11 +1,11 @@
 ---
 name: spark-ui
-description: Install and compose Spark UI signature React components such as Dynamic Island, Interactive Pets, Tactile Highlight, Shimmer Text, Image Trail, Animated Gradient, Ghost Ether, Logo Carousel, QR Code, Receipt, Number Ticker, and Spotify Card from the Spark UI shadcn-compatible source registry.
+description: Install and compose Spark UI signature React components such as Widget Stack, Dynamic Island, Interactive Pets, Tactile Highlight, Shimmer Text, Image Trail, Animated Gradient, Ghost Ether, Logo Carousel, QR Code, Receipt, Number Ticker, and Spotify Card from the Spark UI shadcn-compatible source registry.
 ---
 
 # Spark UI
 
-Spark UI is an open-source, shadcn-compatible source registry focused only on 12 signature components with expressive motion, distinctive visuals, and memorable interactions. It does not provide common UI primitives such as buttons, forms, dialogs, tables, or navigation components.
+Spark UI is an open-source, shadcn-compatible source registry focused only on 13 signature components with expressive motion, distinctive visuals, and memorable interactions. It does not provide common UI primitives such as buttons, forms, dialogs, tables, or navigation components.
 
 Components are copied into the consumer's project as TypeScript source. There is no `spark-ui` npm package.
 
@@ -54,6 +54,7 @@ The machine-readable index is `https://spark-ui-olive.vercel.app/r/registry.json
 | `shimmer-text` | `ShimmerText` | Animated shimmer typography |
 | `spotify-card` | `SpotifyCard`, `SpotifyCardRef` | Live Spotify track card with metadata route |
 | `tactile-highlight` | `TactileHighlight` | Physics-based reactive text highlight |
+| `widget-stack` | `WidgetStack`, `WidgetStackSize` | Small or medium vertically scrollable widget stack |
 
 Detailed examples and APIs are in `references/components.md`.
 
@@ -84,6 +85,7 @@ import { InteractivePets } from "@/components/interactive-pets";
 - `animated-gradient` and `ghost-ether`: use as backgrounds and keep readable foreground content above them.
 - `spotify-card`: installs an App Router metadata API route and accepts validated Spotify track URLs.
 - `logo-carousel`: accepts children and supports directional, reverse, fade, pause, duration, and gap controls.
+- `widget-stack`: pass each widget as a child, choose `small` or `medium`, and let native vertical scrolling or the dots switch pages.
 - Preserve the component's existing reduced-motion behavior when customizing animation.
 
 ## Styling

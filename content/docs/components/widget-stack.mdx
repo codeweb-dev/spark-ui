@@ -1,0 +1,73 @@
+---
+title: Widget Stack
+description: A stack of small or medium widgets with vertical snap scrolling and page dots.
+category: Interactive
+---
+
+Widget Stack groups glanceable widgets into one space. Swipe or scroll vertically to move between widgets, use the dots on the right to jump to a page, or focus the stack and use the arrow, Page Up, Page Down, Home, and End keys.
+
+## Preview
+
+<ComponentPreview name="widget-stack" />
+
+## Installation
+
+<InstallBlock command="widget-stack" />
+
+## Usage
+
+<UsageCode name="widget-stack" />
+
+## Small and Medium Sizes
+
+Both sizes support any number of child widgets and the same vertical stack interaction.
+
+<ComponentPreview name="widget-stack-sizes" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="children"
+    type="ReactNode"
+    default="—"
+    description="Widget pages rendered in stack order."
+  />
+  <Prop
+    name="size"
+    type='"small" | "medium"'
+    default='"small"'
+    description="Square or wide widget proportion."
+  />
+  <Prop
+    name="defaultIndex"
+    type="number"
+    default="0"
+    description="Widget page shown first."
+  />
+  <Prop
+    name="onIndexChange"
+    type="(index: number) => void"
+    default="—"
+    description="Called after scrolling settles on another widget page."
+  />
+  <Prop
+    name="ariaLabel"
+    type="string"
+    default='"Widget stack"'
+    description="Accessible label for the scrollable stack."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional classes for the stack container."
+  />
+</PropsTable>
+
+## Accessibility
+
+- The stack is keyboard focusable and supports arrow keys, Page Up, Page Down, Home, and End.
+- Every page and dot announces its position within the stack.
+- Dot controls are native buttons with visible focus states.
+- Smooth scrolling is disabled when the user prefers reduced motion.

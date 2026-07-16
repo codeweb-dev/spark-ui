@@ -5,6 +5,21 @@
   "author": "Spark UI (https://spark-ui-olive.vercel.app)",
   "items": [
     {
+      "name": "widget-stack",
+      "type": "registry:component",
+      "title": "Widget Stack",
+      "description": "A stack of small or medium widgets with vertical snap scrolling and page dots.",
+      "files": [
+        {
+          "path": "registry/spark-ui/widget-stack.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "signature"
+    },
+    {
       "name": "dynamic-island",
       "type": "registry:component",
       "title": "Dynamic Island",

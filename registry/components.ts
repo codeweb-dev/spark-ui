@@ -49,4 +49,8 @@ export const registry: Record<
   "tactile-highlight": dynamic(
     () => import("@/registry/demos/tactile-highlight-demo"),
   ),
+  "widget-stack": dynamic(() => import("@/registry/demos/widget-stack-demo")),
+  "widget-stack-sizes": dynamic(
+    () => import("@/registry/demos/widget-stack-sizes-demo"),
+  ),
 };

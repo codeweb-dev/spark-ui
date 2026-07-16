@@ -28,9 +28,8 @@ export const SITE_CONFIG = {
 export const BETA_DOC_SLUGS = new Set(["components/interactive-pets"]);
 
 export const NEW_DOC_SLUGS = new Set([
+  "components/widget-stack",
   "components/dynamic-island",
-  "components/receipt",
-  "components/interactive-pets",
 ]);
 
 export const UPDATED_DOC_SLUGS = new Set<string>();

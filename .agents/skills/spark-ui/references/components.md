@@ -152,3 +152,17 @@ import { TactileHighlight } from "@/components/tactile-highlight";
 ```
 
 Key props: `direction`, `delay`, `trigger` (`auto`, `hover`, `inView`).
+
+## Widget Stack
+
+```tsx
+import { WidgetStack } from "@/components/widget-stack";
+
+<WidgetStack size="medium">
+  <div>Weather widget</div>
+  <div>Calendar widget</div>
+  <div>Photos widget</div>
+</WidgetStack>;
+```
+
+Sizes: `small`, `medium`. Child widgets snap vertically and can be selected with the right-side dots or keyboard navigation. Key props: `defaultIndex`, `onIndexChange`, `ariaLabel`, `className`.
