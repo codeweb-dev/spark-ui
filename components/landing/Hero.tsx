@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { SITE_CONFIG } from "@/lib/constants";
+import { formatVersion, LATEST_RELEASE } from "@/lib/blog";
 import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
 import { ArrowRight, Github } from "lucide-react";
 import Image from "next/image";
@@ -39,10 +40,10 @@ export function Hero() {
           />
         </Link>
         <Link
-          href="/blog/v2-signature-components"
+          href={`/blog/${LATEST_RELEASE.slug}`}
           className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground px-3.5 py-1.5 text-xs font-medium text-background shadow-sm transition-opacity hover:opacity-85"
         >
-          Version 2 · Read the blog post
+          {formatVersion(LATEST_RELEASE.version)} · Read the release notes
           <ArrowRight
             size={12}
             className="transition-transform group-hover:translate-x-0.5"
@@ -109,7 +110,7 @@ export function Hero() {
 
       <div className="mt-6 flex items-center gap-6 text-xs text-muted-foreground sm:gap-10">
         <span>
-          <strong className="text-foreground">11</strong> components
+          <strong className="text-foreground">13</strong> components
         </span>
         <span className="h-4 w-px bg-border" />
         <span>

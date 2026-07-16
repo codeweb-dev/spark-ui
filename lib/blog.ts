@@ -1,13 +1,63 @@
-export const BLOG_POSTS = [
+import packageJson from "@/package.json";
+
+const releaseDateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+export const CURRENT_VERSION = packageJson.version;
+export const formatVersion = (version: string) => `v${version}`;
+export const formatReleaseDate = (releasedAt: string) =>
+  releaseDateFormatter.format(new Date(`${releasedAt}T00:00:00Z`));
+
+export type BlogComponent = {
+  name: string;
+  preview?: string;
+};
+
+export type BlogPost = {
+  slug: string;
+  title: string;
+  version: string;
+  releasedAt: string;
+  description: string;
+  paragraphs: readonly string[];
+  components?: readonly BlogComponent[];
+};
+
+export const BLOG_POSTS: readonly BlogPost[] = [
   {
-    slug: "interactive-pets-2-0-1",
+    slug: "dynamic-island-and-widget-stack",
+    title: "Introducing Dynamic Island and Widget Stack",
+    version: CURRENT_VERSION,
+    releasedAt: "2026-07-16",
+    description:
+      "Two new signature components for fitting expressive, glanceable interactions into compact spaces.",
+    components: [
+      { name: "dynamic-island", preview: "dynamic-island-examples" },
+      { name: "widget-stack", preview: "widget-stack-sizes" },
+    ],
+    paragraphs: [
+      "Spark UI 2.2.0 adds Dynamic Island and Widget Stack, bringing the focused collection to 13 signature components. Both are designed for interfaces that need to show more without permanently taking over more of the page.",
+      "Dynamic Island is a compact activity surface that smoothly morphs between a pill and expanded content. Use it for media playback, timers, calls, notifications, or any interaction that should stay available without becoming the center of the layout. It supports controlled and uncontrolled state, so it can manage its own expansion or follow another part of your application.",
+      "The component also has a deliberate empty state: when no activity is available, pressing the island briefly enlarges and shakes it before returning to rest. Native buttons, customizable labels, Escape-key handling, focus restoration, and reduced-motion support keep the interaction playful without giving up accessibility.",
+      "Widget Stack groups several glanceable widgets into one small or medium surface. People can swipe or scroll vertically between pages, use the dots to jump directly to a widget, or connect the active page to application state with the index-change callback. Each child remains ordinary React content, so the stack does not impose a separate widget API.",
+      "Keyboard controls cover arrow keys, Page Up, Page Down, Home, and End. Every page and dot announces its position, visible focus states are included, and smooth scrolling automatically switches off when reduced motion is preferred.",
+      "Both components are available now through the Spark UI registry with live examples, copyable installation commands, and source you can fully customize after installation.",
+    ],
+  },
+  {
+    slug: "interactive-pets-2-1-0",
     title: "Interactive Pets gets a livelier cat",
-    version: "Version 2.0.1",
-    date: "July 15, 2026",
+    version: "2.1.0",
+    releasedAt: "2026-07-15",
     description:
       "A focused Interactive Pets update with new cat artwork, livelier motion, and a cleaner feeding experience.",
+    components: [{ name: "interactive-pets" }],
     paragraphs: [
-      "Interactive Pets 2.0.1 focuses the playground on one companion: Mochi the cat. The previous cat, dog, and bird sprites have been removed for now, giving the component a smaller API and a clearer foundation for future pets.",
+      "Interactive Pets 2.1.0 focuses the playground on one companion: Mochi the cat. The previous cat, dog, and bird sprites have been removed for now, giving the component a smaller API and a clearer foundation for future pets.",
       "Mochi now uses the solid cat artwork from the Spark UI site across the component and generated registry output. The new silhouette supports light and dark interfaces while staying portable when the component is installed into another project.",
       "The cat feels more alive even while the page is idle. Mochi continuously dances with a gentle bounce and tilt and blinks every few seconds. Dragging, keyboard movement, click messages, feeding reactions, and position callbacks continue to work alongside the new animation.",
       "Feeding has also been simplified. The old bowl is replaced by a compact black bone button, the bone travels toward the cat when activated, and the small feeding effect now appears at the cat's mouth. Message bubbles sit closer to the pet so reactions feel connected instead of floating above the scene. After the third feeding, Mochi says that it is full; projects can customize this response with the new `fullMessage` pet option.",
@@ -17,12 +67,12 @@ export const BLOG_POSTS = [
   {
     slug: "v2-signature-components",
     title: "A more focused Spark UI",
-    version: "Version 2.0",
-    date: "July 15, 2026",
+    version: "2.0.0",
+    releasedAt: "2026-07-15",
     description:
       "Spark UI is now a focused collection of 11 expressive components built for motion, personality, and memorable interaction.",
     paragraphs: [
-      "Version 2 is a deliberate reset around what made Spark UI worth using in the first place: components with expressive motion, distinctive visuals, and interactions that are difficult to find in a traditional component library. The registry now contains 11 focused components, including Interactive Pets, Tactile Highlight, Shimmer Text, Image Trail, Animated Gradient, Ghost Ether, Logo Carousel, QR Code, Receipt, Basic Number Ticker, and Spotify Card.",
+      "Version 2.0.0 is a deliberate reset around what made Spark UI worth using in the first place: components with expressive motion, distinctive visuals, and interactions that are difficult to find in a traditional component library. The registry now contains 11 focused components, including Interactive Pets, Tactile Highlight, Shimmer Text, Image Trail, Animated Gradient, Ghost Ether, Logo Carousel, QR Code, Receipt, Basic Number Ticker, and Spotify Card.",
       "The first release also shipped familiar buttons, form controls, dialogs, tables, navigation elements, and layout primitives. Those components worked, but they duplicated an ecosystem that shadcn/ui already maintains exceptionally well. They made Spark UI look like another general-purpose UI kit instead of a focused creative layer, and every duplicate primitive increased the amount of documentation, testing, dependency management, and long-term maintenance required.",
       "We removed 25 shadcn-style registry components in Version 2. This was not a rejection of shadcn/ui. It was the opposite: shadcn/ui is already the right place for dependable application foundations, so Spark UI no longer needs to maintain competing versions of the same building blocks.",
       "Spark UI now complements the component system you already use. Build the structure of an application with shadcn/ui, Base UI, Radix, or your own design system, then reach for Spark UI when a moment needs more character: a reactive headline, an animated background, a playful site companion, a visual number transition, or a richer media treatment.",
@@ -36,8 +86,8 @@ export const BLOG_POSTS = [
   {
     slug: "v1-launch",
     title: "Introducing Spark UI",
-    version: "Version 1.0",
-    date: "July 12, 2026",
+    version: "1.0.0",
+    releasedAt: "2026-07-12",
     description:
       "The first public release of Spark UI as an open-source, source-first component registry for React.",
     paragraphs: [
@@ -49,8 +99,10 @@ export const BLOG_POSTS = [
       "Most importantly, Version 1 proved that Spark UI's strongest work was not another implementation of familiar primitives. It was the smaller group of components that made interfaces feel alive. That lesson shaped the more focused direction introduced in Version 2.",
     ],
   },
-] as const;
+];
 
 export function getBlogPost(slug: string) {
   return BLOG_POSTS.find((post) => post.slug === slug);
 }
+
+export const LATEST_RELEASE = BLOG_POSTS[0];

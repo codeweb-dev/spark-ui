@@ -1,6 +1,10 @@
 import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
-import { BLOG_POSTS } from "@/lib/blog";
+import {
+  BLOG_POSTS,
+  formatReleaseDate,
+  formatVersion,
+} from "@/lib/blog";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,8 +35,11 @@ export default function BlogPage() {
               key={post.slug}
               className="grid gap-6 py-12 first:pt-0 lg:grid-cols-[16rem_40rem_1fr]"
             >
-              <time className="text-sm leading-8 text-muted-foreground">
-                {post.date}
+              <time
+                dateTime={post.releasedAt}
+                className="text-sm leading-8 text-muted-foreground"
+              >
+                {formatReleaseDate(post.releasedAt)}
               </time>
               <div className="space-y-6">
                 <div>
@@ -42,7 +49,7 @@ export default function BlogPage() {
                     </h2>
                   </Link>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    {post.version}
+                    {formatVersion(post.version)}
                   </p>
                 </div>
 
@@ -63,7 +70,7 @@ export default function BlogPage() {
                       {post.title}
                     </span>
                     <span className="text-5xl font-semibold tracking-tighter text-white/50 sm:text-7xl">
-                      {post.version.replace("Version ", "v")}
+                      {formatVersion(post.version)}
                     </span>
                   </div>
                 </Link>

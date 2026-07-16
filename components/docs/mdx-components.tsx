@@ -54,7 +54,7 @@ function FeatureCard({
   );
 }
 
-function getGalleryItems() {
+export function getGalleryItems() {
   return registryIndex.items
     .map((item) => {
       const section = ["components", "backgrounds"].find((section) =>
@@ -95,7 +95,7 @@ function AllComponents() {
   return <ComponentsGallery items={getGalleryItems()} />;
 }
 
-function getDemoSourceCode(name: string): string | null {
+export function getDemoSourceCode(name: string): string | null {
   try {
     const demoPath = path.join(
       process.cwd(),
