@@ -1,11 +1,11 @@
 ---
 name: spark-ui
-description: Install and compose Spark UI signature React components such as Interactive Pets, Tactile Highlight, Shimmer Text, Image Trail, Animated Gradient, Ghost Ether, Logo Carousel, QR Code, Receipt, Number Ticker, and Spotify Card from the Spark UI shadcn-compatible source registry.
+description: Install and compose Spark UI signature React components such as Dynamic Island, Interactive Pets, Tactile Highlight, Shimmer Text, Image Trail, Animated Gradient, Ghost Ether, Logo Carousel, QR Code, Receipt, Number Ticker, and Spotify Card from the Spark UI shadcn-compatible source registry.
 ---
 
 # Spark UI
 
-Spark UI is an open-source, shadcn-compatible source registry focused only on 11 signature components with expressive motion, distinctive visuals, and memorable interactions. It does not provide common UI primitives such as buttons, forms, dialogs, tables, or navigation components.
+Spark UI is an open-source, shadcn-compatible source registry focused only on 12 signature components with expressive motion, distinctive visuals, and memorable interactions. It does not provide common UI primitives such as buttons, forms, dialogs, tables, or navigation components.
 
 Components are copied into the consumer's project as TypeScript source. There is no `spark-ui` npm package.
 
@@ -44,6 +44,7 @@ The machine-readable index is `https://spark-ui-olive.vercel.app/r/registry.json
 | --- | --- | --- |
 | `animated-gradient` | `AnimatedGradient` | Animated WebGL gradient background |
 | `basic-number-ticker` | `NumberTicker` (default), `NumberTickerRef` | Animated numeric values |
+| `dynamic-island` | `DynamicIsland`, `DynamicIslandProps` | Morphing compact and expanded activity surface |
 | `ghost-ether` | `GhostEther`, `GhostEtherProps` | Interactive Three.js fluid background |
 | `image-trail` | `ImageTrail`, `ImageTrailItem`, `ImageTrailItemCaption` | Pointer-following framed media trail |
 | `interactive-pets` | `InteractivePets`, `PetType`, `PetConfig`, `InteractivePetsProps` | Draggable, feedable cat, dog, and bird |
@@ -51,7 +52,7 @@ The machine-readable index is `https://spark-ui-olive.vercel.app/r/registry.json
 | `qr-code` | `QRCode` | Customizable SVG QR code |
 | `receipt` | `Receipt` | Polished payment receipt |
 | `shimmer-text` | `ShimmerText` | Animated shimmer typography |
-| `spotify-card` | `SpotifyCard` | Live Spotify track card with metadata route |
+| `spotify-card` | `SpotifyCard`, `SpotifyCardRef` | Live Spotify track card with metadata route |
 | `tactile-highlight` | `TactileHighlight` | Physics-based reactive text highlight |
 
 Detailed examples and APIs are in `references/components.md`.
@@ -78,6 +79,7 @@ import { InteractivePets } from "@/components/interactive-pets";
 ## Composition notes
 
 - `interactive-pets`: mount once near the root for a site-wide pet. Keep a fixed full-viewport wrapper `pointer-events-none`; pets, bowls, and controls opt back into pointer events.
+- `dynamic-island`: pass non-interactive compact content and place controls in the expanded content. Omit `expanded` for a pill-only empty/activity state. It supports controlled or uncontrolled expansion.
 - `image-trail`: provide a sized container and compose `ImageTrailItem` children inside `ImageTrail`.
 - `animated-gradient` and `ghost-ether`: use as backgrounds and keep readable foreground content above them.
 - `spotify-card`: installs an App Router metadata API route and accepts validated Spotify track URLs.

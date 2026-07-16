@@ -4,11 +4,22 @@
 import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "framer-motion";
 import { Loader2 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 
-interface SpotifyCardProps {
+export interface SpotifyCardProps {
   trackUrl: string;
   className?: string;
+  onPlayingChange?: (isPlaying: boolean) => void;
+}
+
+export interface SpotifyCardRef {
+  togglePlayback: () => void;
 }
 
 const SpotifyLogo = ({
@@ -40,7 +51,8 @@ const SpotifyLogo = ({
   </motion.svg>
 );
 
-export function SpotifyCard({ trackUrl, className }: SpotifyCardProps) {
+export const SpotifyCard = forwardRef<SpotifyCardRef, SpotifyCardProps>(
+  function SpotifyCard({ trackUrl, className, onPlayingChange }, ref) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [metadata, setMetadata] = useState<{
@@ -53,6 +65,10 @@ export function SpotifyCard({ trackUrl, className }: SpotifyCardProps) {
   const [colors, setColors] = useState<string[]>(["#1DB954", "#191414"]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const discControls = useAnimation();
+
+  useEffect(() => {
+    onPlayingChange?.(isPlaying);
+  }, [isPlaying, onPlayingChange]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration gate
@@ -167,7 +183,9 @@ export function SpotifyCard({ trackUrl, className }: SpotifyCardProps) {
     }
   };
 
-  if (loading || !mounted) {
+    useImperativeHandle(ref, () => ({ togglePlayback }), [isPlaying]);
+
+    if (loading || !mounted) {
     return (
       <div
         className={cn(
@@ -186,7 +204,7 @@ export function SpotifyCard({ trackUrl, className }: SpotifyCardProps) {
     albumArt = "",
   } = metadata || {};
 
-  return (
+    return (
     <div
       className={cn(
         "group relative w-95 h-32.5 rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 border border-black/5 dark:border-white/10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl",
@@ -259,13 +277,15 @@ export function SpotifyCard({ trackUrl, className }: SpotifyCardProps) {
       <div className="relative z-10 flex items-center h-full px-5 gap-6">
         {/* Album Cover / Disc */}
         <div className="relative flex items-center justify-center w-24 h-24 shrink-0">
-          <motion.div
+          <motion.button
+            type="button"
+            aria-label={isPlaying ? `Pause ${title}` : `Play ${title}`}
             layout
             animate={{
               borderRadius: isPlaying ? "100%" : "16px",
             }}
             transition={{ duration: 0.6, ease: "circOut" }}
-            className="relative w-24 h-24 overflow-hidden shadow-2xl cursor-pointer ring-1 ring-black/5 dark:ring-white/10 z-10"
+            className="relative w-24 h-24 overflow-hidden shadow-2xl cursor-pointer ring-1 ring-black/5 dark:ring-white/10 z-10 outline-none focus-visible:ring-2 focus-visible:ring-ring"
             onClick={togglePlayback}
           >
             <motion.div
@@ -295,7 +315,7 @@ export function SpotifyCard({ trackUrl, className }: SpotifyCardProps) {
                 <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
               </motion.div>
             </motion.div>
-          </motion.div>
+          </motion.button>
         </div>
 
         {/* Info Section */}
@@ -319,5 +339,6 @@ export function SpotifyCard({ trackUrl, className }: SpotifyCardProps) {
         </div>
       </div>
     </div>
-  );
-}
+    );
+  },
+);

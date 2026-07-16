@@ -17,6 +17,15 @@ export const registry: Record<
   "basic-number-ticker-variants": dynamic(
     () => import("@/registry/demos/basic-number-ticker-variants-demo"),
   ),
+  "dynamic-island": dynamic(
+    () => import("@/registry/demos/dynamic-island-demo"),
+  ),
+  "dynamic-island-examples": dynamic(
+    () => import("@/registry/demos/dynamic-island-examples-demo"),
+  ),
+  "dynamic-island-spotify": dynamic(
+    () => import("@/registry/demos/dynamic-island-spotify-demo"),
+  ),
   "ghost-ether": dynamic(() => import("@/registry/demos/ghost-ether-demo")),
   "image-trail": dynamic(() => import("@/registry/demos/image-trail-demo")),
   "interactive-pets": dynamic(

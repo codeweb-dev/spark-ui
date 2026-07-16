@@ -115,4 +115,21 @@ export async function GET(req: NextRequest) {
     default="—"
     description="Additional CSS classes for the card container."
   />
+  <Prop
+    name="onPlayingChange"
+    type="(isPlaying: boolean) => void"
+    default="—"
+    description="Called whenever the audio preview playback state changes."
+  />
 </PropsTable>
+
+## Imperative Playback
+
+Use a `SpotifyCardRef` when playback needs to be controlled by another button.
+
+```tsx
+const playerRef = useRef<SpotifyCardRef>(null);
+
+<button onClick={() => playerRef.current?.togglePlayback()}>Play</button>
+<SpotifyCard ref={playerRef} trackUrl="https://open.spotify.com/track/..." />
+```

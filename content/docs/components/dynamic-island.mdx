@@ -1,0 +1,106 @@
+---
+title: Dynamic Island
+description: A functional iPhone-inspired island that morphs between compact and expanded content.
+category: Interactive
+---
+
+Dynamic Island is a small interactive surface for media, timers, calls, or notifications. The default preview is an empty pill; tap it to see the unavailable-activity response.
+
+## Preview
+
+<ComponentPreview name="dynamic-island" />
+
+## Installation
+
+<InstallBlock command="dynamic-island" />
+
+## Usage
+
+<UsageCode name="dynamic-island" />
+
+## Empty State and Spotify Playback
+
+With no `compact` or `expanded` content, the island grows, shakes horizontally, then returns to its original size. Use the button below to play the real Spotify preview and activate the island without shaking it. Then tap the active island to smoothly expand it and the still-playing Spotify Card together, without sliding the card upward.
+
+<ComponentPreview name="dynamic-island-spotify" />
+
+## Activity Examples
+
+Use the same component for secure actions, media playback, live calls, and notifications. Choose an activity below, tap the island to expand it, then try its controls.
+
+<ComponentPreview name="dynamic-island-examples" />
+
+## Controlled State
+
+Pass `open` and `onOpenChange` when another part of your app needs to control the island.
+
+```tsx
+const [open, setOpen] = useState(false);
+
+<DynamicIsland
+  open={open}
+  onOpenChange={setOpen}
+  compact={<span>Now playing</span>}
+  expanded={<div>Playback controls</div>}
+/>;
+```
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="compact"
+    type="ReactNode"
+    default="empty"
+    description="Non-interactive content shown inside the compact pill."
+  />
+  <Prop
+    name="expanded"
+    type="ReactNode"
+    default="—"
+    description="Content shown in the expanded panel. Omit it to keep the component pill-shaped when enlarged."
+  />
+  <Prop
+    name="open"
+    type="boolean"
+    default="—"
+    description="Controlled expanded state."
+  />
+  <Prop
+    name="defaultOpen"
+    type="boolean"
+    default="false"
+    description="Initial expanded state when the component is uncontrolled."
+  />
+  <Prop
+    name="onOpenChange"
+    type="(open: boolean) => void"
+    default="—"
+    description="Called whenever the island requests an expand or collapse."
+  />
+  <Prop
+    name="expandLabel"
+    type="string"
+    default="Expand Dynamic Island"
+    description="Accessible label for the compact expand button."
+  />
+  <Prop
+    name="collapseLabel"
+    type="string"
+    default="Collapse Dynamic Island"
+    description="Accessible label for the expanded collapse handle."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional classes for the island container."
+  />
+</PropsTable>
+
+## Accessibility
+
+- Expand and collapse controls are native buttons with customizable labels.
+- Pressing <kbd>Escape</kbd> while focus is inside the expanded island collapses it.
+- Focus returns to the compact trigger after the island closes.
+- Morphing animations respect the user's reduced-motion preference.

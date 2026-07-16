@@ -5,6 +5,23 @@
   "author": "Spark UI (https://spark-ui-olive.vercel.app)",
   "items": [
     {
+      "name": "dynamic-island",
+      "type": "registry:component",
+      "title": "Dynamic Island",
+      "description": "A functional iPhone-inspired island that morphs between compact and expanded content.",
+      "files": [
+        {
+          "path": "registry/spark-ui/dynamic-island.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "category": "signature"
+    },
+    {
       "name": "tactile-highlight",
       "type": "registry:component",
       "title": "Tactile Highlight",

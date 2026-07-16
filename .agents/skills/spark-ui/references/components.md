@@ -30,6 +30,20 @@ import { GhostEther } from "@/components/ghost-ether";
 
 Interactive Three.js fluid background. Key tunables include `mouseForce`, `cursorSize`, `isViscous`, and `viscous`. Render once per page.
 
+## Dynamic Island
+
+```tsx
+import { DynamicIsland } from "@/components/dynamic-island";
+
+<DynamicIsland
+  compact={<span>Now playing</span>}
+  expanded={<div>Playback controls</div>}
+/>;
+```
+
+Supports controlled or uncontrolled expansion through `open`, `defaultOpen`, and `onOpenChange`. With no content, activation grows and shakes the empty pill before returning it to its original size. Keep compact content non-interactive; buttons and sliders belong in `expanded`.
+Common compositions include Face Unlock status, media controls, incoming calls, and notifications.
+
 ## Image Trail
 
 ```tsx
@@ -126,6 +140,8 @@ import { SpotifyCard } from "@/components/spotify-card";
 ```
 
 Requires Next.js App Router. Installation includes a validated metadata route at `app/api/spotify/metadata/route.ts`.
+Use `onPlayingChange` to synchronize playback UI such as Dynamic Island sound bars.
+Use a `SpotifyCardRef` and its `togglePlayback()` method for an external play button.
 
 ## Tactile Highlight
 
