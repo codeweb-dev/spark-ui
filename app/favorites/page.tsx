@@ -2,6 +2,7 @@ import { RemoveFavoriteButton } from "@/components/favorites/remove-favorite-but
 import { Navbar } from "@/components/landing/Navbar";
 import { Button } from "@/components/ui/button";
 import { getAllDocs } from "@/lib/docs";
+import { isBackendEnabled } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
 import { ArrowUpRight, Heart } from "lucide-react";
 import Link from "next/link";
@@ -21,6 +22,8 @@ function formatSavedDate(value: string) {
 }
 
 export default async function FavoritesPage() {
+  if (!isBackendEnabled()) redirect("/");
+
   const supabase = await createClient();
   const {
     data: { user },

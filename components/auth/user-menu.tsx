@@ -2,6 +2,7 @@
 
 import { SignInDialog } from "@/components/auth/sign-in-dialog";
 import { createClient } from "@/lib/supabase/client";
+import { isBackendEnabled } from "@/lib/supabase/config";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import type { User } from "@supabase/supabase-js";
 import { LogOut, Star } from "lucide-react";
@@ -12,6 +13,11 @@ const itemClass =
   "flex cursor-pointer select-none items-center gap-2 rounded-lg px-3 py-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground";
 
 export function UserMenu() {
+  if (!isBackendEnabled()) return null;
+  return <UserMenuInner />;
+}
+
+function UserMenuInner() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {

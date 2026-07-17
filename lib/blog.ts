@@ -29,6 +29,22 @@ export type BlogPost = {
 
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: "open-source-boundary",
+    title: "A clean open-source boundary, and zero-setup contributions",
+    version: "2.4.0",
+    releasedAt: "2026-07-17",
+    description:
+      "The production backend moves to a private repository, and a new backend flag lets anyone clone, run, and contribute to Spark UI with no Supabase setup at all.",
+    paragraphs: [
+      "Spark UI 2.4.0 draws a clear line between what is open source and what is operational. The public repository is now purely the component library, the documentation site, and the safe Supabase client helpers. The production backend — database migrations, policies, and everything needed to run the hosted platform — has been extracted into a separate private repository.",
+      "This split is about focus, not secrecy. The public repo stays centered on reusable UI, community contributions get simpler, and the frontend and backend can evolve independently. Security never relied on hiding the schema anyway: it comes from authentication, Row Level Security, and least-privilege access, and the public repo has never contained production credentials. The full policy is documented in the new architecture doc, docs/architecture/OPEN_SOURCE_BOUNDARY.md.",
+      "The change contributors will actually feel is the new NEXT_PUBLIC_BACKEND flag, which defaults to false in .env.example. Clone the repo, run npm install and npm run dev, and the entire site works — docs, previews, registry, everything — with no Supabase project, no environment values, and no accounts to create. That is the whole setup.",
+      "When the flag is off, backend-powered features simply step aside instead of breaking. The login button and account menu don't render, the favorite hearts disappear from component pages, the favorites page redirects home, and the auth middleware becomes a no-op. Nothing throws, and nothing asks for configuration you don't have.",
+      "If you do want the full experience locally, it stays easy: create a personal or local Supabase project, run the schema in supabase/examples/favorites.sql, enable the GitHub provider, then set NEXT_PUBLIC_BACKEND=true alongside your project's URL and publishable key. The public examples mirror exactly what the frontend depends on in production.",
+      "Nothing changes for the hosted site — login and favorites work as they always have. What changes is that contributing to Spark UI now starts with a single git clone instead of a backend checklist.",
+    ],
+  },
+  {
     slug: "masonry-templates-and-showcase",
     title: "A redesigned Masonry, plus Templates and Showcase",
     version: "2.3.0",

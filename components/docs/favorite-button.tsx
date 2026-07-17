@@ -1,6 +1,7 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
+import { isBackendEnabled } from "@/lib/supabase/config";
 import { cn } from "@/lib/utils";
 import { Heart } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
@@ -12,6 +13,11 @@ import { toast } from "sonner";
 const FAVORITES_CHANGED = "spark:favorites-changed";
 
 export function FavoriteButton() {
+  if (!isBackendEnabled()) return null;
+  return <FavoriteButtonInner />;
+}
+
+function FavoriteButtonInner() {
   const pathname = usePathname();
   const router = useRouter();
   const slug = pathname.startsWith("/docs/")

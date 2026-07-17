@@ -1,8 +1,10 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { getSupabaseConfig } from "./config";
+import { getSupabaseConfig, isBackendEnabled } from "./config";
 
 export async function updateSession(request: NextRequest) {
+  if (!isBackendEnabled()) return NextResponse.next({ request });
+
   let response = NextResponse.next({ request });
   const { url, publishableKey } = getSupabaseConfig();
 

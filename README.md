@@ -31,6 +31,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the site.
 
+No Supabase project is needed — the site runs UI-only by default (`NEXT_PUBLIC_BACKEND=false`), with GitHub login and favorites hidden. See "GitHub authentication setup" below to enable them.
+
 This project uses **npm** exclusively. Please do not introduce other package-manager lockfiles.
 
 ## npm commands
@@ -110,14 +112,15 @@ This repository is the **open-source frontend**: components, registry, docs site
 - Set `NEXT_PUBLIC_APP_URL=https://spark-ui-olive.vercel.app` in the Vercel project so metadata, sitemap, and install commands use the production domain.
 - Run `npm run check` before deploying; `registry:build` must run so `public/r/` is current.
 
-## GitHub authentication setup
+## GitHub authentication setup (optional)
 
-Private dashboard access uses Supabase Auth with the GitHub provider and cookie-based SSR sessions.
+Backend features (GitHub login + favorites) are **off by default** — the site runs UI-only with no Supabase project, so most contributors can skip this section entirely. To enable them against your own Supabase project:
 
 1. Create a GitHub OAuth App and set its authorization callback URL to `https://PROJECT_REF.supabase.co/auth/v1/callback`.
 2. Add the GitHub Client ID and Client Secret to the GitHub provider settings in the Supabase dashboard.
 3. Configure the Supabase Site URL and add your application callback URLs, including `http://localhost:3000/auth/callback` for local development.
-4. Copy `.env.example` to `.env.local` and fill in `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` from the Supabase project settings.
+4. Run `supabase/examples/favorites.sql` in your project's SQL editor (see [`supabase/README.md`](./supabase/README.md)).
+5. Copy `.env.example` to `.env.local`, set `NEXT_PUBLIC_BACKEND=true`, and fill in `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` from the Supabase project settings.
 
 The GitHub Client Secret and Supabase service-role key must never be committed or exposed to browser code.
 

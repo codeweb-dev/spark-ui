@@ -2,7 +2,20 @@
 
 All notable changes to Spark UI are documented in this file.
 
-The format follows the categories described in [VERSIONING.md](./VERSIONING.md). The newest release appears first.
+The format follows the categories described in [VERSIONING.md](./docs/policies/VERSIONING.md). The newest release appears first.
+
+## 2.4.0 - 2026-07-17
+
+### Added
+
+- `NEXT_PUBLIC_BACKEND` flag, default `false` in `.env.example`: the site runs UI-only with no Supabase project, so contributors need zero backend setup; GitHub login and favorites stay hidden until it is set to `true`
+- `docs/architecture/OPEN_SOURCE_BOUNDARY.md` documenting the split between the public frontend and the private production backend
+- Public `supabase/examples/favorites.sql` and `supabase/README.md` for optional local backend setup
+
+### Changed
+
+- Production Supabase backend (migrations) extracted into a separate private repository; the public repo now contains only the frontend and safe client helpers
+- `VERSIONING.md` moved to `docs/policies/VERSIONING.md`
 
 ## 2.3.0 - 2026-07-17
 
