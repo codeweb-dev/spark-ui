@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hello",
+  "title": "Hello",
+  "description": "An Apple-style welcome greeting that cycles through languages with a soft blur crossfade.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/spark-ui/hello.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { AnimatePresence, motion, useReducedMotion } from \"framer-motion\";\nimport * as React from \"react\";\n\nconst GREETINGS = [\n  \"Hello\",\n  \"こんにちは\",\n  \"Bonjour\",\n  \"Hola\",\n  \"안녕하세요\",\n  \"Ciao\",\n  \"你好\",\n  \"Hallo\",\n  \"Olá\",\n  \"नमस्ते\",\n];\n\ninterface HelloProps {\n  /** Greetings to cycle through. Defaults to \"Hello\" in ten languages. */\n  greetings?: readonly string[];\n  /**\n   * Milliseconds each greeting stays on screen.\n   * @default 2000\n   */\n  interval?: number;\n  className?: string;\n}\n\nexport function Hello({\n  greetings = GREETINGS,\n  interval = 2000,\n  className,\n}: HelloProps) {\n  const [index, setIndex] = React.useState(0);\n  const reducedMotion = useReducedMotion();\n\n  React.useEffect(() => {\n    const id = window.setInterval(\n      () => setIndex((i) => (i + 1) % greetings.length),\n      interval,\n    );\n    return () => window.clearInterval(id);\n  }, [greetings.length, interval]);\n\n  return (\n    <div className={cn(\"flex items-center justify-center\", className)}>\n      <AnimatePresence mode=\"wait\">\n        <motion.span\n          key={`${index}-${greetings[index]}`}\n          initial={{ opacity: 0, y: 14, scale: 0.96, filter: \"blur(10px)\" }}\n          animate={{ opacity: 1, y: 0, scale: 1, filter: \"blur(0px)\" }}\n          exit={{ opacity: 0, y: -14, scale: 0.96, filter: \"blur(10px)\" }}\n          transition={\n            reducedMotion\n              ? { duration: 0 }\n              : { duration: 0.6, ease: [0.22, 1, 0.36, 1] }\n          }\n          className=\"text-5xl font-semibold tracking-tight text-foreground sm:text-7xl\"\n        >\n          {greetings[index]}\n        </motion.span>\n      </AnimatePresence>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

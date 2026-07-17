@@ -1,0 +1,47 @@
+---
+title: Hello
+description: An Apple-style welcome greeting that cycles through languages with a soft blur crossfade.
+category: Text & Motion
+---
+
+Hello recreates the Apple setup-screen welcome: a large greeting that cycles through languages — English, Japanese, French, Korean, and more — each word blurring and floating in, holding for a moment, then blurring away for the next.
+
+## Preview
+
+<ComponentPreview name="hello" />
+
+## Installation
+
+<InstallBlock command="hello" />
+
+## Usage
+
+<UsageCode name="hello" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="greetings"
+    type="readonly string[]"
+    default='"Hello" in ten languages'
+    description="Greetings to cycle through, in order. Pass your own list to change languages or words."
+  />
+  <Prop
+    name="interval"
+    type="number"
+    default="2000"
+    description="Milliseconds each greeting stays on screen before the next one animates in."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional classes for the container; use text utilities to change the greeting's size or color."
+  />
+</PropsTable>
+
+## Accessibility
+
+- The greeting is decorative text; screen readers read the currently rendered word.
+- Under `prefers-reduced-motion` the blur and float animations are disabled — greetings still rotate, but swap instantly.

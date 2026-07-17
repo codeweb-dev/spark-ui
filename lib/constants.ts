@@ -32,6 +32,7 @@ export const NEW_DOC_SLUGS = new Set([
   "components/dynamic-island",
   "components/masonry",
   "components/keyboard",
+  "components/hello",
 ]);
 
 export const UPDATED_DOC_SLUGS = new Set<string>();

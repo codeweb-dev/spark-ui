@@ -347,6 +347,23 @@
       "category": "signature"
     },
     {
+      "name": "hello",
+      "type": "registry:component",
+      "title": "Hello",
+      "description": "An Apple-style welcome greeting that cycles through languages with a soft blur crossfade.",
+      "files": [
+        {
+          "path": "registry/spark-ui/hello.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "category": "signature"
+    },
+    {
       "name": "receipt",
       "type": "registry:component",
       "title": "Receipt",

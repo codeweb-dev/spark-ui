@@ -27,6 +27,7 @@ export const registry: Record<
     () => import("@/registry/demos/dynamic-island-spotify-demo"),
   ),
   "ghost-ether": dynamic(() => import("@/registry/demos/ghost-ether-demo")),
+  hello: dynamic(() => import("@/registry/demos/hello-demo")),
   "image-trail": dynamic(() => import("@/registry/demos/image-trail-demo")),
   "interactive-pets": dynamic(
     () => import("@/registry/demos/interactive-pets-demo"),
