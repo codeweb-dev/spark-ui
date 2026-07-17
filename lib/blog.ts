@@ -29,6 +29,22 @@ export type BlogPost = {
 
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: "keyboard-and-type-test",
+    title: "Introducing Keyboard, and a type test on the homepage",
+    version: "2.5.0",
+    releasedAt: "2026-07-17",
+    description:
+      "A two-tone mechanical keyboard joins the registry, and the homepage gets a 15-second typing test built on top of it.",
+    components: [{ name: "keyboard", preview: "keyboard" }],
+    paragraphs: [
+      "Spark UI 2.5.0 introduces Keyboard, a 60% mechanical keyboard rendered entirely in code. Chunky two-tone keycaps sit on a bordered chassis, every key presses down with a 3D depth animation, and the whole board scales fluidly with its container — no images, just semantic tokens that adapt to light and dark themes.",
+      "Keyboard is interactive in both directions. It listens to your physical keyboard and animates the matching keycaps as you type, using KeyboardEvent codes so the mapping stays correct across layouts and stuck keys clear automatically when the window loses focus. Clicking an on-screen key calls onKeyPress with its value — single characters for printable keys, names like Backspace and Enter for the rest — so it also works as a virtual keyboard for typing.",
+      "Because the board wants real horizontal space, the docs previews open it in a bottom sheet that slides up from the edge of the screen. The Dynamic Island example pairs the keyboard with a keystroke feed: every key you press blurs into a floating island pill, lingers for a moment, and blurs away.",
+      "The same component now powers a new toy on the homepage: a 15-second type test, inspired by Keeby. Hit the Type test button in the hero and the page gives way to a random paragraph, a live stats panel, and the keyboard mirroring your keystrokes. A caret glides between letters as correct ones ink in and mistakes flash red, the seconds, wpm, and accuracy counters roll like odometers, and when time runs out your result counts up with Basic Number Ticker before offering a restart.",
+      "Keyboard is available now through the Spark UI registry with a live preview, the Dynamic Island example, and full source you can customize after installation. The type test is live on the homepage — bring your fastest fingers.",
+    ],
+  },
+  {
     slug: "open-source-boundary",
     title: "A clean open-source boundary, and zero-setup contributions",
     version: "2.4.0",

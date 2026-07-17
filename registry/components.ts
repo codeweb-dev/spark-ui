@@ -32,6 +32,10 @@ export const registry: Record<
     () => import("@/registry/demos/interactive-pets-demo"),
     { ssr: false },
   ),
+  keyboard: dynamic(() => import("@/registry/demos/keyboard-demo")),
+  "keyboard-island": dynamic(
+    () => import("@/registry/demos/keyboard-island-demo"),
+  ),
   "logo-carousel": dynamic(() => import("@/registry/demos/logo-carousel-demo")),
   "logo-carousel-right": dynamic(
     () => import("@/registry/demos/logo-carousel-demo-right"),

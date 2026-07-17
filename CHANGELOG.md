@@ -4,6 +4,14 @@ All notable changes to Spark UI are documented in this file.
 
 The format follows the categories described in [VERSIONING.md](./docs/policies/VERSIONING.md). The newest release appears first.
 
+## 2.5.0 - 2026-07-17
+
+### Added
+
+- Keyboard component: a 60% two-tone mechanical keyboard with 3D press animations, physical key highlighting via `KeyboardEvent.code`, and an `onKeyPress` callback for virtual typing
+- Keyboard docs page with bottom-sheet previews and a Dynamic Island example that shows a blur-in/blur-out keystroke feed
+- Type test on the homepage hero: a 15-second typing test built on Keyboard with random words, a gliding caret, rolling seconds/wpm/accuracy stats, and an animated result screen (inspired by [Keeby](https://getkeeby.com/))
+
 ## 2.4.0 - 2026-07-17
 
 ### Added

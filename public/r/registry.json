@@ -332,6 +332,21 @@
       "category": "signature"
     },
     {
+      "name": "keyboard",
+      "type": "registry:component",
+      "title": "Keyboard",
+      "description": "A two-tone mechanical keyboard with 3D press animations and physical key highlighting.",
+      "files": [
+        {
+          "path": "registry/spark-ui/keyboard.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [],
+      "registryDependencies": [],
+      "category": "signature"
+    },
+    {
       "name": "receipt",
       "type": "registry:component",
       "title": "Receipt",

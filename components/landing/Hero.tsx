@@ -6,6 +6,7 @@ import { ArrowRight, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SitePet } from "../site-pet";
+import { TypeTest } from "./type-test";
 
 export function Hero() {
   return (
@@ -86,6 +87,7 @@ export function Hero() {
             <Github size={16} /> View on GitHub
           </Link>
         </Button>
+        <TypeTest />
       </div>
 
       <div className="mt-6 flex items-center gap-6 text-xs text-muted-foreground sm:gap-10">

@@ -1,0 +1,56 @@
+---
+title: Keyboard
+description: A two-tone mechanical keyboard with 3D press animations and physical key highlighting.
+category: Interactive
+---
+
+Keyboard renders a 60% mechanical keyboard with chunky two-tone keycaps and smooth press animations. Keys press down as you type on your physical keyboard, and clicking a key calls `onKeyPress` with its value.
+
+## Preview
+
+<ComponentPreview name="keyboard" />
+
+## Installation
+
+<InstallBlock command="keyboard" />
+
+## Usage
+
+<UsageCode name="keyboard" />
+
+## Examples
+
+### Dynamic Island
+
+Pair the keyboard with a Dynamic Island keystroke feed via `onKeyPress` — each key blurs in, lingers for a moment, and blurs away.
+
+<ComponentPreview name="keyboard-island" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="onKeyPress"
+    type="(key: string) => void"
+    default="—"
+    description='Called when an on-screen key is clicked. Printable keys pass a single character ("a", "1", " "); the rest pass their name ("Backspace", "Enter", "Shift", …).'
+  />
+  <Prop
+    name="listen"
+    type="boolean"
+    default="true"
+    description="Highlight keys while the user types on their physical keyboard. Physical presses only animate — they do not call onKeyPress."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional classes for the keyboard container."
+  />
+</PropsTable>
+
+## Accessibility
+
+- Every key is a real `<button>`, so the component is fully keyboard operable with visible `focus-visible` rings.
+- Icon-only keys (`⌘`, space) carry `aria-label`s.
+- Press animations are disabled under `prefers-reduced-motion`; pressed keys still change appearance.

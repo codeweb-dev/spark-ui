@@ -117,7 +117,10 @@ async function UsageCode({ name }: { name: string }) {
   if (!source) return null;
 
   const imports = source.match(/^import[\s\S]*?;$/gm) || [];
-  const example = imports.reduce((code, statement) => code.replace(statement, ""), source).trim();
+  const example = imports
+    .reduce((code, statement) => code.replace(statement, ""), source)
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
   const usageImports = imports.filter(
     (statement) =>
       statement !== 'import React from "react";' || example.includes("React."),
