@@ -4,39 +4,26 @@ All notable changes to Spark UI are documented in this file.
 
 The format follows the categories described in [VERSIONING.md](./docs/policies/VERSIONING.md). The newest release appears first.
 
-## 2.5.0 - 2026-07-17
+## 2.3.0 - 2026-07-17
 
 ### Added
 
 - Keyboard component: a 60% two-tone mechanical keyboard with 3D press animations, physical key highlighting via `KeyboardEvent.code`, and an `onKeyPress` callback for virtual typing
 - Keyboard docs page with bottom-sheet previews and a Dynamic Island example that shows a blur-in/blur-out keystroke feed
 - Type test on the homepage hero: a 15-second typing test built on Keyboard with random words, a gliding caret, rolling seconds/wpm/accuracy stats, and an animated result screen (inspired by [Keeby](https://getkeeby.com/))
-
-## 2.4.0 - 2026-07-17
-
-### Added
-
+- Redesigned Masonry component: an animated, item-driven grid (`items` with `img`/`height`) instead of a CSS-columns wrapper, with `duration`, `stagger`, `animateFrom`, `scaleOnHover`, `hoverScale`, `blurToFocus`, and `colorShiftOnHover` controls
+- `renderItem` prop on Masonry for rendering custom tile content while keeping the same layout, entry, and hover animations
+- Masonry "Cards" example demonstrating `renderItem` with a title-and-description overlay
+- Templates page with placeholder content, sharing Showcase's hero and grid layout
 - `NEXT_PUBLIC_BACKEND` flag, default `false` in `.env.example`: the site runs UI-only with no Supabase project, so contributors need zero backend setup; GitHub login and favorites stay hidden until it is set to `true`
 - `docs/architecture/OPEN_SOURCE_BOUNDARY.md` documenting the split between the public frontend and the private production backend
 - Public `supabase/examples/favorites.sql` and `supabase/README.md` for optional local backend setup
 
 ### Changed
 
+- Showcase now renders its project cards through Masonry's `renderItem` instead of a standalone layout
 - Production Supabase backend (migrations) extracted into a separate private repository; the public repo now contains only the frontend and safe client helpers
 - `VERSIONING.md` moved to `docs/policies/VERSIONING.md`
-
-## 2.3.0 - 2026-07-17
-
-### Added
-
-- Redesigned Masonry component: an animated, item-driven grid (`items` with `img`/`height`) instead of a CSS-columns wrapper, with `duration`, `stagger`, `animateFrom`, `scaleOnHover`, `hoverScale`, `blurToFocus`, and `colorShiftOnHover` controls
-- `renderItem` prop on Masonry for rendering custom tile content while keeping the same layout, entry, and hover animations
-- Masonry "Cards" example demonstrating `renderItem` with a title-and-description overlay
-- Templates page with placeholder content, sharing Showcase's hero and grid layout
-
-### Changed
-
-- Showcase now renders its project cards through Masonry's `renderItem` instead of a standalone layout
 
 ## 2.2.0 - 2026-07-16
 

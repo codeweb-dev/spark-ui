@@ -29,51 +29,24 @@ export type BlogPost = {
 
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
-    slug: "keyboard-and-type-test",
-    title: "Introducing Keyboard, and a type test on the homepage",
-    version: "2.5.0",
-    releasedAt: "2026-07-17",
-    description:
-      "A two-tone mechanical keyboard joins the registry, and the homepage gets a 15-second typing test built on top of it.",
-    components: [{ name: "keyboard", preview: "keyboard" }],
-    paragraphs: [
-      "Spark UI 2.5.0 introduces Keyboard, a 60% mechanical keyboard rendered entirely in code. Chunky two-tone keycaps sit on a bordered chassis, every key presses down with a 3D depth animation, and the whole board scales fluidly with its container — no images, just semantic tokens that adapt to light and dark themes.",
-      "Keyboard is interactive in both directions. It listens to your physical keyboard and animates the matching keycaps as you type, using KeyboardEvent codes so the mapping stays correct across layouts and stuck keys clear automatically when the window loses focus. Clicking an on-screen key calls onKeyPress with its value — single characters for printable keys, names like Backspace and Enter for the rest — so it also works as a virtual keyboard for typing.",
-      "Because the board wants real horizontal space, the docs previews open it in a bottom sheet that slides up from the edge of the screen. The Dynamic Island example pairs the keyboard with a keystroke feed: every key you press blurs into a floating island pill, lingers for a moment, and blurs away.",
-      "The same component now powers a new toy on the homepage: a 15-second type test, inspired by Keeby. Hit the Type test button in the hero and the page gives way to a random paragraph, a live stats panel, and the keyboard mirroring your keystrokes. A caret glides between letters as correct ones ink in and mistakes flash red, the seconds, wpm, and accuracy counters roll like odometers, and when time runs out your result counts up with Basic Number Ticker before offering a restart.",
-      "Keyboard is available now through the Spark UI registry with a live preview, the Dynamic Island example, and full source you can customize after installation. The type test is live on the homepage — bring your fastest fingers.",
-    ],
-  },
-  {
-    slug: "open-source-boundary",
-    title: "A clean open-source boundary, and zero-setup contributions",
-    version: "2.4.0",
-    releasedAt: "2026-07-17",
-    description:
-      "The production backend moves to a private repository, and a new backend flag lets anyone clone, run, and contribute to Spark UI with no Supabase setup at all.",
-    paragraphs: [
-      "Spark UI 2.4.0 draws a clear line between what is open source and what is operational. The public repository is now purely the component library, the documentation site, and the safe Supabase client helpers. The production backend — database migrations, policies, and everything needed to run the hosted platform — has been extracted into a separate private repository.",
-      "This split is about focus, not secrecy. The public repo stays centered on reusable UI, community contributions get simpler, and the frontend and backend can evolve independently. Security never relied on hiding the schema anyway: it comes from authentication, Row Level Security, and least-privilege access, and the public repo has never contained production credentials. The full policy is documented in the new architecture doc, docs/architecture/OPEN_SOURCE_BOUNDARY.md.",
-      "The change contributors will actually feel is the new NEXT_PUBLIC_BACKEND flag, which defaults to false in .env.example. Clone the repo, run npm install and npm run dev, and the entire site works — docs, previews, registry, everything — with no Supabase project, no environment values, and no accounts to create. That is the whole setup.",
-      "When the flag is off, backend-powered features simply step aside instead of breaking. The login button and account menu don't render, the favorite hearts disappear from component pages, the favorites page redirects home, and the auth middleware becomes a no-op. Nothing throws, and nothing asks for configuration you don't have.",
-      "If you do want the full experience locally, it stays easy: create a personal or local Supabase project, run the schema in supabase/examples/favorites.sql, enable the GitHub provider, then set NEXT_PUBLIC_BACKEND=true alongside your project's URL and publishable key. The public examples mirror exactly what the frontend depends on in production.",
-      "Nothing changes for the hosted site — login and favorites work as they always have. What changes is that contributing to Spark UI now starts with a single git clone instead of a backend checklist.",
-    ],
-  },
-  {
-    slug: "masonry-templates-and-showcase",
-    title: "A redesigned Masonry, plus Templates and Showcase",
+    slug: "keyboard-masonry-and-open-source",
+    title: "Keyboard, a redesigned Masonry, and zero-setup contributions",
     version: "2.3.0",
     releasedAt: "2026-07-17",
     description:
-      "Masonry becomes an animated, item-driven grid with a renderItem escape hatch, and now powers both the Showcase and the new Templates page.",
-    components: [{ name: "masonry", preview: "masonry-cards" }],
+      "One big day for Spark UI: a mechanical Keyboard component with a homepage type test, an animated item-driven Masonry powering Templates and Showcase, and a clean open-source boundary with no-setup contributions.",
+    components: [
+      { name: "keyboard", preview: "keyboard" },
+      { name: "masonry", preview: "masonry-cards" },
+    ],
     paragraphs: [
-      "Spark UI 2.3.0 rebuilds Masonry from a CSS-columns layout into an animated, item-driven grid. Instead of wrapping arbitrary children, it now takes an `items` array with an `img` and a pixel `height`, measures its own container, and places each tile into the shortest column — the same mental model as the popular reactbits-style masonry components, built here on top of Framer Motion since it was already a project dependency.",
-      "Every tile animates in with configurable `duration`, `stagger`, and `animateFrom` (top, bottom, left, right, center, or random), and reacts on hover with `scaleOnHover` and `colorShiftOnHover`. An `ease` prop accepts Framer Motion easings directly, and also understands common gsap-style names like `power3.out` for anyone porting a design from elsewhere.",
-      "The default tile is a plain image, but a new `renderItem` prop overrides it with any content while keeping the same layout, entry, and hover animations. The docs now include a Cards example showing a title-and-description overlay built with `renderItem`, and the prop is documented alongside the rest of Masonry's API.",
-      "That flexibility is what let Masonry become the shared layout engine for two pages at once. Showcase now renders its community project cards — badges, avatars, descriptions and all — through Masonry's `renderItem`, and the new Templates page reuses the exact same component, animation settings, and hero layout as Showcase, just with dimmed placeholder tiles and a 'Coming soon' badge until real templates ship.",
-      "Masonry is available now through the Spark UI registry, with a live preview, the Cards example, and full source you can customize after installation.",
+      "Today's release rolls three updates into one: version 2.3.0 introduces the Keyboard component and a typing test on the homepage, rebuilds Masonry into an animated grid that now powers two pages, and draws a clean boundary between the open-source frontend and the private production backend — with a flag that makes contributing a zero-setup experience.",
+      "Keyboard is a 60% mechanical keyboard rendered entirely in code. Chunky two-tone keycaps press down with a 3D depth animation, the board scales fluidly with its container, and everything is styled with semantic tokens that adapt to light and dark themes. It listens to your physical keyboard and animates the matching keycaps as you type, and clicking an on-screen key calls onKeyPress with its value, so it works as a visualizer and a virtual keyboard alike. The docs open it in a bottom sheet for room to breathe, and the Dynamic Island example adds a keystroke feed where every key blurs in, lingers, and blurs away.",
+      "The same component powers a new toy on the homepage: a 15-second type test, inspired by Keeby. Hit the Type test button in the hero and the page gives way to a random paragraph, a live stats panel, and the keyboard mirroring your keystrokes. A caret glides between letters as correct ones ink in and mistakes flash red, the seconds, wpm, and accuracy counters roll like odometers, and your final score counts up with Basic Number Ticker before offering a restart.",
+      "Masonry has been rebuilt from a CSS-columns wrapper into an animated, item-driven grid. It takes an items array with an img and a pixel height, measures its container, and places each tile into the shortest column, with configurable duration, stagger, entry direction, and hover behavior. A new renderItem prop swaps the default image tile for any content while keeping the same animations — which is exactly how Showcase now renders its community project cards, and how the new Templates page shares the same layout engine with dimmed placeholders until real templates ship.",
+      "The repository itself got the same attention. The public repo is now purely the component library, the documentation site, and safe Supabase client helpers; the production backend lives in a separate private repository. Security never relied on hiding the schema — it comes from authentication, Row Level Security, and least-privilege access — and the full policy is documented in docs/architecture/OPEN_SOURCE_BOUNDARY.md.",
+      "The change contributors will actually feel is the NEXT_PUBLIC_BACKEND flag, which defaults to false. Clone the repo, run npm install and npm run dev, and the entire site works — docs, previews, registry, everything — with no Supabase project and no accounts to create. Backend-powered features like login and favorites simply step aside instead of breaking, and switching the flag on with your own Supabase project restores the full experience using the schema in supabase/examples/favorites.sql.",
+      "Keyboard and Masonry are available now through the Spark UI registry with live previews and full source you can customize after installation. The type test is live on the homepage — bring your fastest fingers.",
     ],
   },
   {
