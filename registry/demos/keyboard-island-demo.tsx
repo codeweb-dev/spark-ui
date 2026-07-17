@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Keyboard } from "@/registry/spark-ui/keyboard";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Keyboard as KeyboardIcon } from "lucide-react";
+import { Keyboard as KeyboardIcon, Volume2, VolumeX } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const SYMBOLS: Record<string, string> = {
@@ -29,6 +29,7 @@ const SYMBOLS: Record<string, string> = {
 
 export default function KeyboardIslandDemo() {
   const [feed, setFeed] = useState<{ id: number; label: string }[]>([]);
+  const [soundOn, setSoundOn] = useState(true);
   const nextId = useRef(0);
   const reducedMotion = useReducedMotion();
 
@@ -64,12 +65,28 @@ export default function KeyboardIslandDemo() {
             "data-[state=closed]:zoom-out-100 data-[state=closed]:slide-out-to-bottom-10"
           }
         >
-          <DialogHeader className="mx-auto w-full max-w-4xl">
-            <DialogTitle>Keyboard</DialogTitle>
-            <DialogDescription>
-              Every keystroke blurs into the island, lingers, and blurs away.
-            </DialogDescription>
-          </DialogHeader>
+          <div className="mx-auto flex w-full max-w-4xl items-start justify-between gap-4">
+            <DialogHeader className="text-left">
+              <DialogTitle>Keyboard</DialogTitle>
+              <DialogDescription>
+                Every keystroke blurs into the island, lingers, and blurs away.
+              </DialogDescription>
+            </DialogHeader>
+            <button
+              type="button"
+              aria-label={soundOn ? "Mute key sounds" : "Unmute key sounds"}
+              aria-pressed={!soundOn}
+              onClick={() => setSoundOn((s) => !s)}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {soundOn ? (
+                <Volume2 className="size-3" aria-hidden />
+              ) : (
+                <VolumeX className="size-3" aria-hidden />
+              )}
+              {soundOn ? "sound on" : "sound off"}
+            </button>
+          </div>
           <div className="flex flex-col items-center gap-3">
             <div className="flex h-10 min-w-32 items-center gap-2.5 rounded-full bg-zinc-950 px-4 text-white shadow-lg dark:border dark:border-zinc-800">
               <KeyboardIcon
@@ -101,7 +118,7 @@ export default function KeyboardIslandDemo() {
                 </AnimatePresence>
               </div>
             </div>
-            <Keyboard onKeyPress={push} />
+            <Keyboard onKeyPress={push} sound={soundOn} />
           </div>
           <p className="mx-auto w-full max-w-4xl text-xs text-muted-foreground sm:text-sm">
             The preview card is too narrow for a full-width keyboard, so it

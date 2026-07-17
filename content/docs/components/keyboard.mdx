@@ -42,6 +42,12 @@ Pair the keyboard with a Dynamic Island keystroke feed via `onKeyPress` — each
     description="Highlight keys while the user types on their physical keyboard. Physical presses only animate — they do not call onKeyPress."
   />
   <Prop
+    name="sound"
+    type="boolean"
+    default="true"
+    description="Play a mechanical click on every key press. The sound is synthesized with the Web Audio API — no audio files ship with the component."
+  />
+  <Prop
     name="className"
     type="string"
     default="—"

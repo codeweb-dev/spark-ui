@@ -92,6 +92,85 @@ const ROWS: KeyDef[][] = [
   ],
 ];
 
+/**
+ * Synthesized ASMR keyboard sound — soft-attack "pock", a deep slow thock,
+ * and a whisper of close-mic air on press, plus a gentle tick on release,
+ * all slightly randomized. No audio files or licenses involved.
+ */
+function useKeySound(enabled: boolean) {
+  const ctxRef = React.useRef<AudioContext | null>(null);
+  return React.useCallback(
+    (kind: "down" | "up") => {
+      if (enabled === false || typeof AudioContext === "undefined") return;
+      const ctx = (ctxRef.current ??= new AudioContext());
+      if (ctx.state === "suspended") void ctx.resume();
+      const t = ctx.currentTime;
+
+      // humanized master chain: slight volume + stereo drift per stroke,
+      // lowpassed so nothing fizzes
+      const out = ctx.createGain();
+      out.gain.value =
+        kind === "down" ? 0.85 + Math.random() * 0.15 : 0.3 + Math.random() * 0.1;
+      const smooth = ctx.createBiquadFilter();
+      smooth.type = "lowpass";
+      smooth.frequency.value = 5500;
+      const pan = ctx.createStereoPanner();
+      pan.pan.value = (Math.random() - 0.5) * 0.3;
+      out.connect(smooth).connect(pan).connect(ctx.destination);
+
+      const noiseBurst = (
+        freq: number,
+        q: number,
+        gain: number,
+        dur: number,
+      ) => {
+        const buffer = ctx.createBuffer(
+          1,
+          Math.ceil(ctx.sampleRate * dur),
+          ctx.sampleRate,
+        );
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+        const src = ctx.createBufferSource();
+        src.buffer = buffer;
+        const bp = ctx.createBiquadFilter();
+        bp.type = "bandpass";
+        bp.frequency.value = freq;
+        bp.Q.value = q;
+        const g = ctx.createGain();
+        // soft 5ms attack — no harsh transient, key to the ASMR feel
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.linearRampToValueAtTime(gain, t + 0.005);
+        g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+        src.connect(bp).connect(g).connect(out);
+        src.start(t);
+      };
+
+      // round, muted "pock"
+      noiseBurst(420 + Math.random() * 120, 1.2, kind === "down" ? 0.4 : 0.15, 0.05);
+      // whisper of close-mic air
+      noiseBurst(4500 + Math.random() * 800, 1, 0.05, 0.06);
+
+      if (kind === "down") {
+        // deep, slow thock with a gentle pitch drop
+        const thock = ctx.createOscillator();
+        thock.type = "sine";
+        const freq = 95 + Math.random() * 20;
+        thock.frequency.setValueAtTime(freq, t);
+        thock.frequency.exponentialRampToValueAtTime(freq * 0.65, t + 0.12);
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.linearRampToValueAtTime(0.5, t + 0.006);
+        g.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+        thock.connect(g).connect(out);
+        thock.start(t);
+        thock.stop(t + 0.12);
+      }
+    },
+    [enabled],
+  );
+}
+
 interface KeyboardProps {
   className?: string;
   /**
@@ -100,6 +179,11 @@ interface KeyboardProps {
    */
   listen?: boolean;
   /**
+   * Play a synthesized mechanical click on every key press.
+   * @default true
+   */
+  sound?: boolean;
+  /**
    * Called with the key's value when an on-screen key is clicked.
    * Single characters for printable keys ("a", "1", " "), names for the
    * rest ("Backspace", "Enter", "Shift", …).
@@ -107,16 +191,24 @@ interface KeyboardProps {
   onKeyPress?: (key: string) => void;
 }
 
-export function Keyboard({ className, listen = true, onKeyPress }: KeyboardProps) {
+export function Keyboard({
+  className,
+  listen = true,
+  sound = true,
+  onKeyPress,
+}: KeyboardProps) {
   const [pressed, setPressed] = React.useState<Set<string>>(new Set());
+  const playKey = useKeySound(sound);
 
   React.useEffect(() => {
     if (!listen) return;
     const down = (e: KeyboardEvent) => {
       if (e.repeat) return;
       setPressed((prev) => new Set(prev).add(e.code));
+      playKey("down");
     };
     const up = (e: KeyboardEvent) => {
+      playKey("up");
       setPressed((prev) => {
         const next = new Set(prev);
         next.delete(e.code);
@@ -133,7 +225,7 @@ export function Keyboard({ className, listen = true, onKeyPress }: KeyboardProps
       window.removeEventListener("keyup", up);
       window.removeEventListener("blur", clear);
     };
-  }, [listen]);
+  }, [listen, playKey]);
 
   return (
     <div
@@ -152,7 +244,10 @@ export function Keyboard({ className, listen = true, onKeyPress }: KeyboardProps
                 type="button"
                 aria-label={key.ariaLabel}
                 data-pressed={isPressed || undefined}
-                onClick={() => onKeyPress?.(key.value ?? key.label.toLowerCase())}
+                onClick={() => {
+                  playKey("down");
+                  onKeyPress?.(key.value ?? key.label.toLowerCase());
+                }}
                 style={{ flexGrow: key.width ?? 1, flexBasis: 0 }}
                 className={cn(
                   "flex h-9 min-w-0 flex-col items-center justify-center rounded-md border border-b-[3px] font-medium sm:h-12 sm:rounded-lg",

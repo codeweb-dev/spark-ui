@@ -5,7 +5,13 @@ import { cn } from "@/lib/utils";
 import NumberTicker from "@/registry/spark-ui/basic-number-ticker";
 import { Keyboard } from "@/registry/spark-ui/keyboard";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Keyboard as KeyboardIcon, RotateCcw, X } from "lucide-react";
+import {
+  Keyboard as KeyboardIcon,
+  RotateCcw,
+  Volume2,
+  VolumeX,
+  X,
+} from "lucide-react";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
@@ -140,6 +146,7 @@ export function TypeTest() {
   const [timeLeft, setTimeLeft] = React.useState(DURATION);
   const [finished, setFinished] = React.useState(false);
   const [strokes, setStrokes] = React.useState({ total: 0, correct: 0 });
+  const [soundOn, setSoundOn] = React.useState(true);
   const reducedMotion = useReducedMotion();
 
   const reset = React.useCallback(() => {
@@ -238,20 +245,36 @@ export function TypeTest() {
           className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 bg-background px-4 motion-safe:animate-in motion-safe:fade-in-0"
         >
           <div className="flex w-full max-w-4xl items-end justify-between gap-4">
-            <span className="hidden items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1.5 text-xs text-muted-foreground sm:inline-flex">
-              <kbd className="rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px] font-medium text-foreground">
-                esc
-              </kbd>
-              to close
-            </span>
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:hidden"
-            >
-              <X className="size-3" aria-hidden />
-              Close
-            </button>
+            <div className="flex items-center gap-2">
+              <span className="hidden items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1.5 text-xs text-muted-foreground sm:inline-flex">
+                <kbd className="rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px] font-medium text-foreground">
+                  esc
+                </kbd>
+                to close
+              </span>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:hidden"
+              >
+                <X className="size-3" aria-hidden />
+                Close
+              </button>
+              <button
+                type="button"
+                aria-label={soundOn ? "Mute key sounds" : "Unmute key sounds"}
+                aria-pressed={!soundOn}
+                onClick={() => setSoundOn((s) => !s)}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/50 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {soundOn ? (
+                  <Volume2 className="size-3" aria-hidden />
+                ) : (
+                  <VolumeX className="size-3" aria-hidden />
+                )}
+                {soundOn ? "sound on" : "sound off"}
+              </button>
+            </div>
             <div className="grid grid-cols-3 divide-x divide-border rounded-xl border border-border text-left">
               <div className="flex flex-col px-3 py-2 sm:px-4 sm:py-2.5">
                 <span className="text-[9px] font-medium uppercase tracking-widest text-foreground">
@@ -423,9 +446,9 @@ export function TypeTest() {
             )}
           </AnimatePresence>
 
-          <Keyboard className="max-w-3xl" />
+          <Keyboard className="max-w-3xl" sound={soundOn} />
 
-          <p className="text-xs text-muted-foreground">
+          <p className="max-w-xl text-xs text-muted-foreground">
             Inspired by{" "}
             <a
               href="https://getkeeby.com/"
@@ -435,6 +458,9 @@ export function TypeTest() {
             >
               Keeby
             </a>
+            . The key sound isn&apos;t a real mechanical recording — it&apos;s
+            synthesized with the Web Audio API. Don&apos;t want it? Just switch
+            the sound off up top.
           </p>
         </div>,
         document.body,
