@@ -2,8 +2,7 @@
 
 This directory contains only **safe, public examples** for local development.
 The production Supabase backend (migrations, policies, functions, deployment)
-lives in a separate private repository — staged here under `private-backend/`
-until it is extracted. See
+lives in a separate private repository. See
 [`docs/architecture/OPEN_SOURCE_BOUNDARY.md`](../docs/architecture/OPEN_SOURCE_BOUNDARY.md).
 
 ## Local development

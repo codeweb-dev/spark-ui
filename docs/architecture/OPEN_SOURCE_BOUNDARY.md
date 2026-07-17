@@ -56,8 +56,7 @@ It must never include production credentials or customer data.
 
 ### Private Repository
 
-The private backend contains production infrastructure. Until it is extracted
-into its own repository, it is staged in this repo under `private-backend/`.
+The private backend contains production infrastructure.
 
 Typical contents:
 
