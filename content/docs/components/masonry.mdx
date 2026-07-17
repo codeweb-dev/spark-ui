@@ -1,0 +1,103 @@
+---
+title: Masonry
+description: An animated masonry grid that lays out image items by explicit height, with configurable entry and hover animations.
+category: Layout
+---
+
+Masonry takes an array of `items` (each with an `img` and a pixel `height`) and lays them out into a responsive column grid, animating each tile in and reacting to hover.
+
+## Preview
+
+<ComponentPreview name="masonry" />
+
+## Installation
+
+<InstallBlock command="masonry" />
+
+## Usage
+
+<UsageCode name="masonry" />
+
+## Examples
+
+### Cards
+
+Pass `renderItem` to render custom content — like a title and description overlay — instead of the default image tile.
+
+<ComponentPreview name="masonry-cards" />
+
+## Properties
+
+<PropsTable>
+  <Prop
+    name="items"
+    type="{ id: string; img: string; url?: string; height: number }[]"
+    default="—"
+    description="Items to arrange. `height` sets the tile's pixel height; `url` (optional) makes the tile a link."
+  />
+  <Prop
+    name="ease"
+    type="Easing"
+    default='"easeOut"'
+    description='Framer Motion easing for the entry/hover transitions. Common gsap ease names (e.g. "power3.out") are mapped automatically.'
+  />
+  <Prop
+    name="duration"
+    type="number"
+    default="0.6"
+    description="Entry animation duration in seconds."
+  />
+  <Prop
+    name="stagger"
+    type="number"
+    default="0.05"
+    description="Delay in seconds added per item, in layout order."
+  />
+  <Prop
+    name="animateFrom"
+    type='"top" | "bottom" | "left" | "right" | "center" | "random"'
+    default='"bottom"'
+    description="Direction each tile animates in from on mount."
+  />
+  <Prop
+    name="scaleOnHover"
+    type="boolean"
+    default="true"
+    description="Whether tiles scale on hover."
+  />
+  <Prop
+    name="hoverScale"
+    type="number"
+    default="0.95"
+    description="Scale factor applied on hover when scaleOnHover is enabled."
+  />
+  <Prop
+    name="blurToFocus"
+    type="boolean"
+    default="true"
+    description="Whether tiles start blurred and sharpen in as they animate on mount."
+  />
+  <Prop
+    name="colorShiftOnHover"
+    type="boolean"
+    default="false"
+    description="Whether a color overlay fades in over a tile on hover."
+  />
+  <Prop
+    name="renderItem"
+    type="(item: T, index: number) => ReactNode"
+    default="—"
+    description="Overrides the default image tile with custom content, while keeping the same layout, entry and hover animations."
+  />
+  <Prop
+    name="className"
+    type="string"
+    default="—"
+    description="Additional classes for the grid container."
+  />
+</PropsTable>
+
+## Accessibility
+
+- Tiles with a `url` render as links (`<a>`); tiles without one are non-interactive.
+- Provide meaningful `img` sources; decorative tiles otherwise render with an empty `alt`.

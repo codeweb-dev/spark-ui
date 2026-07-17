@@ -5,6 +5,7 @@ import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
 import { ArrowRight, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { SitePet } from "../site-pet";
 
 export function Hero() {
   return (
@@ -96,6 +97,8 @@ export function Hero() {
           <strong className="text-foreground">TypeScript</strong> ready
         </span>
       </div>
+
+      <SitePet />
     </section>
   );
 }

@@ -1,37 +1,35 @@
 "use client";
 
+import { Masonry, type MasonryItem } from "@/registry/spark-ui/masonry";
 import type { ShowcaseEntry } from "@/lib/showcase";
 import { BadgeCheck, Check } from "lucide-react";
-import { motion } from "framer-motion";
 import Image from "next/image";
 
-const ASPECTS = [
-  "aspect-4/5",
-  "aspect-4/5",
-  "aspect-4/5",
-  "aspect-square",
-  "aspect-3/4",
-  "aspect-4/6",
-];
+const HEIGHTS = [400, 320, 427, 320, 427, 480];
+
+type ShowcaseItem = MasonryItem & { entry: ShowcaseEntry };
 
 export function ShowcaseGrid({ items }: { items: ShowcaseEntry[] }) {
+  const masonryItems: ShowcaseItem[] = items.map((item, index) => ({
+    id: item.slug,
+    img: item.image,
+    height: HEIGHTS[index % HEIGHTS.length],
+    entry: item,
+  }));
+
   return (
-    <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
-      {items.map((item, index) => (
-        <motion.div
-          key={item.slug}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{
-            duration: 0.6,
-            delay: (index % 3) * 0.1,
-            ease: "easeOut",
-          }}
-          className={`group relative mb-6 inline-block w-full break-inside-avoid overflow-hidden rounded-2xl border border-border ${
-            ASPECTS[index % ASPECTS.length]
-          }`}
-        >
+    <Masonry
+      items={masonryItems}
+      ease="power3.out"
+      duration={0.6}
+      stagger={0.05}
+      animateFrom="bottom"
+      scaleOnHover
+      hoverScale={0.95}
+      blurToFocus
+      colorShiftOnHover={false}
+      renderItem={({ entry: item }) => (
+        <div className="group relative size-full">
           <Image
             src={item.image}
             alt={item.title}
@@ -102,8 +100,8 @@ export function ShowcaseGrid({ items }: { items: ShowcaseEntry[] }) {
               {item.description}
             </p>
           </div>
-        </motion.div>
-      ))}
-    </div>
+        </div>
+      )}
+    />
   );
 }

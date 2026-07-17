@@ -173,7 +173,7 @@ export function MobileNav({ items }: MobileNavProps) {
                                 </span>
                               )}
                               {BETA_DOC_SLUGS.has(doc.slug) && (
-                                <span className="inline-flex items-center gap-1 rounded-full border border-border px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
                                   <FlaskConical
                                     className="size-2.5"
                                     aria-hidden

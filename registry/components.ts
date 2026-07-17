@@ -36,6 +36,8 @@ export const registry: Record<
   "logo-carousel-right": dynamic(
     () => import("@/registry/demos/logo-carousel-demo-right"),
   ),
+  masonry: dynamic(() => import("@/registry/demos/masonry-demo")),
+  "masonry-cards": dynamic(() => import("@/registry/demos/masonry-cards-demo")),
   "qr-code": dynamic(() => import("@/registry/demos/qr-code-demo")),
   "qr-code-variants": dynamic(
     () => import("@/registry/demos/qr-code-variants-demo"),

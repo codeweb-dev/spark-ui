@@ -1,5 +1,4 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import { SitePet } from "@/components/site-pet";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE_CONFIG } from "@/lib/constants";
 import type { Metadata } from "next";
@@ -72,7 +71,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <SitePet />
           <Toaster />
           <Analytics />
         </ThemeProvider>

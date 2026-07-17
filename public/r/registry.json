@@ -315,6 +315,23 @@
       "category": "signature"
     },
     {
+      "name": "masonry",
+      "type": "registry:component",
+      "title": "Masonry",
+      "description": "An animated masonry grid that lays out image items by explicit height, with configurable entry and hover animations.",
+      "files": [
+        {
+          "path": "registry/spark-ui/masonry.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "category": "signature"
+    },
+    {
       "name": "receipt",
       "type": "registry:component",
       "title": "Receipt",

@@ -29,9 +29,25 @@ export type BlogPost = {
 
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: "masonry-templates-and-showcase",
+    title: "A redesigned Masonry, plus Templates and Showcase",
+    version: "2.3.0",
+    releasedAt: "2026-07-17",
+    description:
+      "Masonry becomes an animated, item-driven grid with a renderItem escape hatch, and now powers both the Showcase and the new Templates page.",
+    components: [{ name: "masonry", preview: "masonry-cards" }],
+    paragraphs: [
+      "Spark UI 2.3.0 rebuilds Masonry from a CSS-columns layout into an animated, item-driven grid. Instead of wrapping arbitrary children, it now takes an `items` array with an `img` and a pixel `height`, measures its own container, and places each tile into the shortest column — the same mental model as the popular reactbits-style masonry components, built here on top of Framer Motion since it was already a project dependency.",
+      "Every tile animates in with configurable `duration`, `stagger`, and `animateFrom` (top, bottom, left, right, center, or random), and reacts on hover with `scaleOnHover` and `colorShiftOnHover`. An `ease` prop accepts Framer Motion easings directly, and also understands common gsap-style names like `power3.out` for anyone porting a design from elsewhere.",
+      "The default tile is a plain image, but a new `renderItem` prop overrides it with any content while keeping the same layout, entry, and hover animations. The docs now include a Cards example showing a title-and-description overlay built with `renderItem`, and the prop is documented alongside the rest of Masonry's API.",
+      "That flexibility is what let Masonry become the shared layout engine for two pages at once. Showcase now renders its community project cards — badges, avatars, descriptions and all — through Masonry's `renderItem`, and the new Templates page reuses the exact same component, animation settings, and hero layout as Showcase, just with dimmed placeholder tiles and a 'Coming soon' badge until real templates ship.",
+      "Masonry is available now through the Spark UI registry, with a live preview, the Cards example, and full source you can customize after installation.",
+    ],
+  },
+  {
     slug: "dynamic-island-and-widget-stack",
     title: "Introducing Dynamic Island and Widget Stack",
-    version: CURRENT_VERSION,
+    version: "2.2.0",
     releasedAt: "2026-07-16",
     description:
       "Two new signature components for fitting expressive, glanceable interactions into compact spaces.",

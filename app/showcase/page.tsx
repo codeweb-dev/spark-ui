@@ -17,7 +17,7 @@ export default function ShowcasePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <main className="mx-auto w-full max-w-6xl px-6 py-16 lg:px-6">
+      <main className="mx-auto w-full max-w-6xl px-6 pb-16 mt-14 lg:px-6">
         <div className="relative isolate overflow-hidden rounded-3xl border border-border px-8 py-10 sm:px-10">
           <Image
             src="/light-background.png"
@@ -52,7 +52,7 @@ export default function ShowcasePage() {
                 rel="noreferrer"
                 className="group mt-5 inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground px-4 py-2 text-sm font-medium text-background shadow-sm transition-opacity hover:opacity-85"
               >
-                Share your project (Not yet working everything is placeholder)
+                Share your project
                 <Sparkle
                   size={15}
                   fill="currentColor"

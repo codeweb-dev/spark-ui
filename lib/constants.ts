@@ -30,6 +30,7 @@ export const BETA_DOC_SLUGS = new Set(["components/interactive-pets"]);
 export const NEW_DOC_SLUGS = new Set([
   "components/widget-stack",
   "components/dynamic-island",
+  "components/masonry",
 ]);
 
 export const UPDATED_DOC_SLUGS = new Set<string>();
