@@ -2,6 +2,8 @@
 
 A practical, self-contained guide for maintainers. All commands use **npm/npx**.
 
+**Scope:** contributions cover the frontend — components, registry, documentation, blog, and public auth flows. The production Supabase backend is maintained privately (see [`docs/architecture/OPEN_SOURCE_BOUNDARY.md`](./docs/architecture/OPEN_SOURCE_BOUNDARY.md)); for local Supabase setup use [`supabase/README.md`](./supabase/README.md). Never commit `.env` files or secrets.
+
 ## 1. Prerequisites
 
 - Node.js 20+ and npm

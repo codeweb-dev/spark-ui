@@ -1,0 +1,14 @@
+# env files
+.env
+.env.*
+!.env.example
+
+# supabase local state
+supabase/.temp/
+supabase/.branches/
+
+# dumps and data
+*.dump
+*.backup
+
+.DS_Store

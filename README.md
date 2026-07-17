@@ -100,6 +100,10 @@ Listing: [skills.sh/codeweb-dev/spark-ui](https://www.skills.sh/codeweb-dev/spar
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide to adding a new component — source file, demo, registry entries, MDX docs, checklists, and templates.
 
+## Open-source boundary
+
+This repository is the **open-source frontend**: components, registry, docs site, and safe Supabase client helpers (`lib/supabase/`). The production Supabase backend (migrations, policies, deployment) is maintained privately — staged under `private-backend/` until extracted into its own repository. The frontend talks to it only through the deployed Supabase project (URL + publishable key) and never imports backend code. Full policy: [`docs/architecture/OPEN_SOURCE_BOUNDARY.md`](./docs/architecture/OPEN_SOURCE_BOUNDARY.md). Local Supabase setup: [`supabase/README.md`](./supabase/README.md).
+
 ## Deployment notes
 
 - Deploy as a standard Next.js app (Vercel or any Node host).
