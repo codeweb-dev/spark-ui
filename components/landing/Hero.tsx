@@ -92,7 +92,7 @@ export function Hero() {
 
       <div className="mt-6 flex items-center gap-6 text-xs text-muted-foreground sm:gap-10">
         <span>
-          <strong className="text-foreground">13</strong> components
+          <strong className="text-foreground">16</strong> components
         </span>
         <span className="h-4 w-px bg-border" />
         <span>
