@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { SITE_CONFIG } from "@/lib/constants";
 import { formatVersion, LATEST_RELEASE } from "@/lib/blog";
 import { TactileHighlight } from "@/registry/spark-ui/tactile-highlight";
-import { ArrowRight, Github } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SitePet } from "../site-pet";
@@ -75,16 +74,6 @@ export function Hero() {
         >
           <Link href="/docs/components">
             Browse components <ArrowRight size={16} />
-          </Link>
-        </Button>
-        <Button
-          asChild
-          size="lg"
-          variant="outline"
-          className="h-11 rounded-full bg-background/60 px-6 backdrop-blur"
-        >
-          <Link href={SITE_CONFIG.github} target="_blank" rel="noreferrer">
-            <Github size={16} /> View on GitHub
           </Link>
         </Button>
         <TypeTest />

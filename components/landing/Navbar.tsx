@@ -56,6 +56,12 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             >
               Templates
             </Link>
+            <Link
+              href="/keyboard-warrior"
+              className="hover:text-primary transition-colors"
+            >
+              Keyboard Warrior
+            </Link>
           </div>
         </div>
         <div className="flex items-center gap-2">

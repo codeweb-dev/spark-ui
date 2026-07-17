@@ -12,6 +12,7 @@ The format follows the categories described in [VERSIONING.md](./docs/policies/V
 - Keyboard docs page with bottom-sheet previews and a Dynamic Island example that shows a blur-in/blur-out keystroke feed
 - Type test on the homepage hero: a 15-second typing test built on Keyboard with random words, a gliding caret, rolling seconds/wpm/accuracy stats, and an animated result screen (inspired by [Keeby](https://getkeeby.com/))
 - Hello component: an Apple-style welcome greeting that cycles through ten languages with a soft blur crossfade, with configurable `greetings` and `interval`
+- Keyboard Warrior leaderboard at `/keyboard-warrior` (linked from the navbar): post your type test score with GitHub sign-in, one score per player with repost-replaces-previous, podium for the top three with GitHub avatars synced from auth profiles
 - Redesigned Masonry component: an animated, item-driven grid (`items` with `img`/`height`) instead of a CSS-columns wrapper, with `duration`, `stagger`, `animateFrom`, `scaleOnHover`, `hoverScale`, `blurToFocus`, and `colorShiftOnHover` controls
 - `renderItem` prop on Masonry for rendering custom tile content while keeping the same layout, entry, and hover animations
 - Masonry "Cards" example demonstrating `renderItem` with a title-and-description overlay

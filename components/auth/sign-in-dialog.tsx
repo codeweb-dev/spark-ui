@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { LogoIcon } from "@/components/landing/logo-icon";
-import { Send, Star } from "lucide-react";
+import { Send, Star, Trophy } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
@@ -80,6 +80,17 @@ export function SignInDialog() {
                 <p className="font-medium">Save favorites</p>
                 <p className="text-muted-foreground">
                   Keep your go-to components in one place.
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border bg-muted/50">
+                <Trophy className="size-4" aria-hidden />
+              </span>
+              <div className="text-sm">
+                <p className="font-medium">Become a Keyboard Warrior</p>
+                <p className="text-muted-foreground">
+                  Post your type test score to the leaderboard.
                 </p>
               </div>
             </li>

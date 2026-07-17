@@ -29,6 +29,7 @@ const MAIN_LINKS = [
   { title: "Blog", href: "/blog" },
   { title: "Showcase", href: "/showcase" },
   { title: "Templates", href: "/templates" },
+  { title: "Keyboard Warrior", href: "/keyboard-warrior" },
 ];
 
 export function MobileNav({ items }: MobileNavProps) {
