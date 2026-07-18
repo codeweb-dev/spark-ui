@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { isBackendEnabled } from "@/lib/supabase/config";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import type { User } from "@supabase/supabase-js";
-import { LogOut, Star } from "lucide-react";
+import { LogOut, Star, User as UserIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -81,6 +81,12 @@ function UserMenuInner() {
             <Link href="/favorites">
               <Star className="size-4" aria-hidden />
               Favorites
+            </Link>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item asChild className={itemClass}>
+            <Link href="/Account">
+              <UserIcon className="size-4" aria-hidden />
+              Account
             </Link>
           </DropdownMenu.Item>
           <DropdownMenu.Item
