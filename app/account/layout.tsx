@@ -1,9 +1,15 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { isBackendEnabled } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
 import { BadgeArt } from "@/components/badges/badge-art";
-import { BadgeCheck, Check, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AccountNav } from "./account-nav";
@@ -81,21 +87,6 @@ export default async function AccountLayout({
                 <h1 className="truncate text-2xl font-bold tracking-tight md:text-3xl">
                   {name}
                 </h1>
-                <span
-                  className="relative inline-flex size-5 shrink-0 items-center justify-center"
-                  aria-label="Verified"
-                >
-                  <BadgeCheck
-                    className="absolute size-5 fill-blue-500"
-                    strokeWidth={0}
-                    aria-hidden="true"
-                  />
-                  <Check
-                    className="relative size-2.5 text-white"
-                    strokeWidth={3}
-                    aria-hidden="true"
-                  />
-                </span>
                 {equippedBadge ? (
                   <div className="inline-flex h-6 items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-2 text-xs font-medium leading-none text-white/90 backdrop-blur">
                     <BadgeArt

@@ -3,7 +3,16 @@ import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
 import { Check, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { ClaimBadgeButton } from "./claim-button";
 import { EquipButton } from "./equip-button";
+
+// Badges with a self-serve check in /api/badges/claim. Helper stays manual.
+const CLAIMABLE = new Set([
+  "stargazer",
+  "bug-hunter",
+  "contributor",
+  "christmas-2026",
+]);
 
 export const metadata = {
   title: "Badges",
@@ -39,35 +48,19 @@ export default async function BadgesPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const [
-    { data: badges },
-    { data: earnedRows },
-    { data: profile },
-    { data: scores },
-  ] = await Promise.all([
-    supabase.from("badges").select("*").order("sort_order"),
-    supabase.from("user_badges").select("badge_slug").eq("user_id", user!.id),
-    supabase
-      .from("profiles")
-      .select("equipped_badge")
-      .eq("id", user!.id)
-      .single(),
-    supabase
-      .from("type_test_scores")
-      .select("user_id")
-      .order("wpm", { ascending: false })
-      .order("accuracy", { ascending: false }),
-  ]);
+  const [{ data: badges }, { data: earnedRows }, { data: profile }] =
+    await Promise.all([
+      supabase.from("badges").select("*").order("sort_order"),
+      supabase.from("user_badges").select("badge_slug").eq("user_id", user!.id),
+      supabase
+        .from("profiles")
+        .select("equipped_badge")
+        .eq("id", user!.id)
+        .single(),
+    ]);
 
   const equippedBadge = profile?.equipped_badge as string | null | undefined;
   const earned = new Set(earnedRows?.map((row) => row.badge_slug as string));
-
-  // Keyboard Warrior medals are computed live from the leaderboard.
-  const index = scores?.findIndex((score) => score.user_id === user?.id) ?? -1;
-  const rank = index === -1 ? undefined : index + 1;
-  if (rank === 1) earned.add("kw-gold");
-  if (rank === 2) earned.add("kw-silver");
-  if (rank === 3) earned.add("kw-bronze");
 
   const rowClass =
     "flex items-center gap-4 rounded-2xl border bg-card p-5 transition-colors hover:border-foreground/20";
@@ -82,7 +75,6 @@ export default async function BadgesPage() {
       <div className="mt-8 grid gap-4 lg:grid-cols-2">
         {((badges ?? []) as BadgeRow[]).map((badge) => {
           const isEarned = earned.has(badge.slug);
-          const external = badge.action_url?.startsWith("http");
 
           return (
             <div key={badge.slug} className={rowClass}>
@@ -107,6 +99,12 @@ export default async function BadgesPage() {
                     equipped={equippedBadge === badge.slug}
                   />
                 </div>
+              ) : CLAIMABLE.has(badge.slug) ? (
+                <ClaimBadgeButton
+                  slug={badge.slug}
+                  actionLabel={badge.action_label}
+                  actionUrl={badge.action_url}
+                />
               ) : badge.action_label && badge.action_url ? (
                 <Button
                   asChild
@@ -114,13 +112,7 @@ export default async function BadgesPage() {
                   size="sm"
                   className="shrink-0"
                 >
-                  {external ? (
-                    <a href={badge.action_url} target="_blank" rel="noreferrer">
-                      {badge.action_label}
-                    </a>
-                  ) : (
-                    <Link href={badge.action_url}>{badge.action_label}</Link>
-                  )}
+                  <Link href={badge.action_url}>{badge.action_label}</Link>
                 </Button>
               ) : (
                 <StatusPill earned={false} />
