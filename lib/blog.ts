@@ -29,6 +29,24 @@ export type BlogPost = {
 
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: "accounts-profiles-and-badges",
+    title: "Accounts, editable profiles, and an earnable badge system",
+    version: "2.4.0",
+    releasedAt: "2026-07-18",
+    description:
+      "Spark UI gets a real account area: a Product Hunt-style profile with bio and social links, sequential member numbers, a favorites masonry, and a database-driven badge system with server-verified earning and equippable badges that show up on the leaderboard.",
+    paragraphs: [
+      "Version 2.4.0 turns the lone favorites page into a full account area at /account. The profile header leads with your GitHub avatar and name, your equipped badge beside it, your @username, a sequential member number — the first person to sign up is #1, forever — and the date you joined. Below that, a tab bar moves between Dashboard, Favorites, Badges, Achievements, and Settings, with sign out tucked at the end of the row.",
+      "Profiles are now editable without leaving the page. The Edit profile modal takes a 160-character bio and links for X, LinkedIn, TikTok, Facebook, YouTube, and Instagram — each rendered in the header as a small icon row. Links are stored one row per platform behind an enum, URLs must be https, and Row Level Security keeps every write scoped to its owner.",
+      "Favorites moved into the account area and picked up the same animated Masonry that powers Templates and Showcase. Each saved component is a flat card with its category, description, saved date, and a one-click remove that doesn't navigate — and the empty state still points newcomers at the component gallery.",
+      "The headline feature is badges. The catalog lives in a badges table — title, description, image, action link, sort order — so adding or editing a badge is a dashboard insert, not a deploy. Earned badges land in user_badges, which clients can read but never write: earning goes through a server route that verifies the claim before granting it with elevated credentials.",
+      "Verification is real, not an honor system. Stargazer checks your GitHub stars for the Spark UI repo; Bug Hunter looks for an issue you authored; Contributor wants a merged pull request; the Keyboard Warrior gold, silver, and bronze medals check your live leaderboard rank; and Christmas 2026 only unlocks during the event window. Helper is deliberately manual — someone being helpful is a judgment call, so it's granted by hand.",
+      "Earned a badge you're proud of? Equip it. Your equipped badge appears beside your name on your profile — and next to your username on the Keyboard Warrior leaderboard, so the reigning champion can wear the gold medal where everyone can see it. The leaderboard page now explains the path: hold a top-three spot, then hit Verify on your badges page.",
+      "Settings rounds out the account with your synced GitHub details and a danger zone. Delete account is fully self-service: a security-definer Postgres function scoped to the caller removes the auth user, and cascades clean up the profile, favorites, scores, links, and badges in one stroke.",
+      "An Achievements tab previews what's next — milestone tracking with progress bars — and the account dashboard greets you with your badge collection. Everything ships in the same open-source-friendly shape as before: the backend schema is mirrored in supabase/examples, and the site still runs with zero setup when the backend flag is off.",
+    ],
+  },
+  {
     slug: "keyboard-masonry-and-open-source",
     title: "Keyboard, a redesigned Masonry, and zero-setup contributions",
     version: "2.3.0",
