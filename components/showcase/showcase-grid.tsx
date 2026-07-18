@@ -79,11 +79,11 @@ export function ShowcaseGrid({ items }: { items: ShowcaseEntry[] }) {
                     </span>
                   )}
 
-                  <div className="inline-flex items-center rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur">
+                  <div className="inline-flex items-center rounded-full border border-white/20 bg-black/30 px-2 text-xs font-medium text-white/90 backdrop-blur">
                     #1548
                   </div>
 
-                  <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-2 text-xs font-medium text-white/90 backdrop-blur">
                     <Image
                       src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/duolingo.svg"
                       width={12}

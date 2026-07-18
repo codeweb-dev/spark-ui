@@ -5,7 +5,14 @@ import { createClient } from "@/lib/supabase/client";
 import { isBackendEnabled } from "@/lib/supabase/config";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import type { User } from "@supabase/supabase-js";
-import { LogOut, Star, User as UserIcon } from "lucide-react";
+import {
+  BadgeCheck,
+  LogOut,
+  Medal,
+  Settings,
+  Star,
+  User as UserIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -78,17 +85,36 @@ function UserMenuInner() {
           </div>
           <DropdownMenu.Separator className="my-1 h-px bg-border" />
           <DropdownMenu.Item asChild className={itemClass}>
-            <Link href="/favorites">
+            <Link href="/account">
+              <UserIcon className="size-4" aria-hidden />
+              Account
+            </Link>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item asChild className={itemClass}>
+            <Link href="/account/badges">
+              <BadgeCheck className="size-4" aria-hidden />
+              Badges
+            </Link>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item asChild className={itemClass}>
+            <Link href="/account/achievements">
+              <Medal className="size-4" aria-hidden />
+              Achievements
+            </Link>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item asChild className={itemClass}>
+            <Link href="/account/favorites">
               <Star className="size-4" aria-hidden />
               Favorites
             </Link>
           </DropdownMenu.Item>
           <DropdownMenu.Item asChild className={itemClass}>
-            <Link href="/Account">
-              <UserIcon className="size-4" aria-hidden />
-              Account
+            <Link href="/account/settings">
+              <Settings className="size-4" aria-hidden />
+              Settings
             </Link>
           </DropdownMenu.Item>
+          <DropdownMenu.Separator className="my-1 h-px bg-border" />
           <DropdownMenu.Item
             className={itemClass}
             onSelect={() => createClient().auth.signOut()}

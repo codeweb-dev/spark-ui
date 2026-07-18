@@ -88,7 +88,7 @@ function FavoriteButtonInner() {
           description: "Saved to your favorites list.",
           action: {
             label: "View favorites",
-            onClick: () => router.push("/favorites"),
+            onClick: () => router.push("/account/favorites"),
           },
         });
       }
