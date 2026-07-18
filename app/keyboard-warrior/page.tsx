@@ -140,7 +140,7 @@ function RankedAvatar({ score, rank }: { score: Score; rank: PodiumRank }) {
 
       <Image
         src={`/images/ranks/${rankArt.ring}.png`}
-        alt=""
+        alt={`${score.username}'s rank ring`}
         fill
         priority={rank === 0}
         sizes="(min-width: 640px) 80px, 64px"
