@@ -45,6 +45,19 @@ async function hasStarred(username: string) {
   return false;
 }
 
+const RATE_WINDOW_MS = 60 * 60 * 1000;
+const RATE_MAX = 5;
+const attempts = new Map<string, number[]>();
+function rateLimited(userId: string) {
+  const now = Date.now();
+  const recent = (attempts.get(userId) ?? []).filter(
+    (t) => now - t < RATE_WINDOW_MS,
+  );
+  recent.push(now);
+  attempts.set(userId, recent);
+  return recent.length > RATE_MAX;
+}
+
 interface ClaimContext {
   username: string;
   userId: string;
@@ -79,7 +92,9 @@ const CHECKS: Record<
   },
   contributor: {
     check: ({ username }) =>
-      searchHasResults(`repo:${REPO_FULL} author:${username} type:pr is:merged`),
+      searchHasResults(
+        `repo:${REPO_FULL} author:${username} type:pr is:merged`,
+      ),
     reason: "No merged pull request from your account yet.",
   },
   "christmas-2026": {
@@ -129,6 +144,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
 
+  if (rateLimited(user.id)) {
+    return NextResponse.json(
+      { error: "Too many attempts. Try again in an hour." },
+      { status: 429 },
+    );
+  }
+
   const username =
     user.user_metadata.user_name ?? user.user_metadata.preferred_username;
   if (!username) {
@@ -148,7 +170,8 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!earned) return NextResponse.json({ earned: false, reason: entry.reason });
+  if (!earned)
+    return NextResponse.json({ earned: false, reason: entry.reason });
 
   const admin = createAdminClient(getSupabaseConfig().url, secretKey);
   const { error } = await admin
