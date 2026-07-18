@@ -1,18 +1,30 @@
 import { Navbar } from "@/components/landing/Navbar";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import TwitterXIcon from "@/components/ui/twitter-x-icon";
 import { isBackendEnabled } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
 import { BadgeArt } from "@/components/badges/badge-art";
-import { Plus } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Link as LinkSocialMedia,
+  Linkedin,
+  Plus,
+  Youtube,
+} from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AccountNav } from "./account-nav";
+import { EditProfileDialog } from "./edit-profile-dialog";
+import { Badge } from "@/components/ui/badge";
+
+const SOCIAL_ICONS = [
+  { key: "x", label: "X", icon: TwitterXIcon },
+  { key: "linkedin", label: "LinkedIn", icon: Linkedin },
+  { key: "tiktok", label: "TikTok", icon: LinkSocialMedia },
+  { key: "facebook", label: "Facebook", icon: Facebook },
+  { key: "youtube", label: "YouTube", icon: Youtube },
+  { key: "instagram", label: "Instagram", icon: Instagram },
+];
 
 export const metadata = {
   title: "Account",
@@ -49,12 +61,22 @@ export default async function AccountLayout({
     user.user_metadata.user_name ?? user.user_metadata.preferred_username;
   const avatarUrl = user.user_metadata.avatar_url as string | undefined;
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("member_number, equipped_badge")
-    .eq("id", user.id)
-    .single();
+  const [{ data: profile }, { data: linkRows }] = await Promise.all([
+    supabase
+      .from("profiles")
+      .select("member_number, equipped_badge, bio")
+      .eq("id", user.id)
+      .single(),
+    supabase
+      .from("profile_links")
+      .select("platform, url")
+      .eq("user_id", user.id),
+  ]);
   const memberNumber = profile?.member_number as number | undefined;
+  const bio = (profile?.bio as string | null) ?? "";
+  const links = Object.fromEntries(
+    linkRows?.map((row) => [row.platform as string, row.url as string]) ?? [],
+  );
 
   const { data: equippedBadge } = profile?.equipped_badge
     ? await supabase
@@ -88,20 +110,20 @@ export default async function AccountLayout({
                   {name}
                 </h1>
                 {equippedBadge ? (
-                  <div className="inline-flex h-6 items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-2 text-xs font-medium leading-none text-white/90 backdrop-blur">
+                  <Badge variant="outline">
                     <BadgeArt
                       imageUrl={equippedBadge.image_url as string | null}
                       size={14}
                     />
-                    <span>{equippedBadge.title as string}</span>
-                  </div>
+                    <span className="ml-1">
+                      {equippedBadge.title as string}
+                    </span>
+                  </Badge>
                 ) : (
-                  <Link
-                    href="/account/badges"
-                    className="inline-flex h-6 items-center gap-1 rounded-full border border-white/20 bg-black/30 px-2 text-xs font-medium leading-none text-white/90 backdrop-blur transition-colors hover:bg-black/50"
-                  >
-                    <Plus className="size-3.5 shrink-0" strokeWidth={2} />
-                    <span>Custom Badge</span>
+                  <Link href="/account/badges">
+                    <Badge variant="outline">
+                      <Plus size={12} className="mr-2" /> Custom Badge
+                    </Badge>
                   </Link>
                 )}
               </div>
@@ -112,30 +134,39 @@ export default async function AccountLayout({
 
               <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
                 {memberNumber != null && (
-                  <span className="inline-flex items-center rounded-full border border-white/20 bg-black/30 px-2 text-xs font-medium text-white/90 backdrop-blur">
-                    #{memberNumber}
-                  </span>
+                  <Badge variant="outline">#{memberNumber}</Badge>
                 )}
                 <span>Joined {formatJoined(user.created_at)}</span>
               </div>
             </div>
 
-            {username && (
-              <Button
-                asChild
-                variant="outline"
-                className="shrink-0 self-start sm:self-center"
-              >
-                <a
-                  href={`https://github.com/${username}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View GitHub profile
-                </a>
-              </Button>
-            )}
+            <EditProfileDialog initialBio={bio} initialLinks={links} />
           </header>
+
+          <div className="mt-6 flex flex-col gap-2">
+            {bio && <p className="max-w-lg text-sm">{bio}</p>}
+
+            {Object.keys(links).length > 0 && (
+              <div className="mt-2 flex flex-wrap items-center gap-4">
+                {SOCIAL_ICONS.map(({ key, label, icon: Icon }) =>
+                  links[key] ? (
+                    <a
+                      key={key}
+                      href={links[key]}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      title={label}
+                    >
+                      <Badge variant="outline">
+                        <Icon size={12} className="mr-2" /> {label}
+                      </Badge>
+                    </a>
+                  ) : null,
+                )}
+              </div>
+            )}
+          </div>
 
           <div className="mt-8 border-b">
             <AccountNav />

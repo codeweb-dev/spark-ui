@@ -1,4 +1,6 @@
+import { BadgeArt } from "@/components/badges/badge-art";
 import { Navbar } from "@/components/landing/Navbar";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { isBackendEnabled } from "@/lib/supabase/config";
 import { createClient } from "@/lib/supabase/server";
@@ -21,6 +23,10 @@ type Score = {
   created_at: string;
   profiles: {
     avatar_url: string | null;
+    badges: {
+      title: string;
+      image_url: string | null;
+    } | null;
   } | null;
 };
 
@@ -145,14 +151,6 @@ function RankedAvatar({ score, rank }: { score: Score; rank: PodiumRank }) {
   );
 }
 
-function formatPostedDate(value: string) {
-  return new Date(value).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
 function ordinal(value: number) {
   const lastTwoDigits = value % 100;
 
@@ -180,18 +178,28 @@ export default async function KeyboardWarriorPage() {
 
     const { data } = await supabase
       .from("type_test_scores")
-      .select("id, username, wpm, accuracy, created_at, profiles(avatar_url)")
+      .select(
+        "id, username, wpm, accuracy, created_at, profiles(avatar_url, badges!profiles_equipped_badge_fkey(title, image_url))",
+      )
       .order("wpm", { ascending: false })
       .order("accuracy", { ascending: false })
       .limit(50);
 
     scores =
-      data?.map((row) => ({
-        ...row,
-        profiles: Array.isArray(row.profiles)
+      data?.map((row) => {
+        const profile = Array.isArray(row.profiles)
           ? (row.profiles[0] ?? null)
-          : row.profiles,
-      })) ?? null;
+          : row.profiles;
+        return {
+          ...row,
+          profiles: profile && {
+            ...profile,
+            badges: Array.isArray(profile.badges)
+              ? (profile.badges[0] ?? null)
+              : profile.badges,
+          },
+        };
+      }) ?? null;
   }
 
   return (
@@ -211,6 +219,18 @@ export default async function KeyboardWarriorPage() {
 
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
               Top scores from the 15-second type test on the homepage.
+            </p>
+
+            <p className="mt-2 text-sm text-muted-foreground">
+              Hold a top 1–3 spot to earn a gold, silver, or bronze medal — then
+              head to{" "}
+              <Link
+                href="/account/badges"
+                className="font-medium text-foreground underline underline-offset-4 hover:no-underline"
+              >
+                your badges
+              </Link>{" "}
+              and hit Verify to claim it.
             </p>
           </div>
 
@@ -311,15 +331,24 @@ export default async function KeyboardWarriorPage() {
                       className="size-8 text-xs"
                     />
 
-                    <span
-                      className="min-w-0 flex-1 truncate font-medium"
-                      title={score.username}
-                    >
-                      {score.username}
-                    </span>
-
-                    <span className="hidden shrink-0 text-xs text-muted-foreground sm:block">
-                      {formatPostedDate(score.created_at)}
+                    <span className="flex min-w-0 flex-1 items-center gap-1.5">
+                      <span
+                        className="min-w-0 truncate font-medium"
+                        title={score.username}
+                      >
+                        {score.username}
+                      </span>
+                      {score.profiles?.badges && (
+                        <Badge variant="outline">
+                          <BadgeArt
+                            imageUrl={score.profiles.badges.image_url}
+                            size={14}
+                          />
+                          <span className="ml-1">
+                            {score.profiles.badges.title as string}
+                          </span>
+                        </Badge>
+                      )}
                     </span>
 
                     <span className="hidden w-20 shrink-0 text-right font-mono text-sm text-muted-foreground xs:block">

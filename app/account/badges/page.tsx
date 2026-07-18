@@ -12,6 +12,9 @@ const CLAIMABLE = new Set([
   "bug-hunter",
   "contributor",
   "christmas-2026",
+  "kw-gold",
+  "kw-silver",
+  "kw-bronze",
 ]);
 
 export const metadata = {

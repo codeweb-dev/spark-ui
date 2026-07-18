@@ -45,23 +45,40 @@ async function hasStarred(username: string) {
   return false;
 }
 
+interface ClaimContext {
+  username: string;
+  userId: string;
+  supabase: Awaited<ReturnType<typeof createClient>>;
+}
+
+// 1-based Keyboard Warrior leaderboard rank; undefined if unranked.
+async function leaderboardRank({ userId, supabase }: ClaimContext) {
+  const { data: scores } = await supabase
+    .from("type_test_scores")
+    .select("user_id")
+    .order("wpm", { ascending: false })
+    .order("accuracy", { ascending: false });
+  const index = scores?.findIndex((score) => score.user_id === userId) ?? -1;
+  return index === -1 ? undefined : index + 1;
+}
+
 // Self-claimable badges. Helper is deliberately absent: it's granted manually
 // from the dashboard.
 const CHECKS: Record<
   string,
-  { check: (username: string) => Promise<boolean>; reason: string }
+  { check: (ctx: ClaimContext) => Promise<boolean>; reason: string }
 > = {
   stargazer: {
-    check: hasStarred,
+    check: ({ username }) => hasStarred(username),
     reason: "No star found yet. Star the repo on GitHub, then verify again.",
   },
   "bug-hunter": {
-    check: (username) =>
+    check: ({ username }) =>
       searchHasResults(`repo:${REPO_FULL} author:${username} type:issue`),
     reason: "No issues from your account yet. Report a bug first.",
   },
   contributor: {
-    check: (username) =>
+    check: ({ username }) =>
       searchHasResults(`repo:${REPO_FULL} author:${username} type:pr is:merged`),
     reason: "No merged pull request from your account yet.",
   },
@@ -71,6 +88,18 @@ const CHECKS: Record<
       return now >= new Date("2026-12-01") && now < new Date("2027-01-01");
     },
     reason: "The winter event runs in December 2026. Come back then!",
+  },
+  "kw-gold": {
+    check: async (ctx) => (await leaderboardRank(ctx)) === 1,
+    reason: "You need to hold #1 on the Keyboard Warrior leaderboard.",
+  },
+  "kw-silver": {
+    check: async (ctx) => (await leaderboardRank(ctx)) === 2,
+    reason: "You need to hold #2 on the Keyboard Warrior leaderboard.",
+  },
+  "kw-bronze": {
+    check: async (ctx) => (await leaderboardRank(ctx)) === 3,
+    reason: "You need to hold #3 on the Keyboard Warrior leaderboard.",
   },
 };
 
@@ -111,10 +140,10 @@ export async function POST(request: Request) {
 
   let earned: boolean;
   try {
-    earned = await entry.check(username);
+    earned = await entry.check({ username, userId: user.id, supabase });
   } catch {
     return NextResponse.json(
-      { error: "Couldn't reach GitHub. Try again in a bit." },
+      { error: "Verification failed. Try again in a bit." },
       { status: 502 },
     );
   }
