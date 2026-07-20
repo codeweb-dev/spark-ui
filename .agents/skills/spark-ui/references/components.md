@@ -30,6 +30,16 @@ import { GhostEther } from "@/components/ghost-ether";
 
 Interactive Three.js fluid background. Key tunables include `mouseForce`, `cursorSize`, `isViscous`, and `viscous`. Render once per page.
 
+## Hello
+
+```tsx
+import { Hello } from "@/components/hello";
+
+<Hello interval={2000} />;
+```
+
+Apple-style welcome greeting that cycles through languages with a soft blur crossfade. Key props: `greetings` (defaults to "Hello" in ten languages), `interval` (ms per greeting), `className`. Honors reduced motion.
+
 ## Dynamic Island
 
 ```tsx
@@ -83,6 +93,16 @@ import { InteractivePets } from "@/components/interactive-pets";
 
 Pet IDs: `cat`, `dog`, `bird`. Supports pointer dragging, keyboard movement, feed controls, custom messages, and `onPetMove` / `onPetFeed` callbacks.
 
+## Keyboard
+
+```tsx
+import { Keyboard } from "@/components/keyboard";
+
+<Keyboard onKeyPress={(key) => console.log(key)} />;
+```
+
+Two-tone mechanical keyboard with 3D press animations. Key props: `listen` (mirror physical key presses, default true), `sound` (synthesized click per press, default true), `onKeyPress` (fires with the key's value when an on-screen key is clicked).
+
 ## Logo Carousel
 
 ```tsx
@@ -94,6 +114,23 @@ import { LogoCarousel } from "@/components/logo-carousel";
 ```
 
 Key props: `duration`, `pauseOnHover`, `direction`, `reverse`, `fade`, `fadeAmount`, `repeat`, `gap`.
+
+## Masonry
+
+```tsx
+import { Masonry } from "@/components/masonry";
+
+<Masonry
+  items={[
+    { id: "1", img: "/a.jpg", url: "https://example.com", height: 400 },
+    { id: "2", img: "/b.jpg", height: 250 },
+  ]}
+  animateFrom="bottom"
+  scaleOnHover
+/>;
+```
+
+Animated masonry grid; each item needs an explicit `height`. Key props: `ease` (framer-motion or gsap-style names like `"power3.out"`), `duration`, `stagger`, `animateFrom` (`top`, `bottom`, `left`, `right`, `center`, `random`), `scaleOnHover`, `hoverScale`, `blurToFocus`, `colorShiftOnHover`, and `renderItem` for custom tile content.
 
 ## QR Code
 

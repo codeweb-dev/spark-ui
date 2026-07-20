@@ -1,11 +1,11 @@
 ---
 name: spark-ui
-description: Install and compose Spark UI signature React components such as Widget Stack, Dynamic Island, Interactive Pets, Tactile Highlight, Shimmer Text, Image Trail, Animated Gradient, Ghost Ether, Logo Carousel, QR Code, Receipt, Number Ticker, and Spotify Card from the Spark UI shadcn-compatible source registry.
+description: Install and compose Spark UI signature React components such as Widget Stack, Dynamic Island, Interactive Pets, Tactile Highlight, Shimmer Text, Image Trail, Animated Gradient, Ghost Ether, Logo Carousel, QR Code, Receipt, Number Ticker, Spotify Card, Masonry, Keyboard, and Hello from the Spark UI shadcn-compatible source registry.
 ---
 
 # Spark UI
 
-Spark UI is an open-source, shadcn-compatible source registry focused only on 13 signature components with expressive motion, distinctive visuals, and memorable interactions. It does not provide common UI primitives such as buttons, forms, dialogs, tables, or navigation components.
+Spark UI is an open-source, shadcn-compatible source registry focused only on 16 signature components with expressive motion, distinctive visuals, and memorable interactions. It does not provide common UI primitives such as buttons, forms, dialogs, tables, or navigation components.
 
 Components are copied into the consumer's project as TypeScript source. There is no `spark-ui` npm package.
 
@@ -40,21 +40,24 @@ The machine-readable index is `https://spark-ui-olive.vercel.app/r/registry.json
 
 ## Component catalog
 
-| Registry name | Main exports | Purpose |
-| --- | --- | --- |
-| `animated-gradient` | `AnimatedGradient` | Animated WebGL gradient background |
-| `basic-number-ticker` | `NumberTicker` (default), `NumberTickerRef` | Animated numeric values |
-| `dynamic-island` | `DynamicIsland`, `DynamicIslandProps` | Morphing compact and expanded activity surface |
-| `ghost-ether` | `GhostEther`, `GhostEtherProps` | Interactive Three.js fluid background |
-| `image-trail` | `ImageTrail`, `ImageTrailItem`, `ImageTrailItemCaption` | Pointer-following framed media trail |
-| `interactive-pets` | `InteractivePets`, `PetType`, `PetConfig`, `InteractivePetsProps` | Draggable, feedable cat, dog, and bird |
-| `logo-carousel` | `LogoCarousel` | Multi-directional animated logo carousel |
-| `qr-code` | `QRCode` | Customizable SVG QR code |
-| `receipt` | `Receipt` | Polished payment receipt |
-| `shimmer-text` | `ShimmerText` | Animated shimmer typography |
-| `spotify-card` | `SpotifyCard`, `SpotifyCardRef` | Live Spotify track card with metadata route |
-| `tactile-highlight` | `TactileHighlight` | Physics-based reactive text highlight |
-| `widget-stack` | `WidgetStack`, `WidgetStackSize` | Small or medium vertically scrollable widget stack |
+| Registry name         | Main exports                                                       | Purpose                                                              |
+| --------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `animated-gradient`   | `AnimatedGradient`                                                 | Animated WebGL gradient background                                   |
+| `basic-number-ticker` | `NumberTicker` (default), `NumberTickerRef`                        | Animated numeric values                                              |
+| `dynamic-island`      | `DynamicIsland`, `DynamicIslandProps`                              | Morphing compact and expanded activity surface                       |
+| `ghost-ether`         | `GhostEther`, `GhostEtherProps`                                    | Interactive Three.js fluid background                                |
+| `hello`               | `Hello`                                                            | Apple-style greeting cycling through languages with a blur crossfade |
+| `image-trail`         | `ImageTrail`, `ImageTrailItem`, `ImageTrailItemCaption`            | Pointer-following framed media trail                                 |
+| `interactive-pets`    | `InteractivePets`, `PetType`, `PetConfig`, `InteractivePetsProps`  | Draggable, feedable cat, dog, and bird                               |
+| `keyboard`            | `Keyboard`                                                         | Two-tone mechanical keyboard with 3D press animations and key sounds |
+| `logo-carousel`       | `LogoCarousel`                                                     | Multi-directional animated logo carousel                             |
+| `masonry`             | `Masonry` (default), `MasonryItem`, `MasonryProps`, `GsapEaseName` | Animated masonry grid with staggered entry and hover effects         |
+| `qr-code`             | `QRCode`                                                           | Customizable SVG QR code                                             |
+| `receipt`             | `Receipt`                                                          | Polished payment receipt                                             |
+| `shimmer-text`        | `ShimmerText`                                                      | Animated shimmer typography                                          |
+| `spotify-card`        | `SpotifyCard`, `SpotifyCardRef`                                    | Live Spotify track card with metadata route                          |
+| `tactile-highlight`   | `TactileHighlight`                                                 | Physics-based reactive text highlight                                |
+| `widget-stack`        | `WidgetStack`, `WidgetStackSize`                                   | Small or medium vertically scrollable widget stack                   |
 
 Detailed examples and APIs are in `references/components.md`.
 
