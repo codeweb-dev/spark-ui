@@ -1,3 +1,4 @@
+import { CuelumeSounds } from "@/components/cuelume-sounds";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -71,6 +72,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <CuelumeSounds />
           <Toaster />
           <Analytics />
         </ThemeProvider>

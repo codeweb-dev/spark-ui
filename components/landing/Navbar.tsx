@@ -2,6 +2,7 @@ import { MobileNav } from "@/components/docs/mobile-nav";
 import { SearchWrapper } from "@/components/landing/search-wrapper";
 import { GitHubStarButton } from "@/components/github-star-button";
 import { ModeToggle } from "@/components/mode-toggle";
+import { SoundToggle } from "@/components/cuelume-sounds";
 import { UserMenu } from "@/components/auth/user-menu";
 import { SITE_CONFIG } from "@/lib/constants";
 import { getAllDocs } from "@/lib/docs";
@@ -67,6 +68,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
         <div className="flex items-center gap-2">
           <SearchWrapper items={docs} />
           <GitHubStarButton />
+          <SoundToggle />
           <ModeToggle />
           <Suspense fallback={null}>
             <UserMenu />

@@ -25,6 +25,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "cuelume": "^0.1.2",
     "framer-motion": "^12.35.1",
     "got": "^14.6.6",
     "gray-matter": "^4.0.3",
